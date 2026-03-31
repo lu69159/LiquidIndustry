@@ -15,7 +15,7 @@ Events.on(ContentInitEvent, cons(e => {
     lib.addToResearch(LIblockslib.超能墙, {
         parent: LIblockslib.微型核心基座.name,
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map4yy),
+            new Objectives.SectorComplete(maps["永夜荒地"]),
             new Objectives.Research(LIblockslib.大型合金装甲储液罐),
             new Objectives.Research(LIblockslib.大型塑钢装甲储液罐),
             new Objectives.Research(LIblockslib.大型相织装甲储液罐),
@@ -31,7 +31,7 @@ Events.on(ContentInitEvent, cons(e => {
     lib.addToResearch(LIblockslib.状态穹顶, {
         parent: LIblockslib.超频投影.name,
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map4yy),
+            new Objectives.SectorComplete(maps["永夜荒地"]),
             new Objectives.Research(LIblockslib.保护投影)
         )
     });

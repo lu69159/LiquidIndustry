@@ -10,7 +10,15 @@
     "itemCapacity": 16,
     "liquidCapacity": 80,
     "category": "crafting",
-    "research": "精华提取工厂",
+    "research": {
+		"parent": "精华提取工厂",
+		"objectives": [
+			{
+				"type": "SectorComplete",
+				"preset": "暴雪前哨"
+			}
+		]
+	},
     "craftTime": 120,
     "consumes": {
 		"power": 16.4,

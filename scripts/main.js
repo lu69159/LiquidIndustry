@@ -1,14 +1,15 @@
 Vars.renderer.minZoom = 0.3;
 Vars.renderer.maxZoom = 25; //缩放
 
-require("functions/start");
+require("start");
 
 require("LI/LIitems");
 require("LI/LIliquids");
+require("LI/LIattributes");
 require("LI/LIblockslib");
 require("LI/LIunitslib");
-require("LI/LIattributes");
 require("LI/LIstatus");
+require("LI/LIweathers");
 
 require("planets/Nepture");
 require("planets/NTSatelite");
@@ -27,3 +28,5 @@ require("blocks/cores/闪电核心");
 require("blocks/cores/雷霆核心");
 
 require("SPTechTree");
+
+require("rules");

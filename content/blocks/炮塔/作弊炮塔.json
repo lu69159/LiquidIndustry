@@ -28,7 +28,6 @@
         "speed": 25,
         "lifetime": 400,
         "hitSound": "FFF",
-        "hitSoundVolume": 0.8
-        
+        "hitSoundVolume": 0.8       
     }
 }

@@ -15,7 +15,6 @@
     "isEnemy": false,
     "controller": "DefenderAI",
     "trailLength": 10,
-    "trailWidth": 2,
     "trailColor": "F23A3A",
     "outlineColor": "00000000",
 

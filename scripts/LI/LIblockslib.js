@@ -127,6 +127,9 @@ exports.大型照明器 = DXZMQ;
 const RZTY = new LightBlock("人造太阳");
 exports.人造太阳 = RZTY;
 
+const YJLD = new Radar("预警雷达"); 
+exports.预警雷达 = YJLD;
+
 const CSTQ = new OverdriveProjector("超速天穹");
 exports.超速天穹 = CSTQ;
 
@@ -181,6 +184,7 @@ const WXHXJZ = extend(CoreBlock, "微型核心基座", {
 
 		if ((player.team().core() != null && !player.team().core().items.has(this.requirements, Vars.state.rules.buildCostMultiplier)) && !Vars.state.rules.infiniteResources) {
             this.drawPlaceText(Core.bundle.get("bar.noresources"), x, y, false);
+            return;
         }
 
 		if(!(Vars.state.teams.cores(player.team()).size < 12)){
@@ -242,6 +246,9 @@ const ZBPT = new PowerTurret("作弊炮塔");
 exports.作弊炮塔 = ZBPT;
 
 //墙
+const JDQT = new Wall("基地墙体");
+exports.基地墙体 = JDQT;
+
 const ZJCYG = type.WallLiquidRouter("装甲储液罐");
 exports.装甲储液罐 = ZJCYG;
 
@@ -498,6 +505,22 @@ exports.大型抽水机 = DXCSJ;
 
 const LDYCQJ = new SolidPump("冷冻液抽取机");
 exports.冷冻液抽取机 = LDYCQJ;
+
+const FYCQJ = extend(SolidPump, "废液抽取机", {
+    canPlaceOn(tile, team, rotation) {
+        var rules = Vars.state.rules;
+		return rules.planet == require("planets/Nepture").NT || rules.editor;
+	},
+	drawPlace(x, y, rotation, valid) {
+        var rules = Vars.state.rules, NT =require("planets/Nepture").NT;
+		if(rules.planet != NT && !rules.editor){
+            this.drawPlaceText(Core.bundle.get("canonlyplaceon") + NT.localizedName, x, y, false);
+            return;
+        }
+        this.super$drawPlace(x, y, rotation, valid);
+	}
+});
+exports.废液抽取机 = FYCQJ;
 
 const BLZJ = new Fracker("冰冷钻井");
 exports.冰冷钻井 = BLZJ;

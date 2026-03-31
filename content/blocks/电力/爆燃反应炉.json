@@ -79,8 +79,8 @@
 		"parent": "碳发电机",
 		"objectives": [
 			{
-				"type": "SectorComplete",
-				"preset": "永夜荒地"
+				"type": "OnSector",
+				"preset": "暴雪前哨"
 			}
 		]
 	},

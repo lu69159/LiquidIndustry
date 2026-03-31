@@ -16,7 +16,8 @@
     "engineOffset": 6,
     "hitSize": 11,
     "immunities": [
-        "freezing"
+        "freezing",
+        "雪盲"
     ],
     "abilities": [
         {

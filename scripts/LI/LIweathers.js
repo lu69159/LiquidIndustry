@@ -1,3 +1,4 @@
-//极寒 定义于NT星球JS
-
-//const jg = new ParticleWeather("极光");
+const JH = new ParticleWeather("极寒");
+exports.极寒 = JH;
+const BX = new ParticleWeather("暴雪");
+exports.暴雪 = BX;

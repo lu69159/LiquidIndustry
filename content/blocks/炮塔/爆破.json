@@ -15,7 +15,6 @@
 	"warmupMaintainTime": 90,
 	"minWarmup": 0.9,
     "maxAmmo": 8,
-    "unitSort":"farthest",
     "shootSound": "shootTank",
     "targetAir": false,
     "requirements": [

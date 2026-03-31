@@ -1,0 +1,27 @@
+{
+    "name": "预警雷达",
+    "size": 2,
+    "health": 200,
+    "discoveryTime": 180,
+    "fogRadius": 70,
+    "glowColor": "FFFFFF60",
+    "canOverdrive": false,
+    "consumes": {
+        "power": 1
+    },
+    "requirements": [
+        "graphite/24",
+        "silicon/15",
+        "metaglass/12"
+    ],
+    "category": "effect",
+    "research": {
+		"parent": "微型核心基座",
+		"objectives": [
+			{
+				"type": "SectorComplete",
+				"preset": "极光壁垒"
+			}
+		]
+	}
+}

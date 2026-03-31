@@ -1,4 +1,5 @@
-const jh = new ParticleWeather("极寒");
+const jh = require("LI/LIweathers").极寒;
+const bx = require("LI/LIweathers").暴雪;
 const NT = new Planet("Nepture", Planets.sun, 1.2, 2.5);
 NT.localizedName = "尼普顿";
 NT.description = "温度极低，暗无天日，常年暴雪。地表矿物稀缺，存在大量未被开发的液体资源。";
@@ -10,8 +11,9 @@ NT.meshLoader = prov(() => new MultiMesh(
 const c1 = Color.valueOf("D8F3FF"), c2 = Color.valueOf("5ECCF7");
 NT.generator = extend(TantrosPlanetGenerator, {
 	addWeather(sector, rules){
-		const ZX2 = require("map/maps").ZX2;
-		if(sector.preset != ZX2){
+		const ZX2 = require("map/maps")["地火"];
+		const map6bx = require("map/maps")["暴雪前哨"];
+		if(sector.preset != ZX2 && sector.preset != map6bx){
 			rules.weather.add(
 				new Weather.WeatherEntry(
 					jh,
@@ -22,7 +24,13 @@ NT.generator = extend(TantrosPlanetGenerator, {
 				)
 			);
 		}
+		if(sector.preset == map6bx){
+			var w6 = new Weather.WeatherEntry(bx);
+			w6.always = true;
+			rules.weather.add(w6);
+		}
     },
+	//generateSector(sector){	},
 	getColor(position ,out){
 		var depth = Simplex.noise3d(2, 2, 0.56, 1.7, position.x, position.y, position.z);
 		out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.25)));
@@ -32,17 +40,23 @@ NT.cloudMeshLoader = prov(() => new MultiMesh(
 	new HexSkyMesh(NT, 2, 0.15, 0.05, 5, Color.valueOf("D8F3FF"), 2, 0.42, 1, 0.43),
 	new HexSkyMesh(NT, 3, 0.6, 0.15, 5, Color.valueOf("D8F3FF80"), 2, 0.42, 1.2, 0.45),
 ));
+NT.ruleSetter = (r) => {	
+	r.lighting = true;
+	r.showSpawns = true;
+	r.ambientLight = Color.valueOf("000000F0");
+};
 NT.landCloudColor = Color.valueOf("D8F3FF80");
 NT.visible = true;
 NT.accessible = true;
 NT.alwaysUnlocked = true;
-NT.allowCampaignRules = true;
+NT.allowCampaignRules = false;
+NT.showRtsAIRule = false;
 NT.allowSectorInvasion = false;
 //NT.allowLaunchToNumbered = false;
 NT.clearSectorOnLose = true;
 NT.tidalLock = false;
 NT.localizedName = "尼普顿";
-NT.prebuildBase = false;
+NT.prebuildBase = true;
 NT.bloom = false;
 NT.startSector = 1;
 NT.orbitRadius = 90;
@@ -54,9 +68,6 @@ NT.atmosphereColor = Color.valueOf("598DA4");
 NT.iconColor = Color.valueOf("D8F3FF");
 //NT.hiddenItems.addAll(Items.erekirItems).removeAll(Items.serpuloItems);
 NT.updateLighting = false;
-NT.ruleSetter = (r) => {
-	r.ambientLight = Color.valueOf("000000F0")
-};
 NT.launchMusic = Vars.tree.loadMusic("NTlaunch");
 
 exports.NT = NT;

@@ -14,6 +14,13 @@ function newLiquid(name) {
 		return myLiquid;
 	})();
 }
+function newExtendLiquid(name, func) {
+    exports[name] = (() => {
+        let myLiquid = extend(Liquid, name, func);
+        ANT(myLiquid);
+        return myLiquid;
+    })();
+}
 newLiquid("冰冷废液")
 newLiquid("一级精炼废液")
 newLiquid("二级精炼废液")
@@ -23,6 +30,18 @@ newLiquid("超浓缩精华液")
 newLiquid("神能精华液")
 newLiquid("重水")
 newLiquid("超级冷冻液")
+newExtendLiquid("衰变熔岩", {
+	fireTimer: 0,
+	update(puddle){
+        if(!Vars.state.rules.fire) return;
+        this.fireTimer += Time.delta;
+        if(this.fireTimer >= 60){
+			let F = new Fires();
+            F.create(puddle.tile);
+            this.fireTimer = 0;
+        }
+    }
+});
 //衰变熔岩 (定义于 终能聚合器)
 
 Liquids.water.shownPlanets.add(NT);

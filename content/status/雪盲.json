@@ -1,0 +1,7 @@
+{
+    "name": "雪盲",
+    "color": "FFFFFF",
+	"healthMultiplier": 1.5,
+	"speedMultiplier": 0.6,
+    "dragMultiplier": 0.1
+}

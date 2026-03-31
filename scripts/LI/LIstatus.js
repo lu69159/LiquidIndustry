@@ -90,16 +90,24 @@ const 神佑 = extend(StatusEffect, "神佑", {
 });
 exports.神佑 = 神佑;
 
-
 const 管制 = new StatusEffect("管制");
 exports.管制 = 管制;
 
+const 雪盲 = extend(StatusEffect, "雪盲", {
+    init(){
+        this.opposite(StatusEffects.burning, StatusEffects.melting);
+    }
+});
+exports.雪盲 = 雪盲;
 
 const 解冻 = extend(StatusEffect, "解冻", {
     init(){
         this.super$init();
         if(!this.opposites.contains(StatusEffects.freezing)){
             this.handleOpposite(StatusEffects.freezing);
+        }  
+        if(!this.opposites.contains(雪盲)){
+            this.handleOpposite(雪盲);
         }  
     },
     handleOpposite(other){
@@ -112,6 +120,9 @@ const 解冻 = extend(StatusEffect, "解冻", {
         if(unit.hasEffect(StatusEffects.freezing)){
             unit.unapply(StatusEffects.freezing);          
         }    
+        if(unit.hasEffect(雪盲)){
+            unit.unapply(雪盲);          
+        } 
     }
 });
 exports.解冻 = 解冻;

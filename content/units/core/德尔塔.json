@@ -25,7 +25,8 @@
         "totalPower": 1200
     },
     "immunities": [
-        "freezing"
+        "freezing",
+        "雪盲"
     ],
     "abilities": [
         {

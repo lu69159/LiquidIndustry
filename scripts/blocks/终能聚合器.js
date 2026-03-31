@@ -1,21 +1,8 @@
 var lightRegion;
 var fireTimer = 0;
 
-const F = new Fires();
 const {NT} = require("planets/Nepture");
-const 衰变熔岩 = extend(Liquid, "衰变熔岩", {
-    update(puddle){
-        if(!Vars.state.rules.fire) return;
-        fireTimer += Time.delta;
-        if(fireTimer >= 60){
-            F.create(puddle.tile);
-            fireTimer = 0;
-        }
-    }
-});
-衰变熔岩.shownPlanets.add(NT);
-衰变熔岩.shownPlanets.add(Planets.serpulo);
-
+const 衰变熔岩 = require("LI/LIliquids")["衰变熔岩"];
 const 终能聚合器 = extend(GenericCrafter, "终能聚合器", {
     load(){
         this.super$load();

@@ -7,72 +7,81 @@ const maps = require("map/maps");
 
 Events.on(ContentInitEvent, cons(e => {
     
-    lib.addToResearch(maps.map1cs, {
+    lib.addToResearch(maps["测试区"], {
         parent: LIblockslib.微型核心基座.name,
         objectives: Seq.with(
 		new Objectives.Research(LIblockslib.微型核心基座)
 	    )
     });
 
-    lib.addToResearch(maps.map2xc, {
+    lib.addToResearch(maps["狭长冰谷"], {
         parent: "测试区",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map1cs)
+            new Objectives.SectorComplete(maps["测试区"])
         )
     });
 
-    lib.addToResearch(maps.map3jb, {
+    lib.addToResearch(maps["极冰溶洞"], {
         parent: "狭长冰谷",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map2xc),
+            new Objectives.SectorComplete(maps["狭长冰谷"]),
             new Objectives.Research(LIblockslib.冰冷废液分离机)
         )
     });
 
-    lib.addToResearch(maps.map4yy, {
+    lib.addToResearch(maps["永夜荒地"], {
         parent: "极冰溶洞",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map3jb),
+            new Objectives.SectorComplete(maps["极冰溶洞"]),
             new Objectives.Research(SD.SDcore),
             new Objectives.Research(LIblockslib.电裂),
         )
     });
 
-    lib.addToResearch(maps.map5jg, {
+    lib.addToResearch(maps["极光壁垒"], {
         parent: "永夜荒地",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map4yy),
+            new Objectives.SectorComplete(maps["永夜荒地"]),
             new Objectives.Research(LIblockslib.三级精华转化器),
             new Objectives.Research(LIblockslib.解冻投影),
             new Objectives.Research(LIblockslib.状态穹顶)
         )
     });
 
-    lib.addToResearch(maps.JC1, {
+    lib.addToResearch(maps["暴雪前哨"], {
+        parent: "极光壁垒",
+        objectives: Seq.with(
+            new Objectives.SectorComplete(maps["极光壁垒"]),
+            new Objectives.Research(LIblockslib.废液混合器),
+            new Objectives.Research(LIblockslib.预警雷达)
+        )
+    });
+
+    lib.addToResearch(maps["教程：获取钛"], {
         parent: "测试区",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map1cs)
+            new Objectives.SectorComplete(maps["测试区"])
         )
     });
 
-    lib.addToResearch(maps.JC2, {
+    lib.addToResearch(maps["教程：获取钍"], {
         parent: "教程：获取钛",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map2xc)
+            new Objectives.SectorComplete(maps["狭长冰谷"])
         )
     });
 
-    lib.addToResearch(maps.ZX1, {
+    lib.addToResearch(maps["蛇行道"], {
         parent: "永夜荒地",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.map4yy)
+            new Objectives.SectorComplete(maps["永夜荒地"])
         )
     });
 
-    lib.addToResearch(maps.ZX2, {
+    lib.addToResearch(maps["地火"], {
         parent: "蛇行道",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps.ZX1)
+            new Objectives.SectorComplete(maps["蛇行道"])
         )
     });
 
