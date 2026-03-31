@@ -1,8 +1,9 @@
 const {NT} = require("planets/Nepture");
 const maps = require("map/maps");
 
+var rules = Vars.state.rules;
+
 Events.on(PlayEvent, cons(e => {
-    var rules = Vars.state.rules;
     if(rules.planet == NT && !(rules.sector == null || rules.sector.preset == null || rules.editor)){
         rules.showSpawns = true;
         rules.solarMultiplier = 0.05;
