@@ -7,7 +7,6 @@ function setRules(){
     if(Vars.state.isCampaign() && rules.planet == NT && !(rules.sector == null)){
         rules.showSpawns = true;
         rules.solarMultiplier = 0.05;
-        Log.info("TEST");
         if(rules.sector == maps["暴雪前哨"].sector){
             rules.fog = true;
             rules.lighting = true;
