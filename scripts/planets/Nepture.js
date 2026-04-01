@@ -43,7 +43,6 @@ NT.cloudMeshLoader = prov(() => new MultiMesh(
 NT.ruleSetter = (r) => {	
 	r.lighting = true;
 	r.showSpawns = true;
-	r.ambientLight = Color.valueOf("000000F0");
 };
 NT.landCloudColor = Color.valueOf("D8F3FF80");
 NT.visible = true;
