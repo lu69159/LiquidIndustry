@@ -4,11 +4,10 @@ const attackMaps = maps.attackMaps;
 
 function setRules(){ 
     var rules = Vars.state.rules;
-    if(rules.planet == NT && !(rules.sector == null || rules.editor)){
-        Log.info("Fucking BUG");
+    if(Vars.state.isCampaign() && rules.planet == NT && !(rules.sector == null)){
         rules.showSpawns = true;
         rules.solarMultiplier = 0.05;
-
+        Log.info("TEST");
         if(rules.sector == maps["暴雪前哨"].sector){
             rules.fog = true;
             rules.lighting = true;
