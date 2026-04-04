@@ -68,6 +68,7 @@ NT.iconColor = Color.valueOf("D8F3FF");
 //NT.hiddenItems.addAll(Items.erekirItems).removeAll(Items.serpuloItems);
 NT.updateLighting = false;
 NT.launchMusic = Vars.tree.loadMusic("NTlaunch");
+NT.techTree = TechTree.nodeRoot("尼普顿", NT, () => {});
 
 exports.NT = NT;
 

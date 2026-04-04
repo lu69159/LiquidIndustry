@@ -2,22 +2,22 @@ const lib = require("base/lib");
 const LIblockslib = require("LI/LIblockslib");
 const SD = require("blocks/cores/闪电核心");
 const maps = require("map/maps");
-
-//Nepture.techTree = TechTree.nodeRoot("微型核心基座", LIlib.微型核心基座, () => {});
+const {NT} = require("planets/Nepture");
 
 Events.on(ContentInitEvent, cons(e => {
     
     lib.addToResearch(maps["测试区"], {
-        parent: LIblockslib.微型核心基座.name,
+        parent: NT.name,
         objectives: Seq.with(
-		new Objectives.Research(LIblockslib.微型核心基座)
+            new Objectives.SectorComplete(SectorPresets.planetaryTerminal)
 	    )
     });
 
     lib.addToResearch(maps["狭长冰谷"], {
         parent: "测试区",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps["测试区"])
+            new Objectives.SectorComplete(maps["测试区"]),
+            new Objectives.Research(LIblockslib.微型核心基座)
         )
     });
 

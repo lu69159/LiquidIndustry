@@ -15,5 +15,13 @@
 	"lightningLength": 25,
 	"lightningDamage": 50,
 	"category": "defense",
-	"research": "surge-wall"
+	"research": {
+		"parent": "surge-wall",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "液体工艺-大型装甲储液罐"
+			}
+		]
+	}
 }

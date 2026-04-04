@@ -2,6 +2,8 @@ const type = require("base/type");
 const status = require("LI/LIstatus");
 const MC = require("base/MultiCrafterlib");
 
+//TEST
+
 //自定义地板
 const JHXQ = extend(Floor, "禁核心区", {
 	cantPlaceMiniCore: true,
@@ -9,9 +11,6 @@ const JHXQ = extend(Floor, "禁核心区", {
 		this.cantPlaceMiniCore = true;
 	}
 });
-
-//测试
-//const TEST = type.UnloaderProjector("TEST", 80);
 
 //单位
 const BCJDWZGGC = new Reconstructor("倍乘级单位直构工厂");
@@ -132,6 +131,12 @@ exports.预警雷达 = YJLD;
 
 const CSTQ = new OverdriveProjector("超速天穹");
 exports.超速天穹 = CSTQ;
+
+const YTFPLC = type.LiquidProjector("液体分配力场", 40);
+exports.液体分配力场 = YTFPLC;
+
+const YTTSLC = type.LiquidProjector("液体投射力场", 60);
+exports.液体投射力场 = YTTSLC;
 
 const CPTY = type.StatusProjector("超频投影", StatusEffects.overclock);
 exports.超频投影 = CPTY;
@@ -281,6 +286,9 @@ exports.大型超能墙 = DXCNQ;
 
 const JXCNQ = type.WallLiquidRouter("巨型超能墙");
 exports.巨型超能墙 = JXCNQ;
+
+const LCQ = type.ShieldDoor("力场墙");
+exports.力场墙 = LCQ;
 
 //生产
 //终能聚合器，神能凝聚仪

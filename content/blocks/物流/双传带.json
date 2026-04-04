@@ -13,5 +13,14 @@
         "phase-fabric/1"
 	],
     "category": "distribution",
+    "research": {
+        "parent": "plastanium-conveyor",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "plated-conduit"
+			}
+		]
+    },
     "speed": 2
 }

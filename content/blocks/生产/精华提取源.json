@@ -16,5 +16,6 @@
     "requirements": [
         "神秘物质/19"
     ],
-    "category": "crafting"
+    "category": "crafting",
+    "research": "神能凝聚仪"
 }

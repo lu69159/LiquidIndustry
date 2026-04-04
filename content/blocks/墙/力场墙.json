@@ -1,0 +1,33 @@
+{
+	"name": "力场墙",
+	"health": 2400,
+	"shieldHealth": 4800,
+	"size": 2,
+	"armor": 5,
+	"hasShadow": false,
+    "outputsPower": false,
+    "hasPower": true,
+    "conductivePower": true,
+	"glowColor": "FFFFFFC0",
+    "consumes": {
+        "power": 0.25
+    },
+    "breakCooldown": 180,
+    "regenSpeed": 5,
+	"requirements": [
+		"phase-fabric/32",
+        "surge-alloy/24",
+		"silicon/16",
+		"超导质/4"         
+	],
+	"category": "defense",
+	"research": {
+		"parent": "超频投影",
+		"objectives": [
+			{
+				"type": "SectorComplete",
+				"preset": "暴雪前哨"
+			}
+		]
+	}
+}

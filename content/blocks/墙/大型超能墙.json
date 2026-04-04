@@ -20,5 +20,6 @@
 	"lightningChance": 0.2,
 	"lightningLength": 30,
 	"lightningDamage": 50,
-	"category": "defense"
+	"category": "defense",
+	"research": "超能墙"
 }

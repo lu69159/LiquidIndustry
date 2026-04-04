@@ -12,14 +12,14 @@
 	"itemCapacity": 0,
 	"unitCapModifier": 0,
 	"category": "effect",
-    "research": {
-		"root":true,
-		"name": "Nepture",
-        "objectives": [
+	"research": {
+		"parent": "Nepture",
+		"objectives": [
 			{
-				"type": "SectorComplete",
-				"preset": "planetaryTerminal"
+				"type": "OnSector",
+				"preset": "测试区"
 			}
 		]
-	}
+	},
+	"researchCostMultiplier": 0.05
 }

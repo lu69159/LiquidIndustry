@@ -5,7 +5,7 @@
 	"size":5,
     "category": "units",
     "research":{
-        "parent": "微型核心基座",
+        "parent": "Nepture",
         "objectives": [
             {
 				"type": "SectorComplete",

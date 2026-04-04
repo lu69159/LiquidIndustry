@@ -14,5 +14,13 @@
 		"亲水质/1"         
 	],
 	"category": "defense",
-	"research": "plastanium-wall"
+	"research": {
+		"parent": "plastanium-wall",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "液体工艺-大型装甲储液罐"
+			}
+		]
+	}
 }

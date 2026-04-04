@@ -16,6 +16,10 @@
 			{
 				"type": "SectorComplete",
 				"preset": "暴雪前哨"
+			},
+            {
+				"type": "Produce",
+				"content": "液体工艺-三级精华废液"
 			}
 		]
 	},

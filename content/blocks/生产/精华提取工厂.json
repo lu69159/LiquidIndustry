@@ -17,6 +17,10 @@
 			{
 				"type": "SectorComplete",
 				"preset": "永夜荒地"
+			},
+            {
+				"type": "Produce",
+				"content": "液体工艺-二级精炼废液"
 			}
 		]
 	},

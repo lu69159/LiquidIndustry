@@ -12,5 +12,13 @@
 	],
 	"chanceDeflect": 20,
 	"category": "defense",
-	"research": "phase-wall"
+	"research": {
+		"parent": "phase-wall",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "液体工艺-大型装甲储液罐"
+			}
+		]
+	}
 }

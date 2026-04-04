@@ -27,6 +27,4 @@ require("blocks/IL/双传交叉器");
 require("blocks/cores/闪电核心");
 require("blocks/cores/雷霆核心");
 
-require("SPTechTree");
-
 require("rules");

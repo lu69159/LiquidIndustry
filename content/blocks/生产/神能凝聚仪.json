@@ -13,6 +13,19 @@
     "buildCostMultiplier": 5,
     "category": "crafting",
     "craftTime": 900,
+    "research": {
+		"parent": "精华浓缩厂",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "液体工艺-四级精华转化仪"
+			},
+            {
+				"type": "Research",
+				"content": "液体工艺-终能聚合器"
+			}
+		]
+	},
     "requirements": [
         "metaglass/220",
         "graphite/1288",

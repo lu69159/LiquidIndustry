@@ -15,6 +15,10 @@
 			{
 				"type": "SectorComplete",
 				"preset": "极冰溶洞"
+			},
+            {
+				"type": "Produce",
+				"content": "液体工艺-一级精炼废液"
 			}
 		]
 	},

@@ -11,12 +11,16 @@
     ],
     "category": "power",
     "research": {
-		"parent": "微型核心基座",
+		"parent": "Nepture",
 		"objectives": [
 			{
 				"type": "SectorComplete",
 				"preset": "狭长冰谷"
+			},
+            {
+				"type": "Research",
+				"content": "液体工艺-微型核心基座"
 			}
 		]
-	},
+	}
 }

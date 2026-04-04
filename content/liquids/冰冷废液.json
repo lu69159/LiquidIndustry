@@ -9,6 +9,6 @@
 	"heatCapacity": 0.5,
 	"viscosity": 0.5,
 	"boilPoint": 2,
-	"research": "微型核心基座",
+	"research": "Nepture",
 	"coolant": false
 }

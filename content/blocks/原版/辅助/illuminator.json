@@ -1,4 +1,12 @@
 {
     "canOverdrive": false,
-    "research": "微型核心基座"
+    "research": {
+		"parent": "Nepture",
+		"objectives": [
+			{
+				"type": "Research",
+				"content": "液体工艺-微型核心基座"
+			}
+		]
+	}
 }

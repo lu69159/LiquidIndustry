@@ -26,5 +26,18 @@
         
 
     ],
-    "category": "distribution"
+    "category": "distribution",
+    "research": {
+        "parent": "双传路由器",
+		"objectives": [
+            {
+				"type": "Research",
+				"content": "mass-driver"
+			},
+            {
+				"type": "Research",
+				"content": "液体工艺-液体质驱"
+			}
+		]
+    }
 }

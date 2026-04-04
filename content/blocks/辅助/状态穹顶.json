@@ -19,5 +19,18 @@
         "phase-fabric/35",
         "surge-alloy/85"
     ],
-    "category": "effect"
+    "category": "effect",
+    "research": {
+		"parent": "超频投影",
+		"objectives": [
+			{
+				"type": "SectorComplete",
+				"preset": "永夜荒地"
+			},
+            {
+				"type": "Research",
+				"content": "液体工艺-保护投影"
+			}
+		]
+	}
 }

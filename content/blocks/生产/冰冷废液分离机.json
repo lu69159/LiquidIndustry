@@ -8,7 +8,16 @@
     "itemCapacity": 10,
 	"liquidCapacity": 10,
     "category": "crafting",
-	"research": "微型核心基座",
+    "research": {
+		"parent": "Nepture",
+		"objectives": [
+			{
+				"type": "Research",
+				"content": "液体工艺-微型核心基座"
+			}
+		]
+	},
+    "researchCostMultiplier": 0.1,
     "craftTime": 40,
     //"craftEffect": "none",
     "consumes": {

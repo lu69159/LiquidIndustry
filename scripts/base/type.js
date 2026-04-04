@@ -407,9 +407,6 @@ exports.LiquidMassDriver = (name, bulletSize) => {
 };
 
 exports.StatusProjector = (name, status) => {        //支持单个/多个状态效果
-    if(name == null) throw new Error("name为空");
-    if(status == null) throw new Error("status为空");
-
     var isSeq;
     let stflag = true;
     if(status instanceof StatusEffect){
@@ -552,9 +549,6 @@ exports.StatusProjector = (name, status) => {        //支持单个/多个状态
 
 //其实就改了颜色和Units.nearby
 exports.EnemyStatusProjector = (name, status) => {        //支持单个/多个状态效果
-    if(name == null) throw new Error("name为空");
-    if(status == null) throw new Error("status为空");
-
     var isSeq;
     let stflag = true;
     if(status instanceof StatusEffect){
@@ -695,53 +689,198 @@ exports.EnemyStatusProjector = (name, status) => {        //支持单个/多个�
     return SP;
 };
 
-exports.UnloaderProjector = (name, range) => { //目前有神秘颜色BUG不能用
-    var baseColor = Pal.accent;
-    const UP = extend(Unloader, name, {
-        range: range,
+exports.LiquidProjector = (name, transferAmount) => {
+    var bottomRegion;
+    const LP = extend(OverdriveProjector, name, {
+        canOverdrive: false,
+        hasLiquids: true,
+        baseColor: Color.valueOf("6F80E8"),
+        phaseColor: Color.valueOf("88A4FF"),
+        reload: 10,
+        phaseRangeBoost: 64,
+        init(){
+            this.super$init();
+            this.isLiquidProjector = true;
+        },
+        load(){
+            this.super$load();
+            bottomRegion = Core.atlas.find(this.name + "-bottom");
+        },
+        drawPlanRegion(plan, list){
+            Draw.rect(bottomRegion, plan.drawx(), plan.drawy());
+            Draw.rect(this.region, plan.drawx(), plan.drawy());
+        },
         drawPlace(x, y, rotation, valid){
-            this.super$drawPlace(x, y, rotation, valid);
-            Drawf.dashCircle(x * Vars.tilesize + this.offset, y * Vars.tilesize + this.offset, this.range, baseColor);
-            Vars.indexer.eachBlock(Vars.player.team(), x * Vars.tilesize + this.offset, y * Vars.tilesize + this.offset, this.range, other => other.canUnload(), other => Drawf.selected(other, Tmp.c1.set(baseColor).a(Mathf.absin(4, 1))));
+            this.drawPotentialLinks(x, y);
+            this.drawOverlay(x * Vars.tilesize + this.offset, y * Vars.tilesize + this.offset, rotation);
+            Drawf.dashCircle(x * Vars.tilesize + this.offset, y * Vars.tilesize + this.offset, this.range, this.baseColor);
         },
         setStats(){
             this.super$setStats();
-            this.stats.add(Stat.range, this.range / Vars.tilesize, StatUnit.blocks);
+            this.stats.remove(Stat.speedIncrease);
+            this.stats.remove(Stat.booster);
+            var items = this.findConsumer(f => f instanceof ConsumeItems);
+            if(this.hasBoost && items instanceof ConsumeItems) this.stats.add(Stat.booster, StatValues.itemBoosters("{0}", this.stats.timePeriod, 0, this.phaseRangeBoost, items.items));
+        },
+        setBars(){
+            this.super$setBars();
+            this.removeBar("boost");
+        },
+        isLP(){
+            return true;
+        },
+        icons(){
+            return [bottomRegion, this.region];
         }
     });
-    UP.buildType = prov(() => extend(Unloader.UnloaderBuild, UP, {
-        range(){
-            return this.block.range;
-        },
-        drawSelect(){
-            Drawf.dashCircle(this.x, this.y, this.block.range, baseColor);
-        },
-        onProximityUpdate(){
-            this.super$onProximityUpdate();
-            Pools.freeAll(this.possibleBlocks, true);
-            this.possibleBlocks.clear();
+    LP.buildType = prov(() => {
+        return extend(OverdriveProjector.OverdriveBuild, LP, {
+            acceptLiquid(source, liquid){
+                return this.liquids.current() == null || this.liquids.current() == liquid && this.liquids.currentAmount() < this.block.liquidCapacity || this.liquids.currentAmount() < 0.1;
+            },
+            updateTile(){
+                this.smoothEfficiency = Mathf.lerpDelta(this.smoothEfficiency, this.efficiency, 0.08);
+                this.heat = Mathf.lerpDelta(this.heat, this.efficiency > 0 ? 1 : 0, 0.08);
+                this.charge += this.heat * Time.delta * this.efficiency;
 
-            Vars.indexer.eachBlock(this, this.block.range, boolf(other => !(other instanceof CoreBuild || other instanceof StorageBuild) || (other.canUnload() && (this.block.allowCoreUnload || !(other instanceof CoreBuild || other instanceof StorageBuild)) && other.items != null)), cons(other => {
-                var pb = Pools.obtain(Unloader.ContainerStat.class, function(){
-                     return new Unloader.ContainerStat;
-                });
-                try {
-                    // 使用反射访问私有字段
-                    var buildingField = Unloader.ContainerStat.class.getDeclaredField("building");
-                    buildingField.setAccessible(true);
-                    buildingField.set(pb, other);
-                    
-                    var notStorageField = Unloader.ContainerStat.class.getDeclaredField("notStorage");
-                    notStorageField.setAccessible(true);
-                    notStorageField.set(pb, !(other instanceof CoreBuild || other instanceof StorageBuild));
-                } catch (e) {
-                    e.printStackTrace();
+                if(this.block.hasBoost){
+                    this.phaseHeat = Mathf.lerpDelta(this.phaseHeat, this.optionalEfficiency, 0.1);
                 }
-                //TODO store the partial canLoad/canUnload?
-                this.possibleBlocks.add(pb);
-            }));
-        }
-    }));
+
+                if(this.charge >= this.block.reload){
+                    var realRange = this.block.range + this.phaseHeat * this.block.phaseRangeBoost;
+                    if(this.liquids.current() != null && this.liquids.currentAmount() > 0.01){
+                        Vars.indexer.eachBlock(this, realRange, other => (!(typeof other.block.isLP === 'function') && other.block.hasLiquids && !(other.block instanceof LiquidBlock || other.block instanceof Autotiler || other.block instanceof Wall || other.block instanceof ItemBridge)), other => {
+                            if(other.acceptLiquid(this, this.liquids.current())){
+                                let maxamount = Math.min(transferAmount, other.block.liquidCapacity - other.liquids.currentAmount(), this.liquids.currentAmount());
+                                other.liquids.add(this.liquids.current(), maxamount);      
+                                this.liquids.remove(this.liquids.current(), maxamount);    
+                            }
+                        });
+                    }
+                    this.charge = 0;
+                }
+
+                if(this.efficiency > 0){
+                    this.useProgress += this.delta();
+                }
+
+                if(this.useProgress >= this.block.useTime){
+                    this.consume();
+                    this.useProgress %= this.block.useTime;
+                }
+            },
+            draw(){
+                Draw.rect(bottomRegion, this.x, this.y);
+                if(this.liquids.current() != null && this.liquids.currentAmount() > 0.001){
+                    this.drawLiquid();
+                }
+                this.super$draw();
+            },
+            drawLiquid(){
+                let frame = this.liquids.current().getAnimationFrame();
+                let gas = this.liquids.current().gas ? 1 : 0;
+                let lq = Vars.renderer.fluidFrames[gas][frame];
+                let liquidRegion = Tmp.tr1;
+                liquidRegion.set(lq);
+                let size = this.block.size, threshold = (size - 1) / 2;
+                let x0 = this.x - threshold * Vars.tilesize, y0 = this.y - threshold * Vars.tilesize;
+                for(let x = 0; x < size; x++){
+                    for(let y = 0; y < size; y++){
+                        Drawf.liquid(liquidRegion, x0 + x * Vars.tilesize, y0 + y * Vars.tilesize, this.liquids.currentAmount() / this.block.liquidCapacity * 1.0, this.liquids.current().color.write(Tmp.c1));
+                    }
+                }
+                //Drawf.liquid(liquidRegion, this.x, this.y, this.liquids.currentAmount() / this.block.liquidCapacity * 1.0, this.liquids.current().color.write(Tmp.c1));
+            },
+            drawSelect(){
+                var realRange = this.block.range + this.phaseHeat * this.block.phaseRangeBoost;
+                if(this.liquids.current() != null && this.liquids.currentAmount() > 0.01){
+                    var color = this.liquids.current().color.cpy();
+                    color.a = Mathf.absin(4, 1);
+                    Vars.indexer.eachBlock(this, realRange, other => (!(typeof other.block.isLP === 'function') && other.block != LP && other.block.hasLiquids && other.acceptLiquid(this, this.liquids.current()) && !(other.block instanceof LiquidBlock || other.block instanceof Autotiler || other.block instanceof Wall || other.block instanceof ItemBridge)), other => Drawf.selected(other, color));
+                }
+                Drawf.dashCircle(this.x, this.y, realRange, this.block.baseColor);
+            }
+        });
+    });
+    return LP;
+};
+
+exports.ShieldDoor = (name) => {
+    const shieldColor = Color.valueOf("00FFFF");
+    const SD = extend(ShieldWall, name, {
+        solid: false,
+        absorbLasers: true
+    });
+    SD.buildType = prov(() => {
+        return extend(ShieldWall.ShieldWallBuild, SD, {
+            UC(){
+                let SDB = this;
+                var unitConsumer = cons(unit => {
+                    let overdst = unit.hitSize/2 + this.shieldRadius + 10 - unit.dst(SDB);
+                    if(overdst > 0){
+                        unit.vel.setZero();
+                        unit.move(Tmp.v1.set(unit).sub(this).setLength(overdst + 0.01));
+                        if(Mathf.chanceDelta(0.12 * Time.delta)){
+                            Fx.circleColorSpark.at(unit.x, unit.y, shieldColor);
+                        }
+                    }
+                });
+                return unitConsumer;
+            },
+            updateTile(){
+                if(this.power.status > 0){
+                    if(!this.broken()){
+                        Units.nearbyEnemies(this.team, this.x, this.y, this.shieldRadius + 10, this.UC());
+                    } 
+
+                    if(this.breakTimer > 0){
+                        this.breakTimer -= Time.delta * this.efficiency;
+                    }else{
+                        this.shield = Mathf.clamp(this.shield + this.block.regenSpeed * this.efficiency * this.edelta(), 0, this.block.shieldHealth * this.efficiency);
+                    }
+                }
+
+                if(this.hit > 0){
+                    this.hit -= Time.delta / 10;
+                    this.hit = Math.max(this.hit, 0);
+                }
+
+                this.shieldRadius = Mathf.lerpDelta(this.shieldRadius, this.broken() ? 0 : 1, 0.12);
+            },
+            draw(){
+                Draw.rect(this.block.region, this.x, this.y);
+                Draw.color(this.team.color);
+                Draw.alpha(0.5);
+                Draw.rect(this.block.teamRegion, this.x, this.y);
+                Draw.reset();
+                if(this.shieldRadius > 0){
+                    let radius = this.shieldRadius * Vars.tilesize * this.block.size / 2;
+                    Draw.z(Layer.shields + 0.01);
+                    Draw.color(shieldColor, Color.white, Mathf.clamp(this.hit));
+                    this.drawShield(radius);
+                    Draw.reset();
+                    Drawf.additive(this.block.glowRegion, this.block.glowColor, (1 - this.block.glowMag + Mathf.absin(this.block.glowScl, this.block.glowMag)) * this.shieldRadius, this.x, this.y, 0, Layer.blockAdditive);
+                }
+            },
+            drawShield(radius){
+                if(Vars.renderer.animateShields){
+                    Fill.square(this.x, this.y, radius);
+                }else{
+                    Lines.stroke(1.5);
+                    Draw.alpha(0.09 + Mathf.clamp(0.08 * hit));
+                    Fill.square(this.x, this.y, radius);
+                    Draw.alpha(1);
+                    Lines.poly(this.x, this.y, 4, radius, 45);
+                    Draw.reset();
+                }
+            },
+            absorbLasers(){
+                return this.block.absorbLasers && !this.broken();
+            }
+        });
+    });
+    return SD;
 };
 
 //以下是单位相关/////////////////////////////////////////////////////////////////////////////
