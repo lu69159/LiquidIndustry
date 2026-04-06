@@ -1,6 +1,5 @@
 const lib = require("base/lib");
 const LIblockslib = require("LI/LIblockslib");
-const SD = require("blocks/cores/闪电核心");
 const maps = require("map/maps");
 const {NT} = require("planets/Nepture");
 
@@ -33,7 +32,7 @@ Events.on(ContentInitEvent, cons(e => {
         parent: "极冰溶洞",
         objectives: Seq.with(
             new Objectives.SectorComplete(maps["极冰溶洞"]),
-            new Objectives.Research(SD.SDcore),
+            new Objectives.Research(LIblockslib.闪电核心),
             new Objectives.Research(LIblockslib.电裂),
         )
     });

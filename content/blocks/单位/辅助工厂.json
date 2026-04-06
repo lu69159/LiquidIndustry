@@ -45,6 +45,5 @@
         "plastanium/15"
     ],
 	"category":"units",
-    "buildVisibility": "shown",
     "research": "air-factory"
 }

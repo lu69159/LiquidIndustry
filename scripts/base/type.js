@@ -1,3 +1,85 @@
+exports.PowerCore = (name, damage, range, reload, powerout) => {
+    var starRegion;
+    const core = extend(CoreBlock, name, {
+        load(){
+            this.super$load();
+            starRegion = Core.atlas.find("液体工艺-sTar");
+        },
+        setStats() {
+            this.super$setStats();
+            this.stats.add(Stat.basePowerGeneration, powerout, StatUnit.powerSecond);
+            this.stats.add(Stat.shootRange, range / Vars.tilesize, StatUnit.blocks);
+        },
+        setBars() {
+            this.super$setBars();
+            this.addBar("power", func((entity) => new Bar(
+                prov(() => Core.bundle.format("bar.poweroutput", Strings.fixed(entity.getPowerProduction() * 60, 1))),
+                prov(() => Pal.powerBar),
+                floatp(() => 1)
+            )));
+        },
+        drawPlace(x, y, rotation, valid) {
+            this.super$drawPlace(x, y, rotation, valid);
+            Drawf.dashCircle(x * 8 + this.offset, y * 8 + this.offset, range, Pal.accent);
+        }
+    });
+    core.buildType = prov(() => {
+        return new JavaAdapter(CoreBlock.CoreBuild, {
+            UCtimer: 0,
+            created(){
+                this.super$created();
+                this.UCtimer = 0;
+            },
+            UC(){
+                let PC = this;
+                var unitConsumer = cons(unit => {
+                    let dst = unit.hitSize/2 * range - unit.dst(PC);
+                    if(dst > 0){
+                        PC.UCtimer = reload;    
+                        for(let i = 0; i < 2; i++) Fx.chainLightning.at(PC.x, PC.y, 0 ,Color.valueOf("8EFFEAC0"), unit);         
+                        Fx.circleColorSpark.at(unit.x, unit.y, Color.valueOf("8EFFEAC0"));
+                        unit.apply(StatusEffects.electrified, 60);
+                        Damage.damage(PC.team, unit.x, unit.y, Vars.tilesize, damage);   
+                        Sounds.shootArc.at(unit.x, unit.y);            
+                    }
+                });
+                return unitConsumer;
+            },
+            getPowerProduction() {
+                return powerout / 60;
+            },
+            updateTile() {
+                if(this.UCtimer > 0) this.UCtimer -= Time.delta;
+                this.UCtimer = Math.max(0, this.UCtimer);
+                if(this.UCtimer == 0){
+                    Units.nearbyEnemies(this.team, this.x, this.y, range, this.UC());
+                }   
+                this.super$updateTile();
+            },
+            draw(){
+                this.super$draw();
+                Draw.z(Layer.effect);
+                Draw.color(Color.valueOf("8EFFEAC0"));
+                var sin = (2.5 * Math.sin(Time.time * 0.05) + 20);
+                Draw.rect(
+                    starRegion,
+                    this.x,
+                    this.y,
+                    this.block.size * 0.3 * sin,
+                    this.block.size * 0.3 * sin,
+                    45
+                );
+            },
+            drawSelect() {
+                this.super$drawSelect();
+                Drawf.dashCircle(this.x, this.y, range, Pal.accent); //点击时显示的虚线圆
+            }
+        }, core);
+    });
+
+    return core;
+};
+
 exports.WallLiquidRouter = (name) => {
     var bottomRegion,Region;
     const wall = extend(Wall, name, {
@@ -736,7 +818,7 @@ exports.LiquidProjector = (name, transferAmount) => {
     LP.buildType = prov(() => {
         return extend(OverdriveProjector.OverdriveBuild, LP, {
             acceptLiquid(source, liquid){
-                return this.liquids.current() == null || this.liquids.current() == liquid && this.liquids.currentAmount() < this.block.liquidCapacity || this.liquids.currentAmount() < 0.1;
+                return this.liquids.current() == null || (this.liquids.current() == liquid && this.liquids.currentAmount() < this.block.liquidCapacity) || this.liquids.currentAmount() < 0.1;
             },
             updateTile(){
                 this.smoothEfficiency = Mathf.lerpDelta(this.smoothEfficiency, this.efficiency, 0.08);
@@ -752,9 +834,11 @@ exports.LiquidProjector = (name, transferAmount) => {
                     if(this.liquids.current() != null && this.liquids.currentAmount() > 0.01){
                         Vars.indexer.eachBlock(this, realRange, other => (!(typeof other.block.isLP === 'function') && other.block.hasLiquids && !(other.block instanceof LiquidBlock || other.block instanceof Autotiler || other.block instanceof Wall || other.block instanceof ItemBridge)), other => {
                             if(other.acceptLiquid(this, this.liquids.current())){
-                                let maxamount = Math.min(transferAmount, other.block.liquidCapacity - other.liquids.currentAmount(), this.liquids.currentAmount());
-                                other.liquids.add(this.liquids.current(), maxamount);      
-                                this.liquids.remove(this.liquids.current(), maxamount);    
+                                let maxamount = Math.min(transferAmount, other.block.liquidCapacity - other.liquids.get(this.liquids.current()), this.liquids.currentAmount());
+                                if(maxamount > 0.1){
+                                    other.liquids.add(this.liquids.current(), maxamount);      
+                                    this.liquids.remove(this.liquids.current(), maxamount);
+                                }          
                             }
                         });
                     }

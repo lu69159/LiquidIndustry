@@ -1,5 +1,5 @@
 {
-    "name": "液体投射力场",
+    "name": "流体投射力场",
     "size": 3,
     "health": 500,
     "range": 120, 
@@ -25,5 +25,5 @@
         "固态水/1"
     ],
     "category": "liquid",
-    "research": "液体分配力场"
+    "research": "流体分配力场"
 }

@@ -132,11 +132,11 @@ exports.预警雷达 = YJLD;
 const CSTQ = new OverdriveProjector("超速天穹");
 exports.超速天穹 = CSTQ;
 
-const YTFPLC = type.LiquidProjector("液体分配力场", 40);
-exports.液体分配力场 = YTFPLC;
+const YTFPLC = type.LiquidProjector("流体分配力场", 40);
+exports.流体分配力场 = YTFPLC;
 
-const YTTSLC = type.LiquidProjector("液体投射力场", 60);
-exports.液体投射力场 = YTTSLC;
+const YTTSLC = type.LiquidProjector("流体投射力场", 60);
+exports.流体投射力场 = YTTSLC;
 
 const CPTY = type.StatusProjector("超频投影", StatusEffects.overclock);
 exports.超频投影 = CPTY;
@@ -170,7 +170,6 @@ const HSQD = type.EnemyStatusProjector("缓速穹顶", StatusEffects.slow);
 exports.缓速穹顶 = HSQD;
 
 //核心
-//闪电核心,雷霆核心
 const WXHXJZ = extend(CoreBlock, "微型核心基座", {
 	canBreak(tile) {
 		return Vars.state.teams.cores(tile.team()).size > 1;
@@ -200,6 +199,12 @@ const WXHXJZ = extend(CoreBlock, "微型核心基座", {
 	}
 });
 exports.微型核心基座 = WXHXJZ;
+
+const SDcore = type.PowerCore("闪电核心", 10, 24*8, 20, 200);
+exports.闪电核心 = SDcore;
+
+const LTcore = type.PowerCore("雷霆核心", 20, 36*8, 15, 800);
+exports.雷霆核心 = LTcore;
 
 //炮塔
 //闪电核心P,雷霆核心P,极光
@@ -486,6 +491,66 @@ exports.高压发射器 = GYFSQ;
 
 const WXZQ = new MassDriver("微型质驱");
 exports.微型质驱 = WXZQ;
+
+var CNGCQglowRegion;
+const CNGCQ = extend(Block, "超导光传器", {
+    rotate: true,
+    update: true,
+    group: BlockGroup.transportation,
+    priority: TargetPriority.transport,
+    underBullets: true,
+    load(){
+        this.super$load();
+        CNGCQglowRegion = Core.atlas.find(this.name + "-glow");
+    },
+    isGCQ(){
+        return true;
+    }
+});
+CNGCQ.buildType = prov(() => {
+    return extend(Building, {
+        farthestGCQ(dir){
+            let next = this.nearby(this.rotation);            
+            if(next != null){
+                if(typeof next.block.isGCQ === 'function' && next.rotation == this.rotation){
+                    next = next.farthestGCQ(this.rotation);
+                    return next;
+                }else{
+                    return this;
+                }
+            }
+            else{
+                return this;
+            }
+        },
+        GCQnearby(dir){
+            let to = this.farthestGCQ(this.rotation).nearby(this.rotation);
+            if(to != null && to.block.instantTransfer) return null;
+            return to;
+        },
+        acceptItem(source, item){ 
+            if(this.power.status <= 0) return false;
+            let far = this.farthestGCQ(this.rotation), to = this.GCQnearby(this.rotation);
+            if(to == null || to.team != this.team || typeof to.block.isGCQ === 'function') return false;
+            return to.acceptItem(far, item) && Edges.getFacingEdge(source.tile, this.tile).relativeTo(this.tile) == this.rotation;
+        },
+        handleItem(source, item){
+            let to = this.GCQnearby(this.rotation);
+            if(to == null || to.team != this.team || typeof to.block.isGCQ === 'function') return;
+            to.handleItem(this, item);
+        },
+        draw(){
+            this.super$draw();
+            if(this.power.status > 0){
+                Draw.color(Color.valueOf("00FFFF"));
+                Draw.alpha(0.5 * Math.sin(Time.time * 0.02));
+                Draw.rect(CNGCQglowRegion, this.x, this.y, this.drawrot());
+                Draw.reset();
+            }
+        }
+    });
+});
+exports.超导光传器 = CNGCQ;
 
 //液流
 //液体卸载器

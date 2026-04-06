@@ -24,7 +24,5 @@ require("blocks/神能凝聚仪");
 require("blocks/IL/双传带");
 require("blocks/IL/双传路由器");
 require("blocks/IL/双传交叉器");
-require("blocks/cores/闪电核心");
-require("blocks/cores/雷霆核心");
 
 require("rules");

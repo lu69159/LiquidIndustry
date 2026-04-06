@@ -1,7 +1,6 @@
 {
     "name": "双传交叉器",
     "health": 90,
-    "invert": true,
     "floating": true,
     "hasLiquids": true,
     "liquidCapacity": 0,

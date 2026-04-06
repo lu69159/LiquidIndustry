@@ -1,0 +1,17 @@
+{
+    "name": "超导光传器",
+    "health": 240,
+    "placeableLiquid": true,
+    "outputsPower": false,
+    "hasPower": true,
+    "conductivePower": true,
+    "consumes": {
+        "power": 0.01
+    },
+    "requirements": [
+        "phase-fabric/5",
+        "超导质/5"
+    ],
+    "category": "distribution",
+    "research": "双传带"
+}

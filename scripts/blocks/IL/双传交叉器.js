@@ -1,5 +1,6 @@
 var Region;
 const ILjunction = extend(Sorter, "双传交叉器", {
+    invert: true,
     load(){
         this.super$load();
         Region = Core.atlas.find(this.name);
