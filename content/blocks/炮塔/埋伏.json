@@ -77,7 +77,7 @@
                 "despawnUnit": "埋伏-地雷2" 
             }
         },
-        "神秘物质":{
+        "神秘碎片":{
             "type": "ArtilleryBulletType",
             "backColor": "FFFFFF",
             "hitColor": "FFFFFF",

@@ -29,6 +29,11 @@ newExtendItem("神秘物质", {
         return;
     }
 })
+newExtendItem("神秘碎片", {
+    setStats(){
+        return;
+    }
+})
 newItem("固态水")
 newItem("固态重水")
 newItem("固态冷冻液")

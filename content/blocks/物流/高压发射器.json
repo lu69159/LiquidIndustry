@@ -3,19 +3,19 @@
 	"health": 230,
 	"size": 3,
 	"hasPower": false,
-    "itemCapacity": 80,
-	"liquidCapacity": 60,
-	"reload": 210,
+    "itemCapacity": 75,
+	"liquidCapacity": 30,
+	"reload": 300,
 	"range": 400,
 	"consumes": {
         "liquids": [
-			"water/0.4"
+			"water/0.2"
 		]
     },
 	"requirements": [
-        "copper/120",
-		"metaglass/50",
-        "silicon/20"
+        "copper/60",
+		"metaglass/30",
+        "silicon/15"
     ],
 	"category": "distribution",	
 	"research": "bridge-conveyor"

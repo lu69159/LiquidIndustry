@@ -1,0 +1,13 @@
+{
+"name":"神秘碎片",
+"description":"???",
+"color":"FFFFFFFF",
+"charge":1,
+"explosiveness":0,
+"flammability":0,
+"radioactivity":5,
+"hardness":1,
+"cost":2,
+"alwaysUnlocked":false,
+"research":"神秘物质"
+}

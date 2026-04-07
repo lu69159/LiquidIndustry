@@ -327,6 +327,9 @@ exports.再精炼高炉 = ZJLGL;
 const JHTQGC = new GenericCrafter("精华提取工厂");
 exports.精华提取工厂 = JHTQGC
 
+const SNPSJ = new GenericCrafter("神能破碎机");
+exports.神能破碎机 = SNPSJ;
+
 const JNZJLL = new GenericCrafter("聚能再精炼炉");
 exports.聚能再精炼炉 = JNZJLL;
 
@@ -479,7 +482,7 @@ GYZHQ.selectionColumns = 5;
 exports.固液转化器 = GYZHQ;
 
 //物流
-//双传带,双传桥,双传路由器,双传交叉器
+//双传带,双传桥,双传路由器,双传交叉器,光传带
 const TCSD = new Conveyor("钍传送带");
 exports.钍传送带 = TCSD;
 
@@ -491,66 +494,6 @@ exports.高压发射器 = GYFSQ;
 
 const WXZQ = new MassDriver("微型质驱");
 exports.微型质驱 = WXZQ;
-
-var CNGCQglowRegion;
-const CNGCQ = extend(Block, "超导光传器", {
-    rotate: true,
-    update: true,
-    group: BlockGroup.transportation,
-    priority: TargetPriority.transport,
-    underBullets: true,
-    load(){
-        this.super$load();
-        CNGCQglowRegion = Core.atlas.find(this.name + "-glow");
-    },
-    isGCQ(){
-        return true;
-    }
-});
-CNGCQ.buildType = prov(() => {
-    return extend(Building, {
-        farthestGCQ(dir){
-            let next = this.nearby(this.rotation);            
-            if(next != null){
-                if(typeof next.block.isGCQ === 'function' && next.rotation == this.rotation){
-                    next = next.farthestGCQ(this.rotation);
-                    return next;
-                }else{
-                    return this;
-                }
-            }
-            else{
-                return this;
-            }
-        },
-        GCQnearby(dir){
-            let to = this.farthestGCQ(this.rotation).nearby(this.rotation);
-            if(to != null && to.block.instantTransfer) return null;
-            return to;
-        },
-        acceptItem(source, item){ 
-            if(this.power.status <= 0) return false;
-            let far = this.farthestGCQ(this.rotation), to = this.GCQnearby(this.rotation);
-            if(to == null || to.team != this.team || typeof to.block.isGCQ === 'function') return false;
-            return to.acceptItem(far, item) && Edges.getFacingEdge(source.tile, this.tile).relativeTo(this.tile) == this.rotation;
-        },
-        handleItem(source, item){
-            let to = this.GCQnearby(this.rotation);
-            if(to == null || to.team != this.team || typeof to.block.isGCQ === 'function') return;
-            to.handleItem(this, item);
-        },
-        draw(){
-            this.super$draw();
-            if(this.power.status > 0){
-                Draw.color(Color.valueOf("00FFFF"));
-                Draw.alpha(0.5 * Math.sin(Time.time * 0.02));
-                Draw.rect(CNGCQglowRegion, this.x, this.y, this.drawrot());
-                Draw.reset();
-            }
-        }
-    });
-});
-exports.超导光传器 = CNGCQ;
 
 //液流
 //液体卸载器
@@ -604,14 +547,3 @@ exports.硬质石油钻井 = YZSYZJ;
 
 
 /* 外部定义方块 */
-const SCD = require("blocks/IL/双传带").ILduct;
-const SCJCQ = require("blocks/IL/双传交叉器").ILjunction;
-const SCLYQ = require("blocks/IL/双传路由器").ILrouter;
-const SCQ = require("blocks/IL/双传桥").ILbridge;
-
-const BRFYL = require("blocks/爆燃反应炉").BRFYL;
-const JHTQY = require("blocks/精华提取源").JHTQY;
-const JG = require("blocks/极光").极光;
-const SNNJY = require("blocks/神能凝聚仪").神能凝聚仪;
-const YTXZQ = require("blocks/液体卸载器").液体卸载器;
-const ZNJHQ = require("blocks/终能聚合器").终能聚合器;
