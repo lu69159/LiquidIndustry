@@ -23,7 +23,6 @@ require("blocks/爆燃反应炉");
 require("blocks/终能聚合器");
 require("blocks/神能凝聚仪");
 require("blocks/精华提取源");
-require("blocks/光传带");
 require("blocks/IL/双传带");
 require("blocks/IL/双传路由器");
 require("blocks/IL/双传交叉器");

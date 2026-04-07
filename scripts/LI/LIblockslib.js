@@ -208,7 +208,12 @@ exports.雷霆核心 = LTcore;
 
 //炮塔
 //闪电核心P,雷霆核心P,极光
-const DCFB = new ItemTurret("电磁风暴");
+const DCFB = extend(ItemTurret, "电磁风暴", {
+    setStats() {
+        this.super$setStats();
+        if(this.destroyBullet != null) this.stats.add(new Stat("damageondestroy", StatCat.function), StatValues.ammo(ObjectMap.of(this, this.destroyBullet), true, false));
+    }
+});
 exports.电磁风暴 = DCFB;
 
 const DLY = new PowerTurret("德鲁伊");
@@ -485,6 +490,14 @@ exports.固液转化器 = GYZHQ;
 //双传带,双传桥,双传路由器,双传交叉器,光传带
 const TCSD = new Conveyor("钍传送带");
 exports.钍传送带 = TCSD;
+
+const 重甲传送带 = extend(ArmoredConveyor, "重甲传送带", {
+    setStats() {
+        this.super$setStats();
+        if(this.destroyBullet != null) this.stats.add(new Stat("damageondestroy", StatCat.function), StatValues.ammo(ObjectMap.of(this, this.destroyBullet), true, false));
+    }
+});
+exports.重甲传送带 = 重甲传送带;
 
 const XZBXZQ = new Unloader("相织布卸载器");
 exports.相织布卸载器 = XZBXZQ;

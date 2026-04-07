@@ -3,7 +3,7 @@
 	"health": 230,
 	"size": 3,
 	"hasPower": false,
-    "itemCapacity": 75,
+    "itemCapacity": 70,
 	"liquidCapacity": 30,
 	"reload": 300,
 	"range": 400,

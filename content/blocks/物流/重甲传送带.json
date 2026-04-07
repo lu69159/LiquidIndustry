@@ -1,0 +1,38 @@
+{
+	"name": "重甲传送带",
+	"health": 680,
+	"armor": 30,
+	"requirements": [
+        "thorium/2",
+		"surge-alloy/1",
+		"plastanium/1"
+	],
+	"category": "distribution",
+	"research":"armored-conveyor",
+	"speed": 0.3,
+	"displayedSpeed": 30,
+	"destroyBullet": {	
+		"type": "LightningBulletType",
+		"damage": 100,
+		"lightning": 3,
+		"lightningLength": 16,
+		"lightningColor": "CFCFCF",
+		"despawnSound": "shootArc",
+    	"hitSound": "shootArc",
+		"collides": false,
+		"absorbable": false,
+		"pierceArmor": true,
+		"hitEffect": {
+			"type": "WaveEffect",
+			"lifetime": 5,
+			"sizeFrom": 0,
+			"sizeTo": 4,
+			"strokeFrom": 1,
+			"strokeTo": 0,
+			"colorFrom": "CFCFCFFF",
+			"colorTo": "CFCFCF40"
+		},
+		"despawnEffect": "none"
+	},
+    "destroyBulletSameTeam": true
+}

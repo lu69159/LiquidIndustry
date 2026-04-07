@@ -5,6 +5,10 @@ const 神能凝聚仪 = extend(GenericCrafter, "神能凝聚仪", {
         this.super$load();
         光环Region = Core.atlas.find("液体工艺-神佑光环");
         starRegion = Core.atlas.find("液体工艺-sTar");
+    },
+    setStats() {
+        this.super$setStats();
+        if(this.destroyBullet != null) this.stats.add(new Stat("damageondestroy", StatCat.function), StatValues.ammo(ObjectMap.of(this, this.destroyBullet), true, false));
     }
 });
 
