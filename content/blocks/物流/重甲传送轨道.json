@@ -1,10 +1,12 @@
 {
-	"name": "重甲传送带",
-	"health": 680,
+	"name": "重甲传送轨道",
+	"health": 750,
 	"armor": 30,
 	"requirements": [
-        "thorium/2",
-		"surge-alloy/1",
+		"copper/6",
+		"lead/6",
+        "thorium/1",
+		"surge-alloy/2",
 		"plastanium/1"
 	],
 	"category": "distribution",
@@ -13,9 +15,9 @@
 	"displayedSpeed": 30,
 	"destroyBullet": {	
 		"type": "LightningBulletType",
-		"damage": 100,
-		"lightning": 3,
-		"lightningLength": 16,
+		"damage": 75,
+		"lightning": 1,
+		"lightningLength": 8,
 		"lightningColor": "CFCFCF",
 		"despawnSound": "shootArc",
     	"hitSound": "shootArc",

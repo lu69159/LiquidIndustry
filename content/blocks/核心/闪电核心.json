@@ -22,7 +22,7 @@
 	],
 	"unitType": "伽马-S",
 	"unitCapModifier": 36,
-    "researchCostMultiplier": 0.5,
+    "researchCostMultiplier": 0.4,
 	"category": "effect",
     "research": "微型核心基座"
 }

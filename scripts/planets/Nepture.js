@@ -36,6 +36,15 @@ NT.generator = extend(TantrosPlanetGenerator, {
 		out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.25)));
 	}
 });
+NT.campaignRules = extend(CampaignRules, {
+	apply(planet, rules){
+		rules.objectiveTimerMultiplier = difficulty.waveTimeMultiplier;
+		rules.teams.get(rules.waveTeam).blockHealthMultiplier = difficulty.enemyHealthMultiplier;
+        rules.teams.get(rules.waveTeam).unitHealthMultiplier = difficulty.enemyHealthMultiplier;
+        rules.teams.get(rules.waveTeam).unitCostMultiplier = 1 / difficulty.enemySpawnMultiplier;
+        rules.teams.get(rules.waveTeam).unitBuildSpeedMultiplier = difficulty.enemySpawnMultiplier;
+	}
+});
 NT.cloudMeshLoader = prov(() => new MultiMesh(
 	new HexSkyMesh(NT, 2, 0.15, 0.05, 5, Color.valueOf("D8F3FF"), 2, 0.42, 1, 0.43),
 	new HexSkyMesh(NT, 3, 0.6, 0.15, 5, Color.valueOf("D8F3FF80"), 2, 0.42, 1.2, 0.45),

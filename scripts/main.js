@@ -1,7 +1,8 @@
 Vars.renderer.minZoom = 0.3;
 Vars.renderer.maxZoom = 25; //缩放
 
-require("start");
+require("dialog/start");
+require("dialog/research");
 
 require("LI/LIitems");
 require("LI/LIliquids");

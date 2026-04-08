@@ -1,5 +1,5 @@
 const mod = Vars.mods.locateMod("液体工艺");
-Events.on(EventType.ClientLoadEvent, cons(e => {
+Events.on(ClientLoadEvent, cons(e => {
     // 主对话框
     var dialog = new BaseDialog("液体工艺：游玩前提示");
 

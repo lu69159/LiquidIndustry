@@ -23,7 +23,6 @@
     ],
     "category": "crafting",
 	"research": "冰冷废液分离机",
-    "researchCostMultiplier": 0.2,
     "ambientSound": "loopSmelter",
     "ambientSoundVolume": 0.07,
     

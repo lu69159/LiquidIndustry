@@ -491,13 +491,13 @@ exports.固液转化器 = GYZHQ;
 const TCSD = new Conveyor("钍传送带");
 exports.钍传送带 = TCSD;
 
-const 重甲传送带 = extend(ArmoredConveyor, "重甲传送带", {
+const ZJCSGD = extend(ArmoredConveyor, "重甲传送轨道", {
     setStats() {
         this.super$setStats();
         if(this.destroyBullet != null) this.stats.add(new Stat("damageondestroy", StatCat.function), StatValues.ammo(ObjectMap.of(this, this.destroyBullet), true, false));
     }
 });
-exports.重甲传送带 = 重甲传送带;
+exports.重甲传送轨道 = ZJCSGD;
 
 const XZBXZQ = new Unloader("相织布卸载器");
 exports.相织布卸载器 = XZBXZQ;

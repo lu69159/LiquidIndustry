@@ -23,7 +23,7 @@
 	],
 	"unitType": "德尔塔",
 	"unitCapModifier": 48,
-    "researchCostMultiplier": 0.5,
+    "researchCostMultiplier": 0.4,
 	"category": "effect",
     "research": "闪电核心"
 }
