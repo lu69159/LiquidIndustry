@@ -1,3 +1,5 @@
 {
+	"smokeEffect":"none",
+	"shootEffect":"none",
 	"liquidCapacity": 80
 }
