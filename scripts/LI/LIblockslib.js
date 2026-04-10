@@ -593,7 +593,6 @@ Object.assign(bulletEZ, {
     hitShake: 6,
     ammoMultiplier: 5
 });
-addAmmoType("foreshadow", require("LI/LIitems")["超导质"], bulletEZ);
 
 //雷光
 var bulletLG = new ShrapnelBulletType(), intervalBulletLG = new LightningBulletType();
@@ -622,7 +621,6 @@ Object.assign(bulletLG, {
     intervalSpread: 15,
     intervalAngle: 0
 });
-addAmmoType("fuse", Items.surgeAlloy, bulletLG);
 
 //海啸
 var bulletHX1 = new LiquidBulletType(require("LI/LIliquids")["超级冷冻液"]), bulletHX2 = new LiquidBulletType(require("LI/LIliquids")["衰变熔岩"]);
@@ -649,8 +647,6 @@ Object.assign(bulletHX2, {
     damage: 23.75,
     makeFire: true
 });
-addAmmoType("tsunami", require("LI/LIliquids")["超级冷冻液"], bulletHX1);
-addAmmoType("tsunami", require("LI/LIliquids")["衰变熔岩"], bulletHX2);
 
 //波浪
 var bulletWV1 = new LiquidBulletType(require("LI/LIliquids")["超级冷冻液"]), bulletWV2 = new LiquidBulletType(require("LI/LIliquids")["衰变熔岩"]);
@@ -662,5 +658,12 @@ Object.assign(bulletWV2, {
     drag: 0.01,
     makeFire: true
 });
-addAmmoType("wave", require("LI/LIliquids")["超级冷冻液"], bulletWV1);
-addAmmoType("wave", require("LI/LIliquids")["衰变熔岩"], bulletWV2);
+
+Events.on(ContentInitEvent, cons(e => {
+    addAmmoType("foreshadow", require("LI/LIitems")["超导质"], bulletEZ);
+    addAmmoType("fuse", Items.surgeAlloy, bulletLG);
+    addAmmoType("tsunami", require("LI/LIliquids")["超级冷冻液"], bulletHX1);
+    addAmmoType("tsunami", require("LI/LIliquids")["衰变熔岩"], bulletHX2);
+    addAmmoType("wave", require("LI/LIliquids")["超级冷冻液"], bulletWV1);
+    addAmmoType("wave", require("LI/LIliquids")["衰变熔岩"], bulletWV2);
+}));
