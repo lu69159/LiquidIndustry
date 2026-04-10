@@ -591,7 +591,10 @@ Object.assign(bulletEZ, {
     pierceDamageFactor: 0.05,
     length: 580,
     hitShake: 6,
-    ammoMultiplier: 5
+    ammoMultiplier: 5,
+
+    status: StatusEffects.electrified,
+    statusDuration: 60,
 });
 
 //雷光
@@ -632,6 +635,7 @@ Object.assign(bulletHX1, {
     orbSize: 4,
     drag: 0.001,
     ammoMultiplier: 0.4,
+    status: require("LI/LIstatus").冰封,
     statusDuration: 60 * 4,
     damage: 0.2
 });
@@ -643,6 +647,7 @@ Object.assign(bulletHX2, {
     orbSize: 4,
     drag: 0.001,
     ammoMultiplier: 0.4,
+    status: StatusEffects.burning,
     statusDuration: 60 * 4,
     damage: 23.75,
     makeFire: true
@@ -652,10 +657,12 @@ Object.assign(bulletHX2, {
 var bulletWV1 = new LiquidBulletType(require("LI/LIliquids")["超级冷冻液"]), bulletWV2 = new LiquidBulletType(require("LI/LIliquids")["衰变熔岩"]);
 Object.assign(bulletWV1, {
     drag: 0.01,
+    status: require("LI/LIstatus").冰封,
 });
 Object.assign(bulletWV2, {
     damage: 20,
     drag: 0.01,
+    status: StatusEffects.burning,
     makeFire: true
 });
 
