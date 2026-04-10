@@ -558,5 +558,44 @@ const YZSYZJ = new Fracker("硬质石油钻井");
 exports.硬质石油钻井 = YZSYZJ;
 
 
+//原版修改
+const foreshadow = Vars.content.getByName(ContentType.block, "foreshadow");
+var bullet1 = new RailBulletType();
+Object.assign(bullet1, {
+    shootEffect: Fx.instShoot,
+    hitEffect: Fx.instHit,
+    pierceEffect: Fx.railHit,
+    smokeEffect: Fx.smokeCloud,
+    pointEffect: Fx.instTrail,
+    despawnEffect: Fx.instBomb,
+    pointEffectSpace: 20,
+    damage: 1350,
+    buildingDamageMultiplier: 0.2,
+    pierceDamageFactor: 1,
+    length: 500,
+    hitShake: 6,
+    ammoMultiplier: 1
+});
+
+const LIfx = require("base/effects");
+var bullet2 = new RailBulletType();
+Object.assign(bullet2, {
+    rangeChange: 80,
+    shootEffect: LIfx.sparkShoot,
+    hitEffect: LIfx.sparkHit,
+    pierceEffect: LIfx.sparkHit,
+    smokeEffect: Fx.smokeCloud,
+    pointEffect: LIfx.sparkTrail,
+    despawnEffect: LIfx.sparkBomb,
+    pointEffectSpace: 20,
+    damage: 1800,
+    buildingDamageMultiplier: 0.2,
+    pierceDamageFactor: 0.05,
+    length: 580,
+    hitShake: 6,
+    ammoMultiplier: 5
+});
+
+foreshadow.ammo(Items.surgeAlloy, bullet1, require("LI/LIitems")["超导质"], bullet2);
 
 /* 外部定义方块 */

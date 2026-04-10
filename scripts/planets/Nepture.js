@@ -38,6 +38,7 @@ NT.generator = extend(TantrosPlanetGenerator, {
 });
 NT.campaignRules = extend(CampaignRules, {
 	apply(planet, rules){
+		rules.showSpawns = true;
 		rules.objectiveTimerMultiplier = difficulty.waveTimeMultiplier;
 		rules.teams.get(rules.waveTeam).blockHealthMultiplier = difficulty.enemyHealthMultiplier;
         rules.teams.get(rules.waveTeam).unitHealthMultiplier = difficulty.enemyHealthMultiplier;
@@ -52,6 +53,7 @@ NT.cloudMeshLoader = prov(() => new MultiMesh(
 NT.ruleSetter = (r) => {	
 	r.lighting = true;
 	r.showSpawns = true;
+	r.solarMultiplier = 0.05;
 };
 NT.landCloudColor = Color.valueOf("D8F3FF80");
 NT.visible = true;

@@ -3,28 +3,9 @@ var damagemin = 30 / 6, damagemax = 3000 / 6,
 var lightRegion, STRegion;
 const MAXD = new Stat("maxdamage", StatCat.function);
 /////////////////////////////////////////////////////////////
-const colorHitBullet = new Effect(14, e => {
-    Draw.color(e.color);
-
-    e.scaled(7, s => {
-        Lines.stroke(0.5 + s.fout());
-        Lines.circle(e.x, e.y, s.fin() * 5);
-    });
-
-    Lines.stroke(0.5 + e.fout());
-
-    Angles.randLenVectors(e.id, 5, e.fin() * 15, (x, y) => {
-        var ang = Mathf.angle(x, y);
-        Lines.lineAngle(e.x + x, e.y + y, ang, e.fout() * 3 + 1);
-    });
-
-    Drawf.light(e.x, e.y, 20, e.color, 0.6 * e.fout());
-});
-
-/////////////////////////////////////////////////////////////
 const RBbullet = new PointLaserBulletType();
 RBbullet.sprite = "液体工艺-white-point-laser";
-RBbullet.hitEffect = colorHitBullet;
+RBbullet.hitEffect = require("base/effects").colorHitBullet;
 RBbullet.damageInterval = 10;
 RBbullet.damage = damagemin;
 RBbullet.buildingDamageMultiplier = 0.01;

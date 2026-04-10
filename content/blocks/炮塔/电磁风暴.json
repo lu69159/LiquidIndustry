@@ -6,7 +6,7 @@
     "reload": 300,
     "maxAmmo": 15,
     "ammoPerShot": 3,
-    "recoilTime": 60, //后坐力时间
+    "recoilTime": 60,
     "recoil": 4,
     "buildCostMultiplier": 0.6,
     "consumes": {
@@ -33,11 +33,12 @@
     "rotateSpeed": 4,
     "ammoTypes":{
         "固态水":{
-            "type": "BasicBulletType",
+            "type": "BasicBulletType",    
+            "ammoMultiplier": 1,
             "damage": 2000,
             "speed": 12.8,
             "lifetime": 60,
-            "backColor": "00000000",      // 透明
+            "backColor": "00000000",
             "frontColor": "00000000",     
             "splashDamage": 1080,
             "splashDamageRadius": 40,
@@ -46,7 +47,7 @@
 		    "statusDuration": 300,
             "hitSize": 24,   
             "hitSound": "shootArc",
-            "despawnSound": "shootArc", //原为spark
+            "despawnSound": "shootArc",
           
             "intervalBullet": {
                 "type": "LightningBulletType",
@@ -68,56 +69,431 @@
                 "pierceArmor": true,
                 "lightningLength": 25
             },
-            "fragBullets": 16
- 
-        }
-    },
-    "shootEffect": {
-        "type": "MultiEffect",
-        "effects": [
-            {
-                "type": "ParticleEffect",
-                "particles": 1,
-                "line": true,
-                "lenFrom": 120,
-                "lenTo": 0,
-                "strokeFrom": 6,
-                "strokeTo": 0,
-                "interp": "pow5Out",
-                "length": 150,
-                "lifetime": 60,
-                "colorFrom": "FFFFFFFF",
-                "colorTo": "FFFFFF40",
-                "cone": 8
-            },
-            {
-                "type": "ParticleEffect",
-                "particles": 4,
-                "line": true,
-                "lenFrom": 40,
-                "lenTo": 0,
-                "strokeFrom": 3,
-                "strokeTo": 0,
-                "interp": "pow3Out",
-                "length": 80,
-                "lifetime": 35,
-                "colorFrom": "FFFFFFFF",
-                "colorTo": "FFFFFF40",
-                "cone": 45
-            },
-            {
-                "type": "ParticleEffect",
-                "particles": 8,
-                "sizeFrom": 2,
-                "sizeTo": 0,
-                "interp": "circleOut",
-                "length": 30,
-                "lifetime": 20,
-                "colorFrom": "FFFFFF",
-                "colorTo": "FFFFFF00",
-                "cone": 180
+            "fragBullets": 16,
+
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "FFFFFFFF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "FFFFFFFF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "FFFFFF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 180
+                    }
+                ]
             }
-        ]
+        },
+        "固态石油":{
+            "type": "BasicBulletType",
+            "ammoMultiplier": 1,
+            "damage": 200,
+            "speed": 12.8,
+            "lifetime": 60,
+            "width": 8,
+		    "height": 16,
+            "backColor": "00000000",
+            "frontColor": "00000000",     
+            "splashDamage": 1080,
+            "splashDamageRadius": 160,
+            "splashDamagePierce": true,
+            "makeFire": true,
+            "incendAmount": 3,
+            "incendChance": 1,
+            "buildingDamageMultiplier": 0.05,
+            "status": "melting",
+		    "statusDuration": 300,
+            "hitSize": 24,   
+            "hitSound": "explosionMissile",
+            "despawnSound": "explosionMissile",
+            "trailEffect": ["fireHit", "fire"],
+            "trailInterval": 5,
+            "trailChance": 1,
+
+            "intervalBullet": {
+                "type": "LightningBulletType",
+                "lightningColor": "FFE99A",
+                "damage": 1,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 4
+            },       
+            "bulletInterval": 3,
+            "intervalBullets": 3,
+            "intervalRandomSpread": 30,
+            "intervalSpread": 60,
+            "intervalAngle": 0,
+            "fragBullet":{
+                "type": "LightningBulletType",
+                "lightningColor": "FFE99A",
+                "damage": 20,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 15,
+                "hitSound": "shootArc",
+                "despawnSound": "shootArc"
+            },
+            "fragBullets": 6,
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 10,
+                        "sizeFrom": 0,
+                        "sizeTo": 168,
+                        "strokeFrom": 1,
+                        "strokeTo": 0,
+                        "colorFrom": "FFFFFFFF",
+                        "colorTo": "FFFFFF40"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 20,
+                        "sizeFrom": 0,
+                        "sizeTo": 160, 
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "colorFrom": "FFE99A",
+                        "colorTo": "FFE99A"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "region": "液体工艺-sTar",
+                        "lifetime": 30,
+                        "particles": 30,
+                        "interp": "circleOut",
+                        "sizeInterp": "circleIn",
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "length": 176,
+                        "baseLength": 0,
+                        "colorFrom": "FFE99A",
+                        "colorTo": "FFE999A"
+                    }
+                ]
+            },
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 180
+                    }
+                ]
+            }
+        },
+        "固态超级冷冻液":{
+            "type": "BasicBulletType",
+            "ammoMultiplier": 1,
+            "damage": 200,
+            "speed": 12.8,
+            "lifetime": 60,
+            "width": 8,
+		    "height": 16,
+            "backColor": "00000000",
+            "frontColor": "00000000",     
+            "splashDamage": 1,
+            "splashDamageRadius": 160,
+            "splashDamagePierce": true,
+            "buildingDamageMultiplier": 0.05,
+            "status": "冰封",
+		    "statusDuration": 600,
+            "hitSize": 24,   
+            "hitSound": "explosionMissile",
+            "despawnSound": "explosionMissile",
+            "trailEffect": {
+                "type": "ParticleEffect",
+                "region": "液体工艺-snow",
+                "lifetime": 30,
+                "particles": 2,
+                "interp": "circleOut",
+                "sizeInterp": "circleIn",
+                "sizeFrom": 5,
+                "sizeTo": 0,
+                "length": 24,
+                "baseLength": 0,
+                "colorFrom": "C0ECFF",
+                "colorTo": "C0ECFF"
+            },
+            "trailInterval": 5,
+            "trailChance": 1,
+
+            "intervalBullet": {
+                "type": "LightningBulletType",
+                "lightningColor": "C0ECFF",
+                "damage": 1,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 4
+            },       
+            "bulletInterval": 3,
+            "intervalBullets": 3,
+            "intervalRandomSpread": 30,
+            "intervalSpread": 60,
+            "intervalAngle": 0,
+            "fragBullet":{
+                "type": "LightningBulletType",
+                "lightningColor": "C0ECFF",
+                "damage": 20,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 15,
+                "hitSound": "shootArc",
+                "despawnSound": "shootArc"
+            },
+            "fragBullets": 6,
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 10,
+                        "sizeFrom": 0,
+                        "sizeTo": 168,
+                        "strokeFrom": 1,
+                        "strokeTo": 0,
+                        "colorFrom": "C0ECFF",
+                        "colorTo": "C0ECFF40"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 20,
+                        "sizeFrom": 0,
+                        "sizeTo": 160, 
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "colorFrom": "C0ECFF",
+                        "colorTo": "C0ECFF"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "region": "液体工艺-snow",
+                        "lifetime": 45,
+                        "particles": 45,
+                        "interp": "circleOut",
+                        "sizeInterp": "circleIn",
+                        "sizeFrom": 5,
+                        "sizeTo": 0,
+                        "length": 176,
+                        "baseLength": 0,
+                        "colorFrom": "C0ECFF",
+                        "colorTo": "C0ECFF"
+                    }
+                ]
+            },
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "C0ECFFFF",
+                        "colorTo": "C0ECFF40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "C0ECFFFF",
+                        "colorTo": "C0ECFF40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "C0ECFFFF",
+                        "colorTo": "C0ECFF40",
+                        "cone": 180
+                    }
+                ]
+            }
+        },
+        "超导质":{
+            "type": "BasicBulletType",
+            "ammoMultiplier": 1,
+            "rangeChange": 120,
+            "reloadMultiplier": 0.5,
+            "damage": 4200,
+            "speed": 12.8,
+            "lifetime": 69.375,
+            "backColor": "00000000",
+            "frontColor": "00000000",     
+            "splashDamage": 1800,
+            "splashDamageRadius": 40,
+            "buildingDamageMultiplier": 0.05,
+            "status": "electrified",
+		    "statusDuration": 600,
+            "hitSize": 24,   
+            "hitSound": "shootArc",
+            "despawnSound": "shootArc",
+          
+            "intervalBullet": {
+                "type": "LightningBulletType",
+                "lightningColor": "00FFFF",
+                "damage": 20,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 5
+            },       
+            "bulletInterval": 3,
+            "intervalBullets": 3,
+            "intervalRandomSpread": 30,
+            "intervalSpread": 60,
+            "intervalAngle": 0,
+
+            "fragBullet":{
+                "type": "LightningBulletType",
+                "lightningColor": "00FFFF",
+                "damage": 300,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 40
+            },
+            "fragBullets": 20,
+ 
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "00FFFFFF",
+                        "colorTo": "00FFFF40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "00FFFFFF",
+                        "colorTo": "00FFFF40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "00FFFFFF",
+                        "colorTo": "00FFFF40",
+                        "cone": 180
+                    }
+                ]
+            }
+        }
     },
     "destroyBullet": {	
 		"type": "LightningBulletType",

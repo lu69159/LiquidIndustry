@@ -100,6 +100,13 @@ const 雪盲 = extend(StatusEffect, "雪盲", {
 });
 exports.雪盲 = 雪盲;
 
+const 冰封 = extend(StatusEffect, "冰封", {
+    init(){
+        this.opposite(StatusEffects.burning, StatusEffects.melting);
+    }
+});
+exports.冰封 = 冰封;
+
 const 解冻 = extend(StatusEffect, "解冻", {
     init(){
         this.super$init();

@@ -15,7 +15,7 @@
 	"displayedSpeed": 30,
 	"destroyBullet": {	
 		"type": "LightningBulletType",
-		"damage": 75,
+		"damage": 50,
 		"lightning": 1,
 		"lightningLength": 8,
 		"lightningColor": "CFCFCF",
@@ -23,7 +23,6 @@
     	"hitSound": "shootArc",
 		"collides": false,
 		"absorbable": false,
-		"pierceArmor": true,
 		"hitEffect": {
 			"type": "WaveEffect",
 			"lifetime": 5,

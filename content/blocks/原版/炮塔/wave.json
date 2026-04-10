@@ -50,7 +50,7 @@
 		"超级冷冻液": {
 			"type": "LiquidBulletType",
 			"liquid": "超级冷冻液",
-			"status": "unmoving",
+			"status": "冰封",
 			"statusDuration": 120,
 			"knockback":0.55,
 			"drag": 0.01

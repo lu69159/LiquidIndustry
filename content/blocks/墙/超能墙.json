@@ -2,7 +2,7 @@
 	"name": "超能墙",
 	"health": 2800,
 	"size": 1,
-	"armor": 15,
+	"armor": 30,
     "hasLiquids": true,
     "liquidCapacity": 1200,
 	"requirements": [
