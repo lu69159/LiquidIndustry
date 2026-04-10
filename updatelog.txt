@@ -1,6 +1,11 @@
+这是一个暂未完成的MOD，更新日志暂时只有中文版
+如果你想完善模组的英文支持，或者有更好的想法，欢迎联系作者。
+This is a WIP mod. The updatelog is currently only available in Chinese.
+If you’d like to help improve the mod’s English support, or have better ideas, feel free to contact the author.(on github?)
+
 自0.21.2版本开始记录更新内容 QWQ
 尼普顿星球战役目前还未完成
-QQ群1091952404，文件都丢在里面
+QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 
 0.22.5：
     修复了每次进入尼普顿已占领的进攻区块都弹出提示的问题

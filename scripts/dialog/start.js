@@ -1,7 +1,7 @@
 const mod = Vars.mods.locateMod("液体工艺");
 Events.on(ClientLoadEvent, cons(e => {
     // 主对话框
-    var dialog = new BaseDialog("液体工艺：游玩前提示");
+    var dialog = new BaseDialog(Core.bundle.format("NOTICE"));
 
     // 主内容区域
     dialog.cont.pane((() => {
@@ -13,8 +13,8 @@ Events.on(ClientLoadEvent, cons(e => {
         return table;
     })()).grow().center().maxWidth(900);
 
-    dialog.buttons.button("[accent]更新日志", run(() => {
-        var updatelog= new BaseDialog("更新日志");
+    dialog.buttons.button("[accent]" + Core.bundle.format("updatelog"), run(() => {
+        var updatelog= new BaseDialog(Core.bundle.format("updatelog"));
         updatelog.cont.pane((() => {
             var table = new Table();
             var tex = new Texture(mod.root.child("icon.png"));       
