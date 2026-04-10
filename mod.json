@@ -2,13 +2,9 @@
     "name": "液体工艺",
     "displayName": "液体工艺",
     "author": "Space",
+    "repo": "lu69159/LiquidIndustry",
     "description": "Liquid Industry for v154+\n测试版本0.22.5",
     "version": "0.22.5",
     "minGameVersion": "156.1"
 }
-
-/*
-*作者Space
-*QQ2909165527
-*做着玩的MOD，有问题请见谅QWQ
-*/
+//"hideBrowser": true
