@@ -82,6 +82,16 @@
     });
     exports.sparkHit = sparkHit;
 
+    const surgeAlloyShoot = new Effect(12, e => {
+        Draw.color(Color.white, Color.valueOf("F3E979"), e.fin());
+        Lines.stroke(e.fout() * 1.2 + 0.5);
+
+        Angles.randLenVectors(e.id, 7, 25 * e.finpow(), e.rotation, 50, (x, y) => {
+            Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5 + 2);
+        });
+    });
+    exports.surgeAlloyShoot = surgeAlloyShoot;
+
     const colorHitBullet = new Effect(14, e => {
         Draw.color(e.color);
 

@@ -557,29 +557,27 @@ exports.冰冷钻井 = BLZJ;
 const YZSYZJ = new Fracker("硬质石油钻井");
 exports.硬质石油钻井 = YZSYZJ;
 
+//以及其他JS中定义的方块
 
-//原版修改
-const foreshadow = Vars.content.getByName(ContentType.block, "foreshadow");
-var bullet1 = new RailBulletType();
-Object.assign(bullet1, {
-    shootEffect: Fx.instShoot,
-    hitEffect: Fx.instHit,
-    pierceEffect: Fx.railHit,
-    smokeEffect: Fx.smokeCloud,
-    pointEffect: Fx.instTrail,
-    despawnEffect: Fx.instBomb,
-    pointEffectSpace: 20,
-    damage: 1350,
-    buildingDamageMultiplier: 0.2,
-    pierceDamageFactor: 1,
-    length: 500,
-    hitShake: 6,
-    ammoMultiplier: 1
-});
+
+
+/* 以下是原版炮塔修改 */
+
+
 
 const LIfx = require("base/effects");
-var bullet2 = new RailBulletType();
-Object.assign(bullet2, {
+function addAmmoType(turretName, item, bullet){
+    let turret = Vars.content.getByName(ContentType.block, turretName);
+    if(!(turret instanceof Turret && item instanceof UnlockableContent && bullet instanceof BulletType)){
+        Log.err("add ammo fail");
+        return;
+    }
+    turret.ammoTypes.put(item, bullet); //我草你妈AI别改，就是这样的
+}
+
+//厄兆
+var bulletEZ = new RailBulletType();
+Object.assign(bulletEZ, {
     rangeChange: 80,
     shootEffect: LIfx.sparkShoot,
     hitEffect: LIfx.sparkHit,
@@ -595,7 +593,74 @@ Object.assign(bullet2, {
     hitShake: 6,
     ammoMultiplier: 5
 });
+addAmmoType("foreshadow", require("LI/LIitems")["超导质"], bulletEZ);
 
-foreshadow.ammo(Items.surgeAlloy, bullet1, require("LI/LIitems")["超导质"], bullet2);
+//雷光
+var bulletLG = new ShrapnelBulletType(), intervalBulletLG = new LightningBulletType();
+Object.assign(intervalBulletLG, {
+    damage: 15,
+    pierceArmor: true,
+    lightningColor: Color.valueOf("F3E979"),
+    lightningLength: 20,
+    lightningLengthRand: 10
+});
+Object.assign(bulletLG, {
+    rangeChange: 90,
+    length: 190,
+    damage: 185,
+    ammoMultiplier: 5,
+    toColor: Color.valueOf("F3E979"),
+    shootEffect: LIfx.surgeAlloyShoot,
+    smokeEffect: LIfx.surgeAlloyShoot,
+    width: 22,
+    reloadMultiplier: 0.9,
+    status: StatusEffects.shocked,
 
-/* 外部定义方块 */
+    intervalBullet: intervalBulletLG,
+    intervalBullets: 1,
+    intervalRandomSpread: 10,
+    intervalSpread: 15,
+    intervalAngle: 0
+});
+addAmmoType("fuse", Items.surgeAlloy, bulletLG);
+
+//海啸
+var bulletHX1 = new LiquidBulletType(require("LI/LIliquids")["超级冷冻液"]), bulletHX2 = new LiquidBulletType(require("LI/LIliquids")["衰变熔岩"]);
+Object.assign(bulletHX1, {
+    lifetime: 49,
+    speed: 4,
+    knockback: 1.3,
+    puddleSize: 8,
+    orbSize: 4,
+    drag: 0.001,
+    ammoMultiplier: 0.4,
+    statusDuration: 60 * 4,
+    damage: 0.2
+});
+Object.assign(bulletHX2, {
+    lifetime: 49,
+    speed: 4,
+    knockback: 1.3,
+    puddleSize: 8,
+    orbSize: 4,
+    drag: 0.001,
+    ammoMultiplier: 0.4,
+    statusDuration: 60 * 4,
+    damage: 23.75,
+    makeFire: true
+});
+addAmmoType("tsunami", require("LI/LIliquids")["超级冷冻液"], bulletHX1);
+addAmmoType("tsunami", require("LI/LIliquids")["衰变熔岩"], bulletHX2);
+
+//波浪
+var bulletWV1 = new LiquidBulletType(require("LI/LIliquids")["超级冷冻液"]), bulletWV2 = new LiquidBulletType(require("LI/LIliquids")["衰变熔岩"]);
+Object.assign(bulletWV1, {
+    drag: 0.01,
+});
+Object.assign(bulletWV2, {
+    damage: 20,
+    drag: 0.01,
+    makeFire: true
+});
+addAmmoType("wave", require("LI/LIliquids")["超级冷冻液"], bulletWV1);
+addAmmoType("wave", require("LI/LIliquids")["衰变熔岩"], bulletWV2);
