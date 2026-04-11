@@ -1,5 +1,9 @@
 {
     "color": "C0ECFF",
     "reloadMultiplier": 0.25,
-	"speedMultiplier": 0
+	"speedMultiplier": 0,
+    "opposites": [
+		"burning",
+		"melting"
+	]
 }

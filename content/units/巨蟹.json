@@ -78,6 +78,7 @@
                 "type": "ContinuousLaserBulletType",
                 "makeFire": false,
                 "damage": 80,
+                "pierceArmor": true,
                 "colors": ["FFFFFFFF", "FFFFFF70"],
                 "maxRange": 256,
                 "length": 240,

@@ -1,15 +1,19 @@
+//目前多个极光炮塔的颜色会强制同步
 var damagemin = 30 / 6, damagemax = 3000 / 6,
     beforeTime = 5, durationTime = 12;
 var lightRegion, STRegion;
 const MAXD = new Stat("maxdamage", StatCat.function);
 /////////////////////////////////////////////////////////////
 const RBbullet = new PointLaserBulletType();
-RBbullet.sprite = "液体工艺-white-point-laser";
-RBbullet.hitEffect = require("base/effects").colorHitBullet;
-RBbullet.damageInterval = 10;
-RBbullet.damage = damagemin;
-RBbullet.buildingDamageMultiplier = 0.01;
-RBbullet.lifetime = 10;
+Object.assign(RBbullet, {
+    pierceArmor: true,
+    sprite: "液体工艺-white-point-laser",
+    hitEffect: require("base/effects").colorHitBullet,
+    damageInterval: 10,
+    damage: damagemin,
+    buildingDamageMultiplier: 0.01,
+    lifetime: 10,
+});
 
 const JG = extend(ContinuousTurret, "极光", {  
     shootType: RBbullet,

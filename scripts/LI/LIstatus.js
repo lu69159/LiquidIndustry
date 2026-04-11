@@ -93,16 +93,19 @@ exports.神佑 = 神佑;
 const 管制 = new StatusEffect("管制");
 exports.管制 = 管制;
 
-const 雪盲 = extend(StatusEffect, "雪盲", {
-    init(){
-        this.opposite(StatusEffects.burning, StatusEffects.melting);
-    }
-});
+const 雪盲 = new StatusEffect("雪盲");
 exports.雪盲 = 雪盲;
 
 const 冰封 = extend(StatusEffect, "冰封", {
+    transitionDamage: 40,
     init(){
-        this.opposite(StatusEffects.burning, StatusEffects.melting);
+        this.affinity(StatusEffects.blasted, (unit, result, time) => {
+            unit.damagePierce(this.transitionDamage);
+            if(unit.team == Vars.state.rules.waveTeam){
+                Events.fire(Trigger.blastFreeze);
+            }
+        });
+        this.super$init();
     }
 });
 exports.冰封 = 冰封;
