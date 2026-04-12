@@ -7,6 +7,10 @@ If you’d like to help improve the mod’s language support, or have better ide
 尼普顿星球战役目前还未完成
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 
+0.22.8：
+    暂时删除内置的蓝图文件
+    完善英文语言文件，完善部分地图内的英文文本支持
+
 0.22.7：
     修复了部分状态效果之间显示互斥但能共存的问题
     mod.json简介中支持版本的修正

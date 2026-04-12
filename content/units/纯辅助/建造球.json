@@ -15,7 +15,6 @@
     "isEnemy": false,
     "controller":"BuilderAI",
     "trailLength": 10,
-    "trailWidth": 2,
     "trailColor": "B0BAC0",
     "outlineColor": "00000000",
 

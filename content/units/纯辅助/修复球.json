@@ -17,7 +17,6 @@
     "isEnemy": false,
     "controller": "RepairAI",
     "trailLength": 10,
-	"trailWidth": 2,
     "trailColor": "FFD37F",
     "outlineColor": "00000000",
 

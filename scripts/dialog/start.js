@@ -31,14 +31,17 @@ Events.on(ClientLoadEvent, cons(e => {
         grow().
         center().
         maxWidth(540);
-        updatelog.buttons.defaults().size(128, 64);
-        updatelog.addCloseButton();
+        updatelog.buttons.defaults().size(210, 64);
+        updatelog.buttons.button("github", Icon.github, run(() => {
+            Core.app.openURI("https://github.com/lu69159/LiquidIndustry");
+        })).size(210, 64);
+        updatelog.addCloseButton(210);
         updatelog.show();
-    })).size(128, 64);
+    })).size(210, 64);
 
-    dialog.buttons.button("@close", run(() => {
+    dialog.buttons.button("@close", Icon.cancel, run(() => {
         dialog.hide()
-    })).size(128, 64);
+    })).size(210, 64);
 
     dialog.show();
 }));

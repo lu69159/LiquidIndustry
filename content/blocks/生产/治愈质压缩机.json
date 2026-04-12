@@ -32,18 +32,6 @@
     "category": "crafting",
     "research": "亲水质合成器",
 
-    "craftEffect":{
-        "type": "MultiEffect",
-        "effects": [
-            {
-                "type": "drillSteam"
-            },
-            {
-                "type": "steam"
-            }
-        ]
-    },
-
     "drawer": {
 		"type": "DrawMulti",
 		"drawers": [

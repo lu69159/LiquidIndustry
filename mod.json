@@ -1,10 +1,10 @@
 {
     "name": "液体工艺",
-    "displayName": "液体工艺",
+    "displayName": "Liquid Industry",
     "author": "Space",
     "repo": "lu69159/LiquidIndustry",
-    "description": "Liquid Industry for v156.1+\n测试版本0.22.7",
-    "version": "0.22.7",
+    "description": "Liquid Industry for v156.1+\n测试版本0.22.8",
+    "version": "0.22.8",
     "minGameVersion": "156.1"
 }
 //"hideBrowser": true
