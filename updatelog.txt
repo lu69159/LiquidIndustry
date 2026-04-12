@@ -1,11 +1,18 @@
 这是一个暂未完成的MOD，更新日志暂时只有中文版
-如果你想完善模组的英文支持，或者有更好的想法，欢迎联系作者。
+如果你想完善模组的语言支持，或者有更好的想法，欢迎联系作者。
 This is a WIP mod. The updatelog is currently only available in Chinese.
-If you’d like to help improve the mod’s English support, or have better ideas, feel free to contact the author.(on github?)
+If you’d like to help improve the mod’s language support, or have better ideas, feel free to contact the author.(on github?)
 
 自0.21.2版本开始记录更新内容 QWQ
 尼普顿星球战役目前还未完成
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
+
+0.22.7：
+    修复了部分状态效果之间显示互斥但能共存的问题
+    mod.json简介中支持版本的修正
+    T5直构工厂消耗电力的修正
+    部分弹药特效调整
+    英文支持完善(在AI的帮助下)
 
 0.22.6：
     为巨蟹，电鳐和极光的连续激光添加了穿甲
