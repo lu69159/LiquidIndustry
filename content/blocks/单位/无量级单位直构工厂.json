@@ -23,7 +23,7 @@
         "治愈质/400"
     ],
      "consumes":{
-        "power": 13,
+        "power": 25,
         "items":[
             "silicon/1000",
             "治愈质/630"

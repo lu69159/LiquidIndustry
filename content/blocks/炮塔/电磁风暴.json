@@ -430,15 +430,15 @@
                             },
                             {
                                 "type": "ParticleEffect",
-                                "lifetime": 30,
-                                "particles": 1,
+                                "lifetime": 120,
+                                "particles": 30,
+                                "interp": "circleOut",
+                                "sizeInterp": "circleIn",
+                                "sizeFrom": 2,
+                                "sizeTo": 2,
+                                "length": 176,
                                 "baseLength": 0,
-                                "length": 0,
-                                "region": "circle",
-                                "sizeFrom": 160,
-                                "sizeTo": 160,
-                                "lightColor": "87CEEB",
-                                "colorFrom": "87CEEBA0",
+                                "colorFrom": "87CEEB",
                                 "colorTo": "87CEEB00"
                             }
                         ]
@@ -458,15 +458,15 @@
                             },
                             {
                                 "type": "ParticleEffect",
-                                "lifetime": 30,
-                                "particles": 1,
+                                "lifetime": 120,
+                                "particles": 30,
+                                "interp": "circleOut",
+                                "sizeInterp": "circleIn",
+                                "sizeFrom": 2,
+                                "sizeTo": 2,
+                                "length": 176,
                                 "baseLength": 0,
-                                "length": 0,
-                                "region": "circle",
-                                "sizeFrom": 160,
-                                "sizeTo": 160,
-                                "lightColor": "87CEEB80",
-                                "colorFrom": "87CEEB80",
+                                "colorFrom": "87CEEB",
                                 "colorTo": "87CEEB00"
                             }
                         ]
@@ -495,7 +495,7 @@
                         "particles": 45,
                         "interp": "circleOut",
                         "sizeInterp": "circleIn",
-                        "sizeFrom": 6,
+                        "sizeFrom": 3,
                         "sizeTo": 3,
                         "length": 176,
                         "baseLength": 0,

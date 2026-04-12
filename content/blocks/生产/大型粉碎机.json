@@ -1,7 +1,6 @@
 {
 	"name": "大型粉碎机",
 	"health": 160,
-    "description": "将废料粉碎成细沙，效率极高。",
 	"size": 2,
 	"hasPower": true,
 	"hasLiquids": false,

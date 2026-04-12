@@ -1,8 +1,7 @@
 const jh = require("LI/LIweathers").极寒;
 const bx = require("LI/LIweathers").暴雪;
 const NT = new Planet("Nepture", Planets.sun, 1.2, 2.5);
-NT.localizedName = "尼普顿";
-NT.description = "温度极低，暗无天日，常年暴雪。地表矿物稀缺，存在大量未被开发的液体资源。";
+NT.localizedName = Core.bundle.format("planet.液体工艺-Nepture.name");
 NT.meshLoader = prov(() => new MultiMesh(
 	new HexMesh(NT, 5),
 	new HexSkyMesh(NT, 2, 0.15, 0.05, 5, Color.valueOf("D8F3FF30"), 2, 0.42, 1, 0.43),

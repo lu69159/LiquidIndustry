@@ -6,8 +6,6 @@ Events.on(ClientLoadEvent, cons(e => {
     // 主内容区域
     dialog.cont.pane((() => {
         let table = new Table();
-        table.add("测试版目前已知的问题：").left().wrap().width(500).maxWidth(500).pad(4).labelAlign(Align.left);
-        table.row();
         table.add(Core.bundle.format("PROBLEM")).left().wrap().width(500).maxWidth(500).pad(4).labelAlign(Align.left);
         table.row();
         return table;
