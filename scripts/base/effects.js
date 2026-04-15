@@ -110,3 +110,11 @@
         Drawf.light(e.x, e.y, 20, e.color, 0.6 * e.fout());
     });
     exports.colorHitBullet = colorHitBullet;
+
+    const blessApply = new Effect(120, e => {
+        let unit = e.data, unittype = unit.type, region = unittype.fullIcon;
+        Draw.color(e.color);
+        Draw.alpha(e.fout() * 1);
+        Draw.rect(region, unit.x, unit.y, region.width * 0.8, region.height * 0.8, unit.rotation - 90);
+    });
+    exports.blessApply = blessApply;

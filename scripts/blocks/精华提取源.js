@@ -35,6 +35,7 @@ JHTQY.buildType = prov(() => {
             let tmp = Vars.content.items();
             var items = tmp.copy();
             if(items.contains(I["神秘物质"]))items.remove(I["神秘物质"]);
+            if(items.contains(I["神秘碎片"]))items.remove(I["神秘碎片"]);
             ItemSelection.buildTable(
                 this.block, 
                 table, 

@@ -151,6 +151,9 @@ const ZTQDSeq = Seq.with(StatusEffects.overclock, StatusEffects.shielded);
 const ZTQD = type.StatusProjector("状态穹顶", ZTQDSeq);
 exports.状态穹顶 = ZTQD;
 
+const SYTQ = type.StatusProjector("神佑天穹", status.神佑);
+exports.神佑天穹 = SYTQ;
+
 const RHTY = type.EnemyStatusProjector("弱化投影", StatusEffects.sapped);
 exports.弱化投影 = RHTY;
 

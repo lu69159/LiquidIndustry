@@ -32,7 +32,7 @@ Events.on(ClientLoadEvent, cons(e => {
         center().
         maxWidth(540);
         updatelog.buttons.defaults().size(210, 64);
-        updatelog.buttons.button("github", Icon.github, run(() => {
+        updatelog.buttons.button("Github", Icon.github, run(() => {
             Core.app.openURI("https://github.com/lu69159/LiquidIndustry");
         })).size(210, 64);
         updatelog.addCloseButton(210);

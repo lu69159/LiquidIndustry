@@ -37,9 +37,11 @@ Events.on(ContentInitEvent, cons(e => {
 }));
 
 ///////////////////////////////////////////////////////////////
+const FB = new BasicBulletType();
 
 const baseSize = 26; //王座为例
 const 神佑 = extend(StatusEffect, "神佑", {
+    applyEffect: require("base/effects").blessApply,
     init(){
         Vars.content.getBy(ContentType.status).each(e => {
             if(isBadEffect(e)){
@@ -85,7 +87,7 @@ const 神佑 = extend(StatusEffect, "神佑", {
                 unit.unapply(e);
             }
         });
-        this.super$applied(unit, time, extend)
+        if(!extend || this.applyExtend) this.applyEffect.at(unit.x, unit.y, 0, this.applyColor, unit);
     }
 });
 exports.神佑 = 神佑;
