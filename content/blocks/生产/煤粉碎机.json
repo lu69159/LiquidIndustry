@@ -1,0 +1,47 @@
+{
+	"name": "煤粉碎机",
+	"size": 1,
+	"hasPower": true,
+	"hasLiquids": false,
+	"hasItems": true,
+	"craftTime": 40,
+	"itemCapacity": 10,
+	"consumes": {
+		"power": 0.5,
+		"items": [
+			"coal/1"
+		]
+	},
+    "outputItem": {
+		"item": "碳粉",
+		"amount": 1
+	},
+	"requirements": [
+        "copper/30",
+		"lead/25",
+		"graphite/5"
+	],
+    "craftEffect": "pulverize",
+    "updateEffect": "pulverizeSmall",
+	"ambientSound": "loopGrind",
+	"ambientSoundVolume": 0.025,
+	"category": "crafting",
+	"research": "pulverizer",
+
+	"drawer": {
+		"type": "DrawMulti",
+		"drawers": [
+			"DrawDefault",
+            {
+                "type": "DrawRegion",
+                "suffix": "-rotator",
+                "spinSprite": true,
+                "rotateSpeed": 2
+            },
+            {
+                "type": "DrawRegion",
+                "suffix": "-top"
+            }
+		]
+	}
+}

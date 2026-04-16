@@ -1,0 +1,37 @@
+{
+    "name": "晶体熔铸器",
+    "size": 3,
+    "health": 420,
+    "hasPower": true,
+    "hasLiquids": false,
+    "itemCapacity": 12,
+    "requirements": [
+        "lead/80",
+        "metaglass/65",
+        "graphite/125",
+        "亲水质/9"
+	],
+    "craftTime": 720,
+    "consumes": {
+		"power": 8,
+		"items": [
+            "亲水质/3",
+            "碳粉/12"
+		]
+	},
+    "outputItems": [
+        "耐热晶体/1"
+    ],
+    "category": "crafting",
+	"research": "固液转化器"
+    
+/*
+    "drawer": {
+        "type": "DrawMulti",
+        "drawers": [
+            "DrawDefault",
+            "DrawFlame"
+        ]
+    }   
+*/
+}

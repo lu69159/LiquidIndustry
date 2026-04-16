@@ -32,7 +32,12 @@
                 "suffix": "-bottom"
             },
             {
-                "type": "DrawBubbles"
+                "type": "DrawLiquidTile",
+                "drawLiquid": "slag"
+            },
+            {
+                "type": "DrawLiquidTile",
+                "drawLiquid": "衰变熔岩"
             },
             {
                 "type": "DrawLiquidTile",

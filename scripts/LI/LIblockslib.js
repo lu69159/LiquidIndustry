@@ -45,6 +45,12 @@ exports.大型超导电池 = DXCDDC;
 const TFDJ = new ConsumeGenerator("碳发电机");
 exports.碳发电机 = TFDJ;
 
+const HWKZRFDJ = new ConsumeGenerator("恒温矿渣热发电机");
+exports.恒温矿渣热发电机 = HWKZRFDJ;
+
+const HWSBRFDJ = new ConsumeGenerator("恒温衰变热发电机");
+exports.恒温衰变热发电机 = HWSBRFDJ;
+
 const ZSHFYD = extend(NuclearReactor, "重水核反应堆", {});
 ZSHFYD.consumeItems(ItemStack.with(
     Items.thorium, 1,
@@ -356,6 +362,9 @@ exports.高炉 = GL;
 const DXFSJ = new GenericCrafter("大型粉碎机");
 exports.大型粉碎机 = DXFSJ;
 
+const MFSJ = new GenericCrafter("煤粉碎机");
+exports.煤粉碎机 = MFSJ;
+
 const LDYJBJ = new GenericCrafter("冷冻液搅拌机");
 exports.冷冻液搅拌机 = LDYJBJ;
 
@@ -434,6 +443,28 @@ const GYZHQ = MC.MultiCrafter("固液转化器", [
         },
         craftTime: 300 
     },
+    {
+        input: {
+            items: ["液体工艺-耐热晶体/1"],
+            liquids: ["slag/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-恒温矿渣晶体/1"],
+        },
+        craftTime: 300 
+    },
+    {
+        input: {
+            items: ["液体工艺-耐热晶体/1"],
+            liquids: ["液体工艺-衰变熔岩/450"],
+            power: 8
+        },
+        output: {
+            items: ["液体工艺-恒温衰变晶体/1"],
+        },
+        craftTime: 450 
+    },
 //固->液
     {
         input: {       
@@ -484,10 +515,33 @@ const GYZHQ = MC.MultiCrafter("固液转化器", [
             liquids: ["液体工艺-超级冷冻液/450"]
         },
         craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-恒温矿渣晶体/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["slag/450"]
+        },
+        craftTime: 30
+    },
+    {
+        input: {       
+            items: ["液体工艺-恒温衰变晶体/1"],
+            power: 0.5
+        },
+        output: {
+            liquids: ["液体工艺-衰变熔岩/450"]
+        },
+        craftTime: 30
     }
 ]);
-GYZHQ.selectionColumns = 5;
+GYZHQ.selectionColumns = 7;
 exports.固液转化器 = GYZHQ;
+
+const JTRZQ = new GenericCrafter("晶体熔铸器");
+exports.晶体熔铸器 = JTRZQ;
 
 //物流
 //双传带,双传桥,双传路由器,双传交叉器,光传带

@@ -1,0 +1,11 @@
+{
+    "name":"耐热晶体",
+    "color":"2A2A2AFF",
+    "explosiveness":0,
+    "flammability":0.05,
+    "radioactivity":0,
+    "hardness":1,
+    "cost":1.6,
+    "alwaysUnlocked":false,
+    "research":"碳粉"
+}

@@ -24,6 +24,8 @@ function newExtendItem(name, func) {
 newItem("亲水质")
 newItem("治愈质")
 newItem("超导质")
+newItem("碳粉")
+newItem("耐热晶体")
 newExtendItem("神秘物质", {
     setStats(){
         return;
@@ -39,4 +41,5 @@ newItem("固态重水")
 newItem("固态冷冻液")
 newItem("固态石油")
 newItem("固态超级冷冻液")
-
+newItem("恒温矿渣晶体")
+newItem("恒温衰变晶体")

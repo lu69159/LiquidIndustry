@@ -8,6 +8,9 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.22.9：
+    新增了高温固态液体以及相关建筑科技
+
 0.22.8：
     暂时删除内置的蓝图文件
     增加了获得神佑效果时的特效
