@@ -6,6 +6,7 @@ If you’d like to help improve the mod’s language support, or have better ide
 自0.21.2版本开始记录更新内容 QWQ
 尼普顿星球战役目前还未完成
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
+最近忙起来了，更新会变慢很多
 
 0.22.8：
     暂时删除内置的蓝图文件
