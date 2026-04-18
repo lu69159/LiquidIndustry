@@ -41,10 +41,11 @@
 	"drawer": {
 		"type": "DrawMulti",
 		"drawers": [
+			"DrawDefault",
 			{
-				"type": "DrawDefault"
-			},
-			"DrawFlame"
+				"type": "DrawFlame",
+				"flameColor": "9ADEBC"
+			}			
 		]
 	}
 }

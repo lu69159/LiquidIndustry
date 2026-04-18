@@ -23,15 +23,12 @@
         "耐热晶体/1"
     ],
     "category": "crafting",
-	"research": "固液转化器"
-    
-/*
+	"research": "固液转化器",
     "drawer": {
-        "type": "DrawMulti",
-        "drawers": [
-            "DrawDefault",
-            "DrawFlame"
-        ]
-    }   
-*/
+		"type": "DrawMulti",
+		"drawers": [
+			"DrawDefault",
+			"DrawFlame"
+		]
+	}
 }

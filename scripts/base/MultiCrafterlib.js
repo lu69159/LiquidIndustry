@@ -220,14 +220,11 @@ exports.MultiCrafter = (name, recipes) => {
             }
 
             this.consumeBuilder.add(extend(ConsumePower, {
-                usage: 0,
                 requestedPower(entity){
                     var recnow = entity.findRec();
                     if(recnow == null || recnow.input.power == 0){
-                        this.usage = 0;
                         return 0;
                     }        
-                    this.usage = recnow.input.power;
                     return recnow.input.power * (entity.shouldConsume() ? 1 : 0);
                 }
             }));
