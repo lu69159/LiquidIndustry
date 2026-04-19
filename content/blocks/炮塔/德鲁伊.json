@@ -8,7 +8,7 @@
     "recoil": 1,
     "canOverdrive": false,
     "consumes": {
-        "power": 6.6
+        "power": 3.6
     },
     "predictTarget": true,
     "unitSort":"weakest",
