@@ -13,7 +13,7 @@ require("LI/LIstatus");
 require("LI/LIweathers");
 
 require("planets/Nepture");
-require("planets/NTSatelite");
+//require("planets/NTSatelite");
 
 require("map/maps");
 require("map/MapTechTree");
