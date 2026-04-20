@@ -1,6 +1,5 @@
 {
     "name":"终能聚合器",
-    "description":"消耗大量资源和电力，只为提取神秘物质。\n不及时处理积累的液体副产物会导致爆炸。",
     "size": 3,
     "health": 1860,
     "hasItems": true,
@@ -26,10 +25,9 @@
     "consumes": {
 		"power": 88,
         "items":[
-            "copper/60",
-            "lead/60",
-            "titanium/40",
             "thorium/40",
+            "phase-fabric/30",
+            "surge-alloy/30",
             "亲水质/20"
         ],
 		"liquids": [

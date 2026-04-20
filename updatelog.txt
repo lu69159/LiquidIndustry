@@ -8,6 +8,10 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23：
+    添加液体炮塔适配
+    发电机数值调整
+
 0.22.9：
     新增了高温固态液体以及相关建筑科技
     更新部分建筑贴图

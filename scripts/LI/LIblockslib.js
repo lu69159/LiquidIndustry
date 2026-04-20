@@ -122,6 +122,60 @@ ZSHFYD.buildType = prov(() => {
 });
 exports.重水核反应堆 = ZSHFYD;
 
+var SBFYDlightRegion;
+const SBFYD = extend(ConsumeGenerator, "衰变反应堆", {
+    filterItem: null,
+    rebuildable: false,
+    load(){
+        this.super$load();
+        SBFYDlightRegion = Core.atlas.find(this.name + "-light");
+    }
+});
+SBFYD.buildType = prov(() => {
+    return extend(ConsumeGenerator.ConsumeGeneratorBuild, SBFYD, {
+        created(){
+            this.super$created();
+            this.flash = 0.0;
+        },
+        draw(){
+            this.super$draw();
+            
+            let coolColor = new Color(1, 1, 1, 0);
+            let hotColor = Color.valueOf("FF5050A0");
+            let warn = this.liquids.get(require("LI/LIliquids")["衰变熔岩"]) / this.block.liquidCapacity;
+
+            Draw.color(coolColor, hotColor, Math.max((warn-0.3)/0.7, 0));
+            Fill.rect(this.x, this.y, this.block.size * 8, this.block.size * 8);
+                 
+            if(warn > 0.5){
+                this.flash += (1 + ((warn - 0.5) / (1 - 0.5)) * 6) * Time.delta;
+                Draw.color(Color.valueOf("FF0000"), Color.valueOf("FFFF00"), Mathf.absin(this.flash, 9, 1));
+                Draw.alpha(0.3);
+                Draw.rect(SBFYDlightRegion, this.x, this.y);
+            }
+        },
+        updateTile(){
+            if(this.items.get(require("LI/LIitems")["固态冷冻液"]) < 1 && this.items.get(Items.thorium) >= 6 && this.items.get(Items.phaseFabric) >= 1){
+                this.kill();
+                Events.fire(new GeneratorPressureExplodeEvent(this));
+            }
+            if(this.liquids.get(require("LI/LIliquids")["重水"]) < 10){
+                let scl = 10.0 / this.liquids.get(require("LI/LIliquids")["重水"]) - 1;
+                this.generateTime -= this.delta() * scl * scl;
+                if(this.liquids.get(require("LI/LIliquids")["重水"]) < 0.01 && this.items.get(Items.thorium) >= 6 && this.items.get(Items.phaseFabric) >= 1){
+                    this.kill();
+                    Events.fire(new GeneratorPressureExplodeEvent(this));
+                }
+            }
+            if(this.items.get(Items.thorium)<30 || this.items.get(Items.phaseFabric)<5){
+                this.efficiency = 0;
+            }
+            this.super$updateTile();  
+        }
+    });
+});
+exports.衰变反应堆 = SBFYD;
+
 //辅助
 const ZXZMQ = new LightBlock("中型照明器");
 exports.中型照明器 = ZXZMQ;
@@ -463,7 +517,7 @@ const GYZHQ = MC.MultiCrafter("固液转化器", [
         output: {
             items: ["液体工艺-恒温衰变晶体/1"],
         },
-        craftTime: 450 
+        craftTime: 600 
     },
 //固->液
     {

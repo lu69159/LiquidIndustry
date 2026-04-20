@@ -1,5 +1,5 @@
 /**
- * Add To Database V1.0.4
+ * Add To Database V1.0.5
  * @author Space
  * 推荐require放在星球JS下面
  */
@@ -37,6 +37,22 @@ exports.AddAllToDatabase = (modname, myplanet) => {
         ATD(myplanet, (thing) => {
             var mn = String(thing.name).split("-");
             return mn[0] == modname;
+        });
+    }));
+}
+
+//把MOD中的所有东西加入MYPLANET星球数据库(自定义条件)
+exports.AddAllToDatabaseWithFunc = (modname, myplanet, func) => {
+    if(!modname) throw "modname is null";
+    if(typeof modname != "string") throw "modname is not string";
+
+    if(!myplanet) throw "myplanet is null";
+    if(!myplanet instanceof Planet) throw "myplanet is not Planet";
+
+    Events.on(ContentInitEvent, cons(e => {
+        ATD(myplanet, (thing) => {
+            var mn = String(thing.name).split("-");
+            return mn[0] == modname && func(thing);
         });
     }));
 }
@@ -119,3 +135,32 @@ exports.AddThingsToDatabase = (modname, things, myplanet) => {
     }));
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+//把MOD中的所有东西加入MYPLANET星球数据库【自定义条件,非事件触发】
+exports.AddAllToDatabaseWithFuncWithoutEvent = (modname, myplanet, func) => {
+    if(!modname) throw "modname is null";
+    if(typeof modname != "string") throw "modname is not string";
+
+    if(!myplanet) throw "myplanet is null";
+    if(!myplanet instanceof Planet) throw "myplanet is not Planet";
+
+    ATD(myplanet, (thing) => {
+        var mn = String(thing.name).split("-");
+        return mn[0] == modname && func(thing);
+    });
+
+}
+
+//把PLANET星球的所有东西加入MYPLANET星球数据库【自定义条件,非事件触发】
+exports.AddPlanetToDatabaseWithFuncWithoutEvent = (planet, myplanet, func) => {
+    if(!planet) throw "planet is null";
+    if(!planet instanceof Planet) throw "planet is not Planet";
+    
+    if(!myplanet) throw "myplanet is null";
+    if(!myplanet instanceof Planet) throw "myplanet is not Planet";
+
+    ATD(myplanet, (thing) => {
+        return func(thing) && thing.shownPlanets.contains(planet);
+    });
+
+}

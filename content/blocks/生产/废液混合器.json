@@ -1,6 +1,5 @@
 {
 	"name": "废液混合器",
-    "description": "将废料和冷冻液混合成废液。",
     "size": 2,
 	"health": 180,
     "hasItems": true,
@@ -29,7 +28,15 @@
         "thorium/15"
 	],
     "category": "crafting",
-	"research": "废液离心机",
+	"research": {
+        "parent": "cryofluid-mixer",
+        "objectives": [
+			{
+				"type": "OnSector",
+				"preset": "狭长冰谷"
+			}
+		]
+    },
 
     "drawer": {
         "type": "DrawMulti",

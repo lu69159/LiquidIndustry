@@ -118,3 +118,32 @@
         Draw.rect(region, unit.x, unit.y, region.width * 0.8, region.height * 0.8, unit.rotation - 90);
     });
     exports.blessApply = blessApply;
+
+    const redShoot = new Effect(24, e => {
+        e.scaled(10, b => {
+            Draw.color(Color.white, Color.valueOf("FF2020"), b.fin());
+            Lines.stroke(b.fout() * 3 + 0.2);
+            Lines.circle(b.x, b.y, b.fin() * 50);
+        });
+
+        Draw.color(Color.valueOf("FF2020"));
+
+        Mathf.signs.forEach(i => {
+            Drawf.tri(e.x, e.y, 13 * e.fout(), 85, e.rotation + 90 * i);
+            Drawf.tri(e.x, e.y, 13 * e.fout(), 50, e.rotation + 20 * i);
+        });
+
+        Drawf.light(e.x, e.y, 180, Color.valueOf("FF2020"), 0.9 * e.fout());
+    });
+    exports.redShoot = redShoot;
+
+    const redRailTrail = new Effect(16, e => {
+        Draw.color(Color.valueOf("FF2020"));
+
+        Mathf.signs.forEach(i => {
+            Drawf.tri(e.x, e.y, 10 * e.fout(), 24, e.rotation + 90 + 90 * i);
+        });
+
+        Drawf.light(e.x, e.y, 60 * e.fout(), Color.valueOf("FF2020"), 0.5);
+    });
+    exports.redRailTrail = redRailTrail;
