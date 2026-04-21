@@ -37,6 +37,7 @@
             "effect": "shielded",
             "duration": 720,
             "reload": 720,
+            "range": 96,
             "applyEffect": "none",
             "activeEffect": {
                 "type": "WaveEffect",
@@ -44,7 +45,7 @@
                 "interp": "circleOut",
                 "sides": 6,
                 "strokeFrom": 3.0,
-                "sizeTo": 48,
+                "sizeTo": 96,
                 "colorFrom": "FFD37F",
                 "colorTo": "FFD37F"
             }
@@ -83,7 +84,7 @@
                 "status": "shocked",
                 "intervalBullet": {
                     "type": "LightningBulletType",
-                    "damage": 15,
+                    "damage": 30,
                     "pierceArmor": true,
                     "lightningColor": "FFFFFF",
                     "lightningLength": 35,
@@ -124,14 +125,16 @@
 				"type": "MissileBulletType",
 				"frontColor": "FFFFFFFF",
                 "backColor": "FFFFFF80",
-				"status": "shocked",
-				"damage": 10,
+				"status": "electrified",
+                "statusDuration": 90,
+				"damage": 30,
                 "speed": 6,
                 "lifetime": 80,
 				"splashDamageRadius": 24,
 				"splashDamage": 30,
 				"homingPower": 0.06,
 				"homingRange": 80,
+                "homingDelay": 20,
 				"trailLength": 8,
 				"trailWidth": 3,
 				"trailColor": "FFFFFF80",
@@ -175,12 +178,12 @@
                     "type": "LightningBulletType",
                     "lightningLength": 10,
                     "lightningColor":"FFFFFF",
-                    "damage": 20
+                    "damage": 30
                 },
-                "fragBullets": 3
+                "fragBullets": 5
             }
         }
         //武器3在JS中添加(方便添加特效)
     ],
-    "hideDatabase": true
+    "hidden": true
 }

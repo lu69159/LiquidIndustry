@@ -82,9 +82,9 @@ Events.on(ContentInitEvent, cons(e => {
 			shootSound: Sounds.shootOmura,
 			bullet: Object.assign(new RailBulletType(), {
 				hitColor: Color.white,
-				damage: 700,
-				length: 640,    
-				range: 640,
+				damage: 720,
+				length: 648,    
+				range: 648,
 				shootEffect: LIfx.whiteRailShoot,
 				pierceEffect: LIfx.whiteRailHit,
 				pointEffect: LIfx.whiteRailTrail,

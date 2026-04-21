@@ -277,6 +277,7 @@ function SFchange(){
     lib.addToResearch(YA, {
         parent: JX.name
     });
+    JX.hidden = false;
 
     let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
     T13.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆3"));
@@ -423,6 +424,7 @@ function SF2change(){
     lib.addToResearch(YA, {
         parent: JX.name
     });
+    JX.hidden = false;
 
     let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
     T13.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-skyfire"));
