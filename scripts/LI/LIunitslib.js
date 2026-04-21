@@ -5,6 +5,7 @@ function newUnit(name, unitType) {
 	return exports[name] = u;
 }
 */
+const LIfx = require("base/effects");
 const type = require("base/type");
 const healCommand = type.HealCommand();
 
@@ -59,3 +60,41 @@ exports.DY = DY;
 
 const JX = type.HoverTank("巨蟹");
 exports.JX = JX;
+
+const YA = new UnitType("渊螯");
+YA.constructor = prov(() => extend(UnitTypes.elude.constructor.get().class, {}));
+exports.YA = YA;
+Events.on(ContentInitEvent, cons(e => {
+	YA.weapons.add(
+		Object.assign(new Weapon("液体工艺-渊螯3"), {
+			x: 18,
+			y: -21.5,
+			shootY: 8,
+			recoil: 2,
+			mirror: true,
+			alternate: true,
+			rotate: true,
+			rotateSpeed: 2,
+			reload: 60,
+			cooldownTime: 60,
+			inaccuracy: 0,
+			ejectEffect: Fx.none, //Fx.sparkShoot
+			shootSound: Sounds.shootOmura,
+			bullet: Object.assign(new RailBulletType(), {
+				hitColor: Color.white,
+				damage: 700,
+				length: 640,    
+				range: 640,
+				shootEffect: LIfx.whiteRailShoot,
+				pierceEffect: LIfx.whiteRailHit,
+				pointEffect: LIfx.whiteRailTrail,
+				pointEffectSpace: 24,
+				hitEffect: Fx.massiveExplosion,
+				smokeEffect: Fx.shootBig2,
+				pierceDamageFactor: 0,
+				status: StatusEffects.shocked
+			})
+		})
+	);
+	YA.init();
+}));

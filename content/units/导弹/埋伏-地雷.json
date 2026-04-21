@@ -72,5 +72,5 @@
             }
         }
     ],
-    "hideDatabase": false
+    "hideDatabase": true
 }

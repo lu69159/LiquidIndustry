@@ -1,5 +1,6 @@
 const LIfx = require("base/effects");
 const ATD = require("base/ATD");
+const lib = require("base/lib");
 function hasMod(MOD){
     return MOD !=null && MOD.state == Mods.ModState.enabled;
 };
@@ -268,7 +269,14 @@ function SFchange(){
 
     /* 单位修改 */
     getUnitType("液体工艺-电鳐").health = 21000;
-    getUnitType("液体工艺-巨蟹").health = 55000;
+    let JX = getUnitType("液体工艺-巨蟹");
+    JX.health = 55000;
+    let YA = getUnitType("液体工艺-渊螯");
+    YA.health = 180000;
+    getBlock("饱和火力-T6单位重构厂").addUpgrade(JX, YA);
+    lib.addToResearch(YA, {
+        parent: JX.name
+    });
 
     let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
     T13.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆3"));
@@ -410,6 +418,12 @@ function SF2change(){
     addAmmoType("sfire-mod-zhulin", require("LI/LIitems")["超导质"], bulletZL);
 
     /* 单位修改 */
+    let JX = getUnitType("液体工艺-巨蟹"), YA = getUnitType("液体工艺-渊螯");
+    getBlock("sfire-mod-pentative-reconstructor").addUpgrade(JX, YA);
+    lib.addToResearch(YA, {
+        parent: JX.name
+    });
+
     let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
     T13.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-skyfire"));
     T13.addUpgrade(getUnitType("sfire-mod-convection"), getUnitType("sfire-mod-cumulus"));

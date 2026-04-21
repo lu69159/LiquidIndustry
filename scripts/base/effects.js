@@ -147,3 +147,38 @@
         Drawf.light(e.x, e.y, 60 * e.fout(), Color.valueOf("FF2020"), 0.5);
     });
     exports.redRailTrail = redRailTrail;
+
+    const whiteRailShoot = new Effect(24, e => {
+        e.scaled(10, b => {
+            Draw.color(Color.white, Color.lightGray, b.fin());
+            Lines.stroke(b.fout() * 3 + 0.2);
+            Lines.circle(b.x, b.y, b.fin() * 50);
+        });
+
+        Draw.color(Color.white);
+
+        Mathf.signs.forEach(i => {
+            Drawf.tri(e.x, e.y, 13 * e.fout(), 85, e.rotation + 90 * i);
+        });
+    });
+    exports.whiteRailShoot = whiteRailShoot;
+
+    const whiteRailHit = new Effect(18, 200, e => {
+        Draw.color(Color.white);
+        
+        Mathf.signs.forEach(i => {
+            Drawf.tri(e.x, e.y, 10 * e.fout(), 60, e.rotation + 140 * i);
+        });
+    });
+    exports.whiteRailHit = whiteRailHit;
+
+    const whiteRailTrail = new Effect(16, e => {
+        Draw.color(Color.white);
+
+        Mathf.signs.forEach(i => {
+            Drawf.tri(e.x, e.y, 10 * e.fout(), 24, e.rotation + 90 + 90 * i);
+        });
+
+        Drawf.light(e.x, e.y, 60 * e.fout(), Color.white, 0.5);
+    });
+    exports.whiteRailTrail = whiteRailTrail;

@@ -303,5 +303,5 @@
             }
         }
     ],
-    "hideDatabase": false
+    "hideDatabase": true
 }

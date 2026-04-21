@@ -1,0 +1,186 @@
+{
+    "name": "渊螯",
+    "hovering": true,  
+    "canDrown": false,
+    "squareShape": true,
+	"omniMovement": true,
+	"rotateMoveFirst": true,
+    "rotateSpeed": 1.5,
+    "speed": 0.5,
+    "hitSize": 45,
+    "ammoCapacity": 150,
+	"health": 99000,
+	"armor": 50,
+    "drag": 0.04,
+	"accel": 0.06,
+    "itemCapacity": 150,
+	"faceTarget": true,
+    "targetAir": true,
+    "targetGround": true,
+    "targetFlags": [
+		"turret",
+		"core"
+	],
+    "immunities": [
+        "burning",
+        "freezing"
+    ],
+    /*
+    "requirements": {
+		"block": "?",
+		"previous": "巨蟹"
+	},
+    */
+    "abilities": [
+        {
+            "type": "StatusFieldAbility",
+            "effect": "shielded",
+            "duration": 720,
+            "reload": 720,
+            "applyEffect": "none",
+            "activeEffect": {
+                "type": "WaveEffect",
+                "lifetime": 20.0,
+                "interp": "circleOut",
+                "sides": 6,
+                "strokeFrom": 3.0,
+                "sizeTo": 48,
+                "colorFrom": "FFD37F",
+                "colorTo": "FFD37F"
+            }
+        },
+        {
+            "type": "RegenAbility",
+            "amount": 0.5
+        }
+    ],
+    "weapons":[
+        {
+            "name": "渊螯1",
+            "x":0,
+            "y":0,
+            "shootY": 37.5,
+            "recoil": 0,
+            "mirror": false,
+            "rotate": false,
+            "alwaysContinuous": true,
+            "cooldownTime": 90,
+            "shootSound": "beamMeltdown",
+            "bullet": {
+                "type": "ContinuousLaserBulletType",
+                "makeFire": false,
+                "damage": 135,
+                "pierceArmor": true,
+                "colors": ["FFFFFFFF", "FFFFFF70"],
+                "maxRange": 360,
+                "length": 360,
+                "hitEffect": "hitMeltdown",
+                "lifetime": 60,
+                "shake": 3,
+                "shootEffect": "shootHeal",
+                "width": 4,
+                "largeHit": false,
+                "status": "shocked",
+                "intervalBullet": {
+                    "type": "LightningBulletType",
+                    "damage": 15,
+                    "pierceArmor": true,
+                    "lightningColor": "FFFFFF",
+                    "lightningLength": 35,
+                    "lightningLengthRand": 10,
+                    "shootSound": "shootArc"
+                },       
+                "bulletInterval": 6,
+                "intervalBullets": 2,
+                "intervalRandomSpread": 10,
+                "intervalSpread": 15,
+                "intervalAngle": 0
+                }
+        },
+        {
+            "name": "渊螯2",
+            "x":0,
+            "y":-4,
+            "shootY": 4.5,
+            "recoil": 4,
+            "mirror": false,
+            "rotate": true,
+            "rotateSpeed": 4,
+            "reload": 120,
+            "inaccuracy": 7,
+            "ejectEffect": "none",
+            "shake": 1,
+            "shootSound": "shootMissilePlasma",
+
+            "shoot":{
+                "type": "ShootAlternate",
+                "shots": 12,
+                "shotDelay": 2.5,
+                "spread": 4,
+                "barrels": 3
+            },
+                   
+			"bullet": {
+				"type": "MissileBulletType",
+				"frontColor": "FFFFFFFF",
+                "backColor": "FFFFFF80",
+				"status": "shocked",
+				"damage": 10,
+                "speed": 6,
+                "lifetime": 80,
+				"splashDamageRadius": 24,
+				"splashDamage": 30,
+				"homingPower": 0.06,
+				"homingRange": 80,
+				"trailLength": 8,
+				"trailWidth": 3,
+				"trailColor": "FFFFFF80",
+				"sprite": "missile-large",
+				"shrinkY": 0,
+				"shootEffect": {
+					"type": "ParticleEffect",
+					"particles": 6,
+					"sizeFrom": 3,
+					"sizeTo": 0,
+					"length": 20,
+					"baseLength": 0,
+					"lifetime": 30,
+					"colorFrom": "FFFFFF",
+					"colorTo": "FFFFFF80",
+					"cone": 60
+				},
+                "hitSound": "shootArc",
+                "despawnSound": "shootArc",
+                "hitEffect": {
+                    "type": "WaveEffect",
+                    "lifetime": 15,
+                    "sizeFrom": 1,
+                    "sizeTo": 24,
+                    "strokeFrom": 2,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFFFF",
+                    "colorTo": "FFFFFF39"
+                },
+                "despawnEffect": {
+                    "type": "WaveEffect",
+                    "lifetime": 15,
+                    "sizeFrom": 1,
+                    "sizeTo": 24,
+                    "strokeFrom": 2,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFFFF",
+                    "colorTo": "FFFFFF39"
+                },
+                "fragBullet":{
+                    "type": "LightningBulletType",
+                    "lightningLength": 10,
+                    "lightningColor":"FFFFFF",
+                    "damage": 20
+                },
+                "fragBullets": 3
+            }
+        }
+        //武器3在JS中添加(方便添加特效)
+    ],
+    "hideDatabase": true
+}
