@@ -52,7 +52,7 @@
         },
         {
             "type": "RegenAbility",
-            "amount": 0.5
+            "amount": 1.5
         }
     ],
     "weapons":[
