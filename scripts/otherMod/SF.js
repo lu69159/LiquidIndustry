@@ -44,6 +44,9 @@ function copyPE(effect, attr){
     }
     return PE;
 }
+function getUnitType(fullName){
+    return Vars.content.getByName(ContentType.unit, fullName);
+}
 function getBlock(fullName){
     return Vars.content.getByName(ContentType.block, fullName);
 }
@@ -72,6 +75,7 @@ function addAmmoType(turretName, item, bullet){
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 function SFchange(){
+    /* 炮塔修改 */
     let DCFB = getBlock("液体工艺-电磁风暴"), DCFBreq = [];
     DCFB.requirements.forEach(stack => {
         DCFBreq.push(stack);
@@ -261,6 +265,23 @@ function SFchange(){
         statusDuration: 240
     });
     addAmmoType("饱和火力-竹林", require("LI/LIitems")["超导质"], bulletZL); 
+
+    /* 单位修改 */
+    getUnitType("液体工艺-电鳐").health = 21000;
+    getUnitType("液体工艺-巨蟹").health = 55000;
+
+    let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
+    T13.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆3"));
+    T13.addUpgrade(getUnitType("饱和火力-空1"), getUnitType("饱和火力-空3"));
+    T13.addUpgrade(getUnitType("饱和火力-海1"), getUnitType("饱和火力-海3"));
+
+    T14.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆4"));
+    T14.addUpgrade(getUnitType("饱和火力-空1"), getUnitType("饱和火力-空4"));
+    T14.addUpgrade(getUnitType("饱和火力-海1"), getUnitType("饱和火力-海4"));
+
+    T15.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆5"));
+    T15.addUpgrade(getUnitType("饱和火力-空1"), getUnitType("饱和火力-空5"));
+    T15.addUpgrade(getUnitType("饱和火力-海1"), getUnitType("饱和火力-海5"));
 }
 
 function SF2change(){
@@ -387,6 +408,20 @@ function SF2change(){
         statusDuration: 240
     });
     addAmmoType("sfire-mod-zhulin", require("LI/LIitems")["超导质"], bulletZL);
+
+    /* 单位修改 */
+    let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");
+    T13.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-skyfire"));
+    T13.addUpgrade(getUnitType("sfire-mod-convection"), getUnitType("sfire-mod-cumulus"));
+    T13.addUpgrade(getUnitType("sfire-mod-alnitak"), getUnitType("sfire-mod-antares"));
+
+    T14.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-flanker"));
+    T14.addUpgrade(getUnitType("sfire-mod-convection"), getUnitType("sfire-mod-circulation"));
+    T14.addUpgrade(getUnitType("sfire-mod-alnitak"), getUnitType("sfire-mod-merak"));
+
+    T15.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-executioner"));
+    T15.addUpgrade(getUnitType("sfire-mod-convection"), getUnitType("sfire-mod-cirrus"));
+    T15.addUpgrade(getUnitType("sfire-mod-alnitak"), getUnitType("sfire-mod-regulus"));
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 Events.on(ContentInitEvent, cons(e => {

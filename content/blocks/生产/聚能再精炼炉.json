@@ -9,17 +9,15 @@
     "outputsLiquid": true,
     "liquidCapacity": 120,
     "category": "crafting",
-    /*
     "research": {
 		"parent": "再精炼高炉",
 		"objectives": [
 			{
-				"type": "SectorComplete",
-				"preset": "极冰溶洞"
+				"type": "OnSector",
+				"preset": "暴雪前哨"
 			}
 		]
 	},
-    */
     "craftTime": 80,
     "craftEffect": "none",
     "consumes": {
