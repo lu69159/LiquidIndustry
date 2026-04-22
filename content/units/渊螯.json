@@ -95,8 +95,10 @@
                 "intervalBullets": 2,
                 "intervalRandomSpread": 10,
                 "intervalSpread": 15,
-                "intervalAngle": 0
-                }
+                "intervalAngle": 0,
+
+                "cachedDps": 2220
+            }
         },
         {
             "name": "渊螯2",

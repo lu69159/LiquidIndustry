@@ -8,6 +8,9 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.2:
+    DPS显示修正
+
 0.23.1：
     为直构工厂添加SF1&2的T1-5适配
     添加对SF的T6适配
