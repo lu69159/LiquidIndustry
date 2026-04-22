@@ -1,0 +1,15 @@
+{
+    "effect": {
+		"type": "ParticleEffect",
+		"particles": 2,
+		"baseLength": 10,
+		"length": 25,
+		"lifetime": 15,
+		"spin": 8,
+		"region": "液体工艺-六角",
+		"sizeFrom": 2,
+		"sizeTo": 0,
+		"colorFrom": "ffd37f",
+		"colorTo": "ffd37f"
+	}
+}
