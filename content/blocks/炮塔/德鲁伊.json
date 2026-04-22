@@ -21,7 +21,7 @@
     "shootSound": "laser",
     "shootCone": 1,
     "targetHealing": true,
-    "targetGround": true,
+    "targetGround": false,
 	"targetAir": false,
     "inaccuracy": 0,
 	"shake": 0,
