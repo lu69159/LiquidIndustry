@@ -16,7 +16,7 @@
         "thorium/10",
         "silicon/15"
     ],
-	"category": "distribution"
+	"category": "distribution",
 	//新地图做完再添加research
-	//"research": "mass-driver"
+	"research": "mass-driver"
 }

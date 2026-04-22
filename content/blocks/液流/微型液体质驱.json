@@ -17,7 +17,7 @@
         "silicon/15",
         "亲水质/1"
     ],
-	"category": "liquid"
+	"category": "liquid",
     //新地图做完再添加research
-	//"research": "液体质驱"
+	"research": "液体质驱"
 }

@@ -637,6 +637,9 @@ const WXYTZQ = type.LiquidMassDriver("微型液体质驱", 2);
 exports.微型液体质驱 = WXYTZQ;
 
 //钻头
+const WXCSJ = new SolidPump("微型抽水机");
+exports.微型抽水机 = WXCSJ;
+
 const QXCSJ = new SolidPump("强效抽水机");
 exports.强效抽水机 = QXCSJ;
 

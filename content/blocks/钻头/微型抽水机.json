@@ -1,0 +1,25 @@
+{
+	"name": "微型抽水机",
+	"health": 40,
+	"size": 1,
+	"hasPower": true,
+	"hasLiquids": true,
+	"liquidCapacity": 10,
+	"requirements": [
+        "lead/8",
+        "titanium/8",
+        "metaglass/12",
+        "graphite/8",
+        "亲水质/0"
+	],
+	"consumes": {
+		"power": 0.5
+	},
+	"pumpAmount": 0.08,
+	"rotateSpeed": 2,
+	"result": "water",
+	"baseEfficiency": 1,
+	"attribute": "water",
+	"category": "production",
+	"research": "water-extractor"
+}
