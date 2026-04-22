@@ -45,6 +45,9 @@ function copyPE(effect, attr){
     }
     return PE;
 }
+function getItem(fullName){
+    return Vars.content.getByName(ContentType.item, fullName);
+}
 function getUnitType(fullName){
     return Vars.content.getByName(ContentType.unit, fullName);
 }
@@ -291,6 +294,25 @@ function SFchange(){
     T15.addUpgrade(getUnitType("饱和火力-陆1"), getUnitType("饱和火力-陆5"));
     T15.addUpgrade(getUnitType("饱和火力-空1"), getUnitType("饱和火力-空5"));
     T15.addUpgrade(getUnitType("饱和火力-海1"), getUnitType("饱和火力-海5"));
+
+    let SYGC = getBlock("饱和火力-实验工厂");
+    let SYGCreq = [
+        new ItemStack(Items.silicon, 3000), new ItemStack(getItem("饱和火力-镄"), 1200), 
+        new ItemStack(getItem("饱和火力-硅钢"), 1500), new ItemStack(Items.plastanium, 2200),
+        new ItemStack(Items.surgeAlloy, 1800), new ItemStack(getItem("饱和火力-裂位能"), 1200),
+        new ItemStack(getItem("饱和火力-泰勒合金"), 1000), new ItemStack(getItem("液体工艺-亲水质"), 20),
+        new ItemStack(getItem("饱和火力-二级协议"), 30), new ItemStack(getItem("饱和火力-三级协议"), 10)
+    ];
+    SYGC.plans.add(new UnitFactory.UnitPlan(YA, 23400, SYGCreq));
+    SYGC.init();
+
+    let TZGC = getBlock("饱和火力-特种工厂");
+    let TZGCreq = [
+        new ItemStack(Items.silicon, 180), new ItemStack(Items.graphite, 40),
+        new ItemStack(Items.titanium, 80), new ItemStack(getItem("液体工艺-亲水质"), 20)
+    ];
+    TZGC.plans.add(new UnitFactory.UnitPlan(getUnitType("液体工艺-河狸"), 2520, TZGCreq));
+    TZGC.init();
 }
 
 function SF2change(){
@@ -353,7 +375,7 @@ function SF2change(){
     addAmmoType("sfire-mod-woliu", require("LI/LIliquids")["超级冷冻液"], bulletWL2);
 
     //死诏
-    let bulletSZ = copyAmmoType("sfire-mod-sizhao", Vars.content.getByName(ContentType.item, "sfire-mod-discordance-fabric"));
+    let bulletSZ = copyAmmoType("sfire-mod-sizhao", getItem("sfire-mod-discordance-fabric"));
     let SZspawnBullet = bulletSZ.spawnBullets.get(0).copy();
     Object.assign(SZspawnBullet, { 
         pierce: true,
@@ -438,6 +460,14 @@ function SF2change(){
     T15.addUpgrade(getUnitType("sfire-mod-vanguard"), getUnitType("sfire-mod-executioner"));
     T15.addUpgrade(getUnitType("sfire-mod-convection"), getUnitType("sfire-mod-cirrus"));
     T15.addUpgrade(getUnitType("sfire-mod-alnitak"), getUnitType("sfire-mod-regulus"));
+
+    let TZGC = getBlock("sfire-mod-special-factory");
+    let TZGCreq = [
+        new ItemStack(Items.lead, 40), new ItemStack(Items.silicon, 180),
+        new ItemStack(Items.titanium, 100), new ItemStack(getItem("液体工艺-亲水质"), 25)
+    ];
+    TZGC.plans.add(new UnitFactory.UnitPlan(getUnitType("液体工艺-河狸"), 2520, TZGCreq));
+    TZGC.init();
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 Events.on(ContentInitEvent, cons(e => {

@@ -49,6 +49,7 @@
         {
             "name": "河狸1",
             "reload": 360,
+            "cooldownTime": 120,
             "recoil": 3,
             "x": 0,
             "y": 0,
