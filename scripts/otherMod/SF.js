@@ -446,6 +446,7 @@ function SF2change(){
     lib.addToResearch(YA, {
         parent: JX.name
     });
+    JX.researchCostMultiplier = 0.1;
     JX.hidden = false;
 
     let T13 = getBlock("液体工艺-倍乘级单位直构工厂"), T14 = getBlock("液体工艺-多幂级单位直构工厂"), T15 = getBlock("液体工艺-无量级单位直构工厂");

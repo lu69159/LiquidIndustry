@@ -97,8 +97,7 @@
                 "intervalRandomSpread": 10,
                 "intervalSpread": 15,
                 "intervalAngle": 0
-            },
-            "useAttackRange": true
+            }
         },
         {
             "name": "渊螯2",
