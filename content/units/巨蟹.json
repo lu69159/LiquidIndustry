@@ -73,7 +73,7 @@
             "mirror": false,
             "rotate": false,
             "alwaysContinuous": true,
-            "cooldownTime": 90,
+            "cooldownTime": 120,
             "shootSound": "beamMeltdown",
 
             "bullet": {
