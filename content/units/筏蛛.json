@@ -31,6 +31,7 @@
 		"core"
 	],
     "immunities": [
+        "wet",
         "freezing"
     ],
     "requirements": {

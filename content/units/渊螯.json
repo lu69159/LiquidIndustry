@@ -22,6 +22,7 @@
 		"core"
 	],
     "immunities": [
+        "wet",
         "burning",
         "freezing"
     ],
@@ -37,15 +38,15 @@
             "effect": "shielded",
             "duration": 720,
             "reload": 720,
-            "range": 96,
+            "range": 192,
             "applyEffect": "none",
             "activeEffect": {
                 "type": "WaveEffect",
                 "lifetime": 20.0,
                 "interp": "circleOut",
                 "sides": 6,
-                "strokeFrom": 3.0,
-                "sizeTo": 96,
+                "strokeFrom": 5,
+                "sizeTo": 192,
                 "colorFrom": "FFD37F",
                 "colorTo": "FFD37F"
             }
@@ -95,9 +96,7 @@
                 "intervalBullets": 2,
                 "intervalRandomSpread": 10,
                 "intervalSpread": 15,
-                "intervalAngle": 0,
-
-                "cachedDps": 2220
+                "intervalAngle": 0
             }
         },
         {
@@ -187,5 +186,5 @@
         }
         //武器3在JS中添加(方便添加特效)
     ],
-    "hidden": true
+    "dpsEstimate": 3955
 }
