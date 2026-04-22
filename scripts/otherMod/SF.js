@@ -45,6 +45,9 @@ function copyPE(effect, attr){
     }
     return PE;
 }
+function getStatusEffect(fullName){
+    return Vars.content.getByName(ContentType.status, fullName);
+}
 function getItem(fullName){
     return Vars.content.getByName(ContentType.item, fullName);
 }
@@ -276,6 +279,11 @@ function SFchange(){
     JX.health = 55000;
     let YA = getUnitType("液体工艺-渊螯");
     YA.health = 180000;
+    YA.immunities.add(getStatusEffect("unmoving"));
+    YA.immunities.add(getStatusEffect("electrified"));
+    YA.immunities.add(getStatusEffect("饱和火力-干扰"));
+    YA.immunities.add(getStatusEffect("饱和火力-崩溃"));
+    YA.immunities.add(getStatusEffect("饱和火力-休克"));
     getBlock("饱和火力-T6单位重构厂").addUpgrade(JX, YA);
     lib.addToResearch(YA, {
         parent: JX.name
@@ -442,6 +450,11 @@ function SF2change(){
 
     /* 单位修改 */
     let JX = getUnitType("液体工艺-巨蟹"), YA = getUnitType("液体工艺-渊螯");
+    YA.immunities.add(getStatusEffect("unmoving"));
+    YA.immunities.add(getStatusEffect("electrified"));
+    YA.immunities.add(getStatusEffect("sfire-mod-scrambled"));
+    YA.immunities.add(getStatusEffect("sfire-mod-breakdown"));
+    YA.immunities.add(getStatusEffect("sfire-mod-magnetic-strif"));
     getBlock("sfire-mod-pentative-reconstructor").addUpgrade(JX, YA);
     lib.addToResearch(YA, {
         parent: JX.name
