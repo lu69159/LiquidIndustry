@@ -47,12 +47,10 @@ Events.on(ContentInitEvent, cons(e => {
         )
     });
 
-    lib.addToResearch(maps["暴雪前哨"], {
+    lib.addToResearch(maps["暗潮冻港"], {
         parent: "极光壁垒",
         objectives: Seq.with(
-            new Objectives.SectorComplete(maps["极光壁垒"]),
-            new Objectives.Research(LIblockslib.废液混合器),
-            new Objectives.Research(LIblockslib.预警雷达)
+            new Objectives.SectorComplete(maps["极光壁垒"])
         )
     });
 
@@ -81,6 +79,14 @@ Events.on(ContentInitEvent, cons(e => {
         parent: "蛇行道",
         objectives: Seq.with(
             new Objectives.SectorComplete(maps["蛇行道"])
+        )
+    });
+
+    lib.addToResearch(maps["暴雪前哨"], {
+        parent: "地火",
+        objectives: Seq.with(
+            new Objectives.SectorComplete(maps["极光壁垒"]),
+            new Objectives.Research(LIblockslib.废液混合器)
         )
     });
 

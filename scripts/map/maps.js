@@ -59,18 +59,17 @@ map5.rules = cons((rule) => {
 });
 exports["极光壁垒"] = map5;
 
-const map6 = new SectorPreset("暴雪前哨", NT, 61);
-map6.difficulty = 10;
+const map6 = new SectorPreset("暗潮冻港", NT, 61);
+map6.difficulty = 11;
 map6.alwaysUnlocked = false;
 map6.addStartingItems = true;
-map6.captureWave = 36;
+map6.captureWave = 41;
 map6.rules = cons((rule) => {
-    rule.fog = true;
+    rule.fog = false;
     rule.lighting = true;
-    rule.staticFog = false;
-    rule.ambientLight = rule.staticColor = rule.dynamicColor = Color.valueOf("DFDFDFC0");
+    rule.ambientLight = Color.valueOf("000000F0");
 });
-exports["暴雪前哨"] = map6;
+exports["暗潮冻港"] = map6;
 
 //教程
 const JCmap1 = new SectorPreset("教程：获取钛", NT, 39);
@@ -120,3 +119,16 @@ ZXmap2.rules = cons((rule) => {
     rule.attackMode = false;
 });
 exports["地火"] = ZXmap2;
+
+const ZXmap3 = new SectorPreset("暴雪前哨", NT, 9);
+ZXmap3.difficulty = 10;
+ZXmap3.alwaysUnlocked = false;
+ZXmap3.addStartingItems = true;
+ZXmap3.captureWave = 36;
+ZXmap3.rules = cons((rule) => {
+    rule.fog = true;
+    rule.lighting = true;
+    rule.staticFog = false;
+    rule.ambientLight = rule.staticColor = rule.dynamicColor = Color.valueOf("DFDFDFC0");
+});
+exports["暴雪前哨"] = ZXmap3;

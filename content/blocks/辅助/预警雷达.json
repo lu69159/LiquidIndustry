@@ -19,8 +19,8 @@
 		"parent": "Nepture",
 		"objectives": [
 			{
-				"type": "SectorComplete",
-				"preset": "极光壁垒"
+				"type": "OnSector",
+				"preset": "暴雪前哨"
 			}
 		]
 	}

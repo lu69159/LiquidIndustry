@@ -8,6 +8,12 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.3:
+    "暴雪前哨"更改为支线区块
+    添加了新的机制主线地图"暗潮冻港"
+    添加一个冰原装饰物
+    闪电/雷霆核心攻击间隔增加
+
 0.23.2:
     添加微型抽水
     德鲁伊现在只锁定受损建筑

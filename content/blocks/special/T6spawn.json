@@ -1,0 +1,116 @@
+{
+    "type": "Block",
+    "update": true,
+    "destroyEffect": {
+        "type": "MultiEffect",
+        "effects": [
+            {
+                                "type": "WaveEffect",
+                                "lifetime": 360,
+                                "sizeFrom": 120,
+                                "sizeTo": 128,
+                                "strokeFrom": 6,
+                                "strokeTo": 6,
+                                "colorFrom": "FFFFFF00",
+                                "colorTo": "FFFFFF"
+            },
+            {
+                                "type": "WaveEffect",
+                                "lifetime": 360,
+                                "sizeFrom": 60,
+                                "sizeTo": 64,
+                                "strokeFrom": 4,
+                                "strokeTo": 4,
+                                "colorFrom": "FFFFFF00",
+                                "colorTo": "FFFFFF"
+            },
+            {
+                                "type": "WaveEffect",
+                                "lifetime": 360,
+                                "sizeFrom": 30,
+                                "sizeTo": 32,
+                                "strokeFrom": 2,
+                                "strokeTo": 2,
+                                "colorFrom": "FFFFFF00",
+                                "colorTo": "FFFFFF"
+            }
+        ]
+    },
+    "health": 1,
+    "destroyBulletSameTeam": true,
+    "destroyBullet":{
+        "type": "EmptyBulletType",
+        "damage": 0,
+        "speed": 0,
+        "absorbable": false,
+        "reflectable": false,
+        "hittable": false,
+        "collides": false,
+        "hitSound": "explosionReactor",
+        "hitEffect": {
+            "type": "MultiEffect",
+            "effects": [
+                {
+                    "type": "WaveEffect",
+                    "lifetime": 30,
+                    "sizeFrom": 128,
+                    "sizeTo": 256,
+                    "strokeFrom": 6,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFF",
+                    "colorTo": "FFFFFF"
+                },
+                {
+                    "type": "WaveEffect",
+                    "lifetime": 30,
+                    "sizeFrom": 64,
+                    "sizeTo": 256,
+                    "strokeFrom": 4,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFF",
+                    "colorTo": "FFFFFF"
+                },
+                {
+                    "type": "WaveEffect",
+                    "lifetime": 30,
+                    "sizeFrom": 32,
+                    "sizeTo": 256,
+                    "strokeFrom": 2,
+                    "strokeTo": 0,
+                    "colorFrom": "FFFFFF",
+                    "colorTo": "FFFFFF"
+                }
+            ]
+        },
+        "lifetime": 360,
+        "intervalBullet": {
+            "type": "LightningBulletType",
+            "damage": 30,
+            "pierceArmor": true,
+            "lightningColor": "FFFFFF",
+            "lightningLength": 25,
+            "lightningLengthRand": 20,
+            "hitSound": "shootArc",
+            "despawnSound": "shootArc"
+        },   
+        "intervalRandomSpread": 360,
+        "bulletInterval": 6,
+        "intervalBullets": 5,
+        "fragBullets": 1,
+        "fragOnHit": true,
+        "fragOnAbsorb": true,
+        "fragBullet":{
+            "type": "BasicBulletType",
+            "damage": 0,
+            "splashDamageRadius":128,
+            "splashDamage": 500,
+            "speed": 0,
+            "absorbable": false,
+            "reflectable": false,
+            "hittable": false,
+            "collides": false,
+            "instantDisappear": true,
+            "spawnUnit": "渊螯"                                    
+        }
+    }
+}

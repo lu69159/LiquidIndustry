@@ -25,8 +25,8 @@
 		"parent": "超频投影",
 		"objectives": [
 			{
-				"type": "SectorComplete",
-				"preset": "暴雪前哨"
+				"type": "OnSector",
+				"preset": "暗潮冻港"
 			}
 		]
 	}

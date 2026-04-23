@@ -263,10 +263,10 @@ const WXHXJZ = extend(CoreBlock, "微型核心基座", {
 });
 exports.微型核心基座 = WXHXJZ;
 
-const SDcore = type.PowerCore("闪电核心", 10, 24*8, 20, 200);
+const SDcore = type.PowerCore("闪电核心", 10, 24*8, 45, 200);
 exports.闪电核心 = SDcore;
 
-const LTcore = type.PowerCore("雷霆核心", 20, 36*8, 15, 800);
+const LTcore = type.PowerCore("雷霆核心", 20, 36*8, 20, 800);
 exports.雷霆核心 = LTcore;
 
 //炮塔
