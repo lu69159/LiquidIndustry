@@ -17,6 +17,15 @@
     "maxAmmo": 8,
     "shootSound": "shootTank",
     "targetAir": false,
+    "research": {
+		"parent": "埋伏",
+		"objectives": [
+			{
+				"type": "OnSector",
+				"content": "暗潮冻港"
+			}
+		]
+	},
     "requirements": [
         "thorium/125",
         "silicon/400",

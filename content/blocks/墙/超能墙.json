@@ -24,6 +24,10 @@
 	"research": {
 		"parent": "力场墙",
 		"objectives": [
+			{
+				"type": "OnSector",
+				"preset": "暗潮冻港"
+			},
             {
 				"type": "Research",
 				"content": "液体工艺-大型合金装甲储液罐"
