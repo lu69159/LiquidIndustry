@@ -40,7 +40,7 @@
             "lifetime": 60,
             "backColor": "00000000",
             "frontColor": "00000000",     
-            "splashDamage": 1080,
+            "splashDamage": 540,
             "splashDamageRadius": 40,
             "puddles": 1,
 			"puddleAmount": 450,
@@ -130,7 +130,7 @@
             "lifetime": 60,
             "backColor": "00000000",
             "frontColor": "00000000",     
-            "splashDamage": 1080,
+            "splashDamage": 540,
             "splashDamageRadius": 40,
             "puddles": 1,
 			"puddleAmount": 450,
@@ -226,7 +226,7 @@
 		    "height": 16,
             "backColor": "00000000",
             "frontColor": "00000000",     
-            "splashDamage": 1080,
+            "splashDamage": 540,
             "splashDamageRadius": 160,
             "splashDamagePierce": true,
             "makeFire": true,
@@ -236,18 +236,30 @@
 			"puddleAmount": 450,
 			"puddleLiquid": "oil",
             "buildingDamageMultiplier": 0.05,
-            "status": "melting",
+            "status": "tarred",
 		    "statusDuration": 300,
             "hitSize": 24,   
             "hitSound": "explosionMissile",
             "despawnSound": "explosionMissile",
-            "trailEffect": ["fireHit", "fire"],
+            "trailEffect": {
+                "type": "ParticleEffect",
+                "lifetime": 30,
+                "particles": 2,
+                "interp": "circleOut",
+                "sizeInterp": "circleIn",
+                "sizeFrom": 5,
+                "sizeTo": 0,
+                "length": 24,
+                "baseLength": 0,
+                "colorFrom": "313131",
+                "colorTo": "313131"
+            },
             "trailInterval": 5,
             "trailChance": 1,
 
             "intervalBullet": {
                 "type": "LightningBulletType",
-                "lightningColor": "FFE99A",
+                "lightningColor": "313131",
                 "damage": 1,
                 "buildingDamageMultiplier": 0.05,
                 "pierceArmor": true,
@@ -260,7 +272,7 @@
             "intervalAngle": 0,
             "fragBullet":{
                 "type": "LightningBulletType",
-                "lightningColor": "FFE99A",
+                "lightningColor": "313131",
                 "damage": 20,
                 "buildingDamageMultiplier": 0.05,
                 "pierceArmor": true,
@@ -279,8 +291,8 @@
                         "sizeTo": 168,
                         "strokeFrom": 1,
                         "strokeTo": 0,
-                        "colorFrom": "FFFFFFFF",
-                        "colorTo": "FFFFFF40"
+                        "colorFrom": "313131FF",
+                        "colorTo": "31313140"
                     },
                     {
                         "type": "WaveEffect",
@@ -289,8 +301,8 @@
                         "sizeTo": 160, 
                         "strokeFrom": 6,
                         "strokeTo": 0,
-                        "colorFrom": "FFE99A",
-                        "colorTo": "FFE99A"
+                        "colorFrom": "313131",
+                        "colorTo": "313131"
                     },
                     {
                         "type": "ParticleEffect",
@@ -303,8 +315,8 @@
                         "sizeTo": 0,
                         "length": 176,
                         "baseLength": 0,
-                        "colorFrom": "FFE99A",
-                        "colorTo": "FFE999A"
+                        "colorFrom": "313131",
+                        "colorTo": "313131"
                     }
                 ]
             },
@@ -322,8 +334,8 @@
                         "interp": "pow5Out",
                         "length": 150,
                         "lifetime": 60,
-                        "colorFrom": "FFE99AFF",
-                        "colorTo": "FFE99A40",
+                        "colorFrom": "313131FF",
+                        "colorTo": "31313140",
                         "cone": 8
                     },
                     {
@@ -337,8 +349,8 @@
                         "interp": "pow3Out",
                         "length": 80,
                         "lifetime": 35,
-                        "colorFrom": "FFE99AFF",
-                        "colorTo": "FFE99A40",
+                        "colorFrom": "313131FF",
+                        "colorTo": "31313140",
                         "cone": 45
                     },
                     {
@@ -349,8 +361,8 @@
                         "interp": "circleOut",
                         "length": 30,
                         "lifetime": 20,
-                        "colorFrom": "FFE99AFF",
-                        "colorTo": "FFE99A40",
+                        "colorFrom": "313131FF",
+                        "colorTo": "31313140",
                         "cone": 180
                     }
                 ]
@@ -702,6 +714,302 @@
                 ]
             }
         },
+        "恒温矿渣晶体":{
+            "type": "BasicBulletType",
+            "ammoMultiplier": 3,
+            "damage": 200,
+            "speed": 12.8,
+            "lifetime": 60,
+            "width": 8,
+		    "height": 16,
+            "backColor": "00000000",
+            "frontColor": "00000000",     
+            "splashDamage": 1080,
+            "splashDamageRadius": 160,
+            "splashDamagePierce": true,
+            "makeFire": true,
+            "incendAmount": 3,
+            "incendChance": 1,
+            "puddles": 1,
+			"puddleAmount": 450,
+			"puddleLiquid": "slag",
+            "buildingDamageMultiplier": 0.05,
+            "status": "melting",
+		    "statusDuration": 300,
+            "hitSize": 24,   
+            "hitSound": "explosionMissile",
+            "despawnSound": "explosionMissile",
+            "trailEffect": ["fireHit", "fire"],
+            "trailInterval": 5,
+            "trailChance": 1,
+
+            "intervalBullet": {
+                "type": "LightningBulletType",
+                "makeFire": true,
+                "lightningColor": "FFE99A",
+                "damage": 1,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 4
+            },       
+            "bulletInterval": 3,
+            "intervalBullets": 3,
+            "intervalRandomSpread": 30,
+            "intervalSpread": 60,
+            "intervalAngle": 0,
+            "fragBullet":{
+                "type": "LightningBulletType",
+                "makeFire": true,
+                "lightningColor": "FFE99A",
+                "damage": 20,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 15,
+                "hitSound": "shootArc",
+                "despawnSound": "shootArc"
+            },
+            "fragBullets": 6,
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 10,
+                        "sizeFrom": 0,
+                        "sizeTo": 168,
+                        "strokeFrom": 1,
+                        "strokeTo": 0,
+                        "colorFrom": "FFFFFFFF",
+                        "colorTo": "FFFFFF40"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 20,
+                        "sizeFrom": 0,
+                        "sizeTo": 160, 
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "colorFrom": "FFE99A",
+                        "colorTo": "FFE99A"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "region": "液体工艺-sTar",
+                        "lifetime": 30,
+                        "particles": 30,
+                        "interp": "circleOut",
+                        "sizeInterp": "circleIn",
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "length": 176,
+                        "baseLength": 0,
+                        "colorFrom": "FFE99A",
+                        "colorTo": "FFE999A"
+                    }
+                ]
+            },
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "FFE99AFF",
+                        "colorTo": "FFE99A40",
+                        "cone": 180
+                    }
+                ]
+            }
+        },
+        "恒温衰变晶体":{
+            "type": "BasicBulletType",
+            "ammoMultiplier": 3,
+            "damage": 200,
+            "speed": 12.8,
+            "lifetime": 60,
+            "width": 8,
+		    "height": 16,
+            "backColor": "00000000",
+            "frontColor": "00000000",     
+            "splashDamage": 2580,
+            "splashDamageRadius": 160,
+            "splashDamagePierce": true,
+            "makeFire": true,
+            "incendAmount": 3,
+            "incendChance": 1,
+            "puddles": 1,
+			"puddleAmount": 450,
+			"puddleLiquid": "衰变熔岩",
+            "buildingDamageMultiplier": 0.05,
+            "status": "burning",
+		    "statusDuration": 600,
+            "hitSize": 24,   
+            "hitSound": "explosionMissile",
+            "despawnSound": "explosionMissile",
+            "trailEffect": {
+                "type": "ParticleEffect",
+                "lifetime": 45,
+                "particles": 2,
+                "interp": "circleOut",
+                "sizeInterp": "circleIn",
+                "sizeFrom": 6,
+                "sizeTo": 0,
+                "length": 24,
+                "baseLength": 0,
+                "colorFrom": "FF0000",
+                "colorTo": "FF000040"
+            },
+            "trailInterval": 5,
+            "trailChance": 1,
+
+            "intervalBullet": {
+                "type": "LightningBulletType",
+                "makeFire": true,
+                "lightningColor": "FF0000",
+                "damage": 1,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 4
+            },       
+            "bulletInterval": 3,
+            "intervalBullets": 3,
+            "intervalRandomSpread": 30,
+            "intervalSpread": 60,
+            "intervalAngle": 0,
+            "fragBullet":{
+                "type": "LightningBulletType",
+                "makeFire": true,
+                "lightningColor": "FF0000",
+                "damage": 20,
+                "buildingDamageMultiplier": 0.05,
+                "pierceArmor": true,
+                "lightningLength": 15,
+                "hitSound": "shootArc",
+                "despawnSound": "shootArc"
+            },
+            "fragBullets": 6,
+            "hitEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 10,
+                        "sizeFrom": 0,
+                        "sizeTo": 168,
+                        "strokeFrom": 1,
+                        "strokeTo": 0,
+                        "colorFrom": "FF0000FF",
+                        "colorTo": "FFFFFF40"
+                    },
+                    {
+                        "type": "WaveEffect",
+                        "lifetime": 20,
+                        "sizeFrom": 0,
+                        "sizeTo": 160, 
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "colorFrom": "FF0000",
+                        "colorTo": "FFFFFF"
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "region": "液体工艺-sTar",
+                        "lifetime": 30,
+                        "particles": 30,
+                        "interp": "circleOut",
+                        "sizeInterp": "circleIn",
+                        "sizeFrom": 6,
+                        "sizeTo": 0,
+                        "length": 176,
+                        "baseLength": 0,
+                        "colorFrom": "FF0000",
+                        "colorTo": "FF000040"
+                    }
+                ]
+            },
+            "shootEffect": {
+                "type": "MultiEffect",
+                "effects": [
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 1,
+                        "line": true,
+                        "lenFrom": 120,
+                        "lenTo": 0,
+                        "strokeFrom": 6,
+                        "strokeTo": 0,
+                        "interp": "pow5Out",
+                        "length": 150,
+                        "lifetime": 60,
+                        "colorFrom": "FF0000FF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 8
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 4,
+                        "line": true,
+                        "lenFrom": 40,
+                        "lenTo": 0,
+                        "strokeFrom": 3,
+                        "strokeTo": 0,
+                        "interp": "pow3Out",
+                        "length": 80,
+                        "lifetime": 35,
+                        "colorFrom": "FF0000FF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 45
+                    },
+                    {
+                        "type": "ParticleEffect",
+                        "particles": 8,
+                        "sizeFrom": 2,
+                        "sizeTo": 0,
+                        "interp": "circleOut",
+                        "length": 30,
+                        "lifetime": 20,
+                        "colorFrom": "FF0000FF",
+                        "colorTo": "FFFFFF40",
+                        "cone": 180
+                    }
+                ]
+            }
+        },
         "超导质":{
             "type": "BasicBulletType",
             "ammoMultiplier": 1,
@@ -712,7 +1020,7 @@
             "lifetime": 69.375,
             "backColor": "00000000",
             "frontColor": "00000000",     
-            "splashDamage": 1800,
+            "splashDamage": 1080,
             "splashDamageRadius": 40,
             "buildingDamageMultiplier": 0.05,
             "status": "electrified",
@@ -823,7 +1131,7 @@
         "metaglass/1000",
         "silicon/750",
         "graphite/750",
-        "surge-alloy/750",
+        "surge-alloy/600",
         "亲水质/125",
         "固态水/15"
 	],
