@@ -22,7 +22,7 @@
 		"objectives": [
 			{
 				"type": "OnSector",
-				"content": "暗潮冻港"
+				"preset": "暗潮冻港"
 			}
 		]
 	},

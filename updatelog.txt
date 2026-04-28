@@ -8,6 +8,10 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.5:
+    mod.json简介中支持版本的修正
+    渊螯的武器子弹调整
+
 0.23.4:
     修改最低游戏版本为157.4(否则生成子弹有BUG)
     科技树位置和要求微调

@@ -75,7 +75,7 @@ Events.on(ContentInitEvent, cons(e => {
 			alternate: true,
 			rotate: true,
 			rotateSpeed: 2,
-			reload: 60,
+			reload: 75,
 			cooldownTime: 60,
 			inaccuracy: 0,
 			ejectEffect: Fx.none, //Fx.sparkShoot
@@ -92,6 +92,7 @@ Events.on(ContentInitEvent, cons(e => {
 				hitEffect: Fx.massiveExplosion,
 				smokeEffect: Fx.shootBig2,
 				pierceDamageFactor: 0,
+				buildingDamageMultiplier: 0.1,
 				status: StatusEffects.shocked
 			})
 		})

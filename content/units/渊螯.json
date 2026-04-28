@@ -129,6 +129,7 @@
 				"status": "electrified",
                 "statusDuration": 90,
 				"damage": 30,
+                "shieldDamageMultiplier": 2,
                 "speed": 6,
                 "lifetime": 80,
 				"splashDamageRadius": 24,
@@ -179,7 +180,8 @@
                     "type": "LightningBulletType",
                     "lightningLength": 10,
                     "lightningColor":"FFFFFF",
-                    "damage": 30
+                    "damage": 20,
+                    "shieldDamageMultiplier": 2
                 },
                 "fragBullets": 5
             }

@@ -25,6 +25,8 @@ function ATD(myplanet, func){
     }
 }
 
+//block.minfo.mod.name 直接查询方块所属MOD名称
+
 //把MOD中的所有东西加入MYPLANET星球数据库
 exports.AddAllToDatabase = (modname, myplanet) => {
     if(!modname) throw "modname is null";
