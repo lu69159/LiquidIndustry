@@ -92,7 +92,7 @@ Events.on(ContentInitEvent, cons(e => {
 				hitEffect: Fx.massiveExplosion,
 				smokeEffect: Fx.shootBig2,
 				pierceDamageFactor: 0,
-				buildingDamageMultiplier: 0.1,
+				buildingDamageMultiplier: 0.2,
 				status: StatusEffects.shocked
 			})
 		})

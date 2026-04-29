@@ -8,6 +8,9 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.6:
+
+
 0.23.5:
     mod.json简介中支持版本的修正
     电磁风暴弹药调整
