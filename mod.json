@@ -5,6 +5,9 @@
     "repo": "lu69159/LiquidIndustry",
     "description": "Liquid Industry for v157.4+\nBeta v0.23.6",
     "version": "0.23.6",
-    "minGameVersion": "157.4"
+    "minGameVersion": "157.4",
+
+    "main": "LI.LIMod",
+    "java": true
 }
 //"hideBrowser": true
