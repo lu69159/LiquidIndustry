@@ -3,7 +3,7 @@
     "name": "破防",
     "targetAir": true,
     "targetGround": true,
-    "health": 180,
+    "health": 140,
     "size": 3,
     "shake": 0.05,
     "inaccuracy": 2,
@@ -116,8 +116,8 @@
 		]
 	},
     "requirements": [
-        "titanium/30",
-        "silicon/70",
+        "titanium/12",
+        "silicon/36",
         "blast-compound/5"
     ],
     "buildCostMultiplier": 2,

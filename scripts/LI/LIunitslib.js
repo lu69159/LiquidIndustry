@@ -9,6 +9,11 @@ const LIfx = require("base/effects");
 const type = require("base/type");
 const healCommand = type.HealCommand();
 
+//导弹
+const TF1 = new MissileUnitType("钍反炮-钍反1");
+TF1.constructor = prov(() => extend(TimedKillUnit, {}));
+exports.钍反1 = TF1;
+
 //纯辅助
 const JZQ = new UnitType("建造球");
 JZQ.constructor = prov(() => extend(UnitTypes.flare.constructor.get().class, {}));

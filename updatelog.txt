@@ -8,6 +8,11 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.7:
+    添加了载荷炮塔类
+    添加了钍反炮和相关内容(在塞普罗科技树中)
+    破防造价降低(血量也降低)
+
 0.23.6:
     开始转JAVA(虽然目前只加了个主类)
 

@@ -1,0 +1,59 @@
+{
+    "health": 700,
+    "armor": 1000,
+    "flying": true,
+    "speed": 10,
+    "maxRange": 16,
+    "lifetime" : 80, 
+    "hitSize": 10,
+    "engineColor": "A97BFF",
+    "engineLayer": 110,
+    "engineSize": 4,
+    "engineOffset": 10,
+    "rotateSpeed": 0.2,
+    "trailLength": 18,
+    "missileAccelTime": 15,
+    "lowAltitude": true,
+    "loopSound": "loopMissileTrail",
+    "loopSoundVolume": 0.5,
+    "deathSound": "explosionReactor",
+    "deathExplosionEffect": "reactorExplosion",
+    "targetUnderBlocks": false,
+    "trailColor": "BF92F9",
+
+    "weapons":[
+        {
+            "shootCone": 360,
+            "mirror": false,
+            "reload": 1,
+            
+            "shootOnDeath": true,
+            "shake": 12,
+            "bullet":{
+                "type": "BasicBulletType",
+                "ammoMultiplier": 1,
+                "killShooter": true,
+                "instantDisappear": true,
+                "damage": 0,
+                "splashDamage": 5000,
+                "splashDamageRadius": 160,
+                "splashDamagePierce": true,
+                "hitEffect": "none",
+                "despawnEffect": "none",
+                "hitSound": "none",
+                "despawnSound": "none"
+            }          
+        }
+    ],
+    "parts":[
+        {
+            "type": "RegionPart",
+            "mirror": false,
+            "suffix": "-top",
+            "progress": "life",
+            "color": "FC000000",
+            "colorTo": "FC000080"
+        }
+    ]
+                        
+}
