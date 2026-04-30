@@ -11,7 +11,7 @@ function Package(name) {
 }
 var LI = Package('LI');
 importPackage(LI);
-importPackage(LI.blocks.defense.turret);
+importPackage(LI.blocks.defense.turrets);
 
 exports.LIMod = LI.LIMod;
 exports.PayloadTurret = LI.blocks.defense.turrets.PayloadTurret;

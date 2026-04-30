@@ -1,6 +1,7 @@
 {
     "name": "钍反炮",
     "category": "turret",
+    "canOverdrive": false,
     "research": {
 		"parent": "foreshadow",
 		"objectives": [
@@ -33,7 +34,7 @@
 	"minWarmup": 0.9,
     "predictTarget": false,
     "consumes": {
-       "power": 10
+       "power": 15
     },
     "requirements": [
         "thorium/175",
