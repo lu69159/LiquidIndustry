@@ -1,7 +1,6 @@
 {
     "name": "钍反炮",
     "category": "turret",
-    "canOverdrive": false,
     "research": {
 		"parent": "foreshadow",
 		"objectives": [
