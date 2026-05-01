@@ -1,7 +1,7 @@
 const type = require("base/type");
 const status = require("LI/LIstatus");
 const MC = require("base/MultiCrafterlib");
-const LIjava = require("LIjava");
+const LIjava = require("LI/LIjava");
 
 //TEST
 
