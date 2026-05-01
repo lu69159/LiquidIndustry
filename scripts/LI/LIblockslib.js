@@ -5,38 +5,6 @@ const LIjava = require("LI/LIjava");
 
 //TEST
 
-const TFP = new LIjava.ThoriumReactorLauncher("钍反炮");
-TFP.drawer = Object.assign(new DrawTurret(), {
-    parts: Seq.with(
-        Object.assign(new RegionPart("-main"), {
-            mirror: false,
-            heatColor: Color.valueOf("BF92F9"),
-			heatProgress: DrawPart.PartProgress.warmup,
-            moveY: 0
-        }),
-        Object.assign(new RegionPart("-side"), {
-            mirror: true,
-            under: true,
-            heatColor: Color.valueOf("BF92F9"),
-			heatProgress: DrawPart.PartProgress.warmup,
-            progress: DrawPart.PartProgress.warmup,
-            moveX: 3,
-            moveY: -2
-        }),
-        Object.assign(new RegionPart("-钍反1"), {
-            progress: DrawPart.PartProgress.reload.curve(Interp.pow2In),
-            color: Color.white,
-            colorTo: new Color(1, 1, 1, 0),
-            outline: false,
-            under: true,
-            layerOffset: -0.01,
-            moves: Seq.with(new DrawPart.PartMove(DrawPart.PartProgress.warmup.inv(), 0, -6, 0))
-        }),
-
-    )
-});
-exports.钍反炮 = TFP;
-
 //自定义地板
 const JHXQ = extend(Floor, "禁核心区", {
 	cantPlaceMiniCore: true,
@@ -60,6 +28,9 @@ exports.辅助工厂 = FZGC;
 
 const GZQ = new Constructor("构筑器");
 exports.构筑器 = GZQ;
+
+const DXZHCSD = new PayloadConveyor("大型载荷传送带");
+exports.大型载荷传送带 = DXZHCSD;
 
 //电力
 //爆燃反应炉
@@ -314,6 +285,53 @@ const DCFB = extend(ItemTurret, "电磁风暴", {
     }
 });
 exports.电磁风暴 = DCFB;
+
+const TFP = new LIjava.ThoriumReactorLauncher("钍反炮");
+TFP.ammoparts(
+    Blocks.thoriumReactor,
+    Seq.with(Object.assign(new RegionPart("-钍反1"), {
+        progress: DrawPart.PartProgress.reload.curve(Interp.pow2In),
+        color: Color.white,
+        colorTo: new Color(1, 1, 1, 0),
+        outline: false,
+        under: true,
+        layerOffset: -0.01,
+        moves: Seq.with(new DrawPart.PartMove(DrawPart.PartProgress.warmup.inv(), 0, -6, 0))
+    })),
+    ZSHFYD,
+    Seq.with(Object.assign(new RegionPart("-钍反2"), {
+        progress: DrawPart.PartProgress.reload.curve(Interp.pow2In),
+        color: Color.white,
+        colorTo: new Color(1, 1, 1, 0),
+        outline: false,
+        under: true,
+        layerOffset: -0.01,
+        moves: Seq.with(new DrawPart.PartMove(DrawPart.PartProgress.warmup, 0, 2, 0))
+    }))
+);
+Object.assign(TFP, {
+    drawPartsForAmmo: true,
+    drawer: Object.assign(new DrawTurret(), {
+        parts: Seq.with(
+            Object.assign(new RegionPart("-main"), {
+                mirror: false,
+                heatColor: Color.valueOf("BF92F9"),
+                heatProgress: DrawPart.PartProgress.warmup,
+                moveY: 0
+            }),
+            Object.assign(new RegionPart("-side"), {
+                mirror: true,
+                under: true,
+                heatColor: Color.valueOf("BF92F9"),
+                heatProgress: DrawPart.PartProgress.warmup,
+                progress: DrawPart.PartProgress.warmup,
+                moveX: 3,
+                moveY: -2
+            })
+        )
+    })
+});
+exports.钍反炮 = TFP;
 
 const DLY = new PowerTurret("德鲁伊");
 exports.德鲁伊 = DLY;

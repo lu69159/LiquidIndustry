@@ -49,6 +49,13 @@
             "hitColor": "BF92F9",
             "ammoMultiplier": 1,
             "spawnUnit": "钍反炮-钍反1"
+        },
+        "重水核反应堆":{
+            "shootEffect": "shootBig",
+            "smokeEffect": "shootSmokeMissileColor",
+            "hitColor": "BF92F9",
+            "ammoMultiplier": 1,
+            "spawnUnit": "钍反炮-钍反2"
         }
     }
 }

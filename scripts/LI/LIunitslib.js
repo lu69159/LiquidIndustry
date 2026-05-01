@@ -14,6 +14,10 @@ const TF1 = new MissileUnitType("钍反炮-钍反1");
 TF1.constructor = prov(() => extend(TimedKillUnit, {}));
 exports.钍反1 = TF1;
 
+const TF2 = new MissileUnitType("钍反炮-钍反2");
+TF2.constructor = prov(() => extend(TimedKillUnit, {}));
+exports.钍反2 = TF2;
+
 //纯辅助
 const JZQ = new UnitType("建造球");
 JZQ.constructor = prov(() => extend(UnitTypes.flare.constructor.get().class, {}));
