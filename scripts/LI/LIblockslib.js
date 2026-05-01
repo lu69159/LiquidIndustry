@@ -1,11 +1,11 @@
 const type = require("base/type");
 const status = require("LI/LIstatus");
 const MC = require("base/MultiCrafterlib");
-const LI = require("LI");
+const LIjava = require("LIjava");
 
 //TEST
 
-const TFP = new LI.PayloadTurret("钍反炮");
+const TFP = new LIjava.ThoriumReactorLauncher("钍反炮");
 TFP.drawer = Object.assign(new DrawTurret(), {
     parts: Seq.with(
         Object.assign(new RegionPart("-main"), {
