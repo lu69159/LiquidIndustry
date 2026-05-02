@@ -97,7 +97,7 @@ exports.WallLiquidRouter = (name) => {
         }
     });
     wall.update = true;
-    wall.buildCostMultiplier = 2.5
+    wall.buildCostMultiplier = 2.5;
     wall.buildType = (() => {
         return extend(Wall.WallBuild, wall, {
             acceptLiquid(source, liquid){
