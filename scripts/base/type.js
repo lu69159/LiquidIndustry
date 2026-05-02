@@ -1000,39 +1000,15 @@ exports.HoverTank = (name) => {
 };
 
 exports.HealCommand = () => {
-    //healAI:寻找残血单位治疗，优先寻找高血量、掉血多的单位，当附近有敌人且单位血量高于50%时优先后退
+    //healAI:寻找残血单位治疗，优先寻找高血量、掉血多的单位
     function healAI(){
         const healRange = 480;
-        const fleeRange = 200;
-        const retreatDst = 160;
-        const retreatDelay = Time.toSeconds * 1;
         const healAI = extend(DefenderAI, {
-            retreatTimer: 0,
-            avoid: null,
             damagedTarget: null,
-            escape: false,
-            canEscape(){
-                return this.avoid != null && (this.target == null || this.target.dead || this.target.health / this.target.maxHealth > 0.5);
-            },
-            updateMovement(){
-                if(this.timer.get(this.timerTarget4, 40)){
-                    this.avoid = Units.closestTarget(this.unit.team, this.unit.x, this.unit.y, fleeRange);
-                    this.escape = this.canEscape();
-                }           
-                if(this.escape){
-                    if((this.retreatTimer += Time.delta) >= retreatDelay){
-                            var core = this.unit.closestCore();
-                            if(core != null && !this.unit.within(core, retreatDst)){
-                                this.moveTo(core, retreatDst);
-                            }
-                    }
-                }
-                else{
-                    this.retreatTimer = 0;
-                    if(this.target instanceof Unit && this.target.team == this.unit.team){
-                        if(!this.target.within(this.unit, this.unit.type.range * 0.65)){
-                            this.moveTo(this.target, this.unit.type.range * 0.65);
-                        }
+            updateMovement(){         
+                if(this.target instanceof Unit && this.target.team == this.unit.team){
+                    if(!this.target.within(this.unit, this.unit.type.range * 0.65)){
+                        this.moveTo(this.target, this.unit.type.range * 0.65);
                     }
                 }
             },

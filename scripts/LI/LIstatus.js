@@ -37,7 +37,6 @@ Events.on(ContentInitEvent, cons(e => {
 }));
 
 ///////////////////////////////////////////////////////////////
-const FB = new BasicBulletType();
 
 const baseSize = 26; //王座为例
 const 神佑 = extend(StatusEffect, "神佑", {

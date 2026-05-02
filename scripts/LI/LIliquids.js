@@ -42,7 +42,6 @@ newExtendLiquid("衰变熔岩", {
         }
     }
 });
-//衰变熔岩 (定义于 终能聚合器)
 
 Liquids.water.shownPlanets.add(NT);
 Liquids.slag.shownPlanets.add(NT);
