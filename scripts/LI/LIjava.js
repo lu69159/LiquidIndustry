@@ -9,6 +9,7 @@ importPackage(LI.type.defense.turrets);
 importPackage(LI.blocks.defense.turrets);
 
 exports.LIMod = LI.LIMod;
+exports.LIBlocks = LI.LIBlocks;
 exports.PayloadTurret = LI.type.defense.turrets.PayloadTurret;
 exports.ThoriumReactorLauncher = LI.blocks.defense.turrets.ThoriumReactorLauncher;
 

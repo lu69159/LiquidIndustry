@@ -8,6 +8,9 @@ If you’d like to help improve the mod’s language support, or have better ide
 QQ群1091952404，文件都丢在里面，有BUG也可在此反馈
 最近忙起来了，更新会变慢很多
 
+0.23.9:
+    
+
 0.23.8:
     为钍反炮增加了载荷弹药: 重水核反应堆
     钍反炮现在需要钍才能发射对应的载荷导弹了

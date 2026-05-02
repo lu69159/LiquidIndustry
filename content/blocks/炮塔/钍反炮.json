@@ -55,6 +55,7 @@
             "smokeEffect": "shootSmokeMissileColor",
             "hitColor": "BF92F9",
             "ammoMultiplier": 1,
+            "reloadMultiplier": 0.8,
             "spawnUnit": "钍反炮-钍反2"
         }
     }
