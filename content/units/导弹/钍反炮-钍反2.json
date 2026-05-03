@@ -5,7 +5,7 @@
     "speed": 10,
     "maxRange": 16,
     "lifetime" : 80, 
-    "hitSize": 10,
+    "hitSize": 16,
     "engineColor": "A97BFF",
     "engineLayer": 110,
     "engineSize": 4,
