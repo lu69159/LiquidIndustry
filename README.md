@@ -9,5 +9,7 @@ WIP
 作者QQ2909165527)
 
 为塞普罗添加了更多的液体建筑，并新增了一个矿物稀缺但液体丰富的寒冷星球
+也包括其他扩展建筑
 
 Added more liquid blocks for Serpulo. And added a new cold planet that is scarce in minerals but rich in liquids.
+Also expanded other buildings.
