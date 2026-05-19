@@ -1,12 +1,12 @@
-# LiquidIndustry(液体工艺)
+# ***LiquidIndustry(液体工艺)***
 ![LiquidIndustry](./icon.png)
 
-### 最近正在转Java所以更新频率会很低
+## [点此前往Java版本(Click here for the Java version)](https://github.com/lu69159/LiquidIndustry-Java)
 
-WIP
+- **本模组已经转Java，JavaScript版本不会继续更新**
+- **This mod has been migrated to Java. The JavaScript version will no longer be maintained.**
 
-(这是作者做着玩的MOD，技术力不太够，还请见谅
-作者QQ2909165527)
+
 
 为塞普罗添加了更多的液体建筑，并新增了一个矿物稀缺但液体丰富的寒冷星球
 也包括其他扩展建筑
