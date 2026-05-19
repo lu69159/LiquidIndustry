@@ -6,11 +6,14 @@ Events.on(ClientLoadEvent, cons(e => {
     // 主内容区域
     dialog.cont.pane((() => {
         let table = new Table();
-        table.add(Core.bundle.format("PROBLEM")).left().wrap().width(500).maxWidth(500).pad(4).labelAlign(Align.left);
+        table.add(Core.bundle.format("JAVAVERSION")).left().wrap().width(500).maxWidth(500).pad(4).labelAlign(Align.left);
         table.row();
         return table;
     })()).grow().center().maxWidth(900);
 
+    dialog.buttons.button("Github-JavaVerion", Icon.github, run(() => {
+        Core.app.openURI("https://github.com/lu69159/LiquidIndustry-Java");
+    })).size(210, 64);
     dialog.buttons.button("[accent]" + Core.bundle.format("updatelog"), run(() => {
         var updatelog= new BaseDialog(Core.bundle.format("updatelog"));
         updatelog.cont.pane((() => {
@@ -32,9 +35,6 @@ Events.on(ClientLoadEvent, cons(e => {
         center().
         maxWidth(540);
         updatelog.buttons.defaults().size(210, 64);
-        updatelog.buttons.button("Github", Icon.github, run(() => {
-            Core.app.openURI("https://github.com/lu69159/LiquidIndustry");
-        })).size(210, 64);
         updatelog.addCloseButton(210);
         updatelog.show();
     })).size(210, 64);

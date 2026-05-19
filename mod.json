@@ -3,8 +3,8 @@
     "displayName": "Liquid Industry",
     "author": "Space",
     "repo": "lu69159/LiquidIndustry",
-    "description": "Liquid Industry for v157.4+\nBeta v0.23.9",
-    "version": "0.23.9",
+    "description": "Liquid Industry for v157.4+\nBeta v0.23.9.1",
+    "version": "0.23.9.1",
     "minGameVersion": "157.4",
 
     "main": "LI.LIMod",
