@@ -1,8 +1,0 @@
-{
-	"name": "基地墙体",
-	"health": 5000,
-	"size": 2,
-	"armor": 10,
-	"category": "defense",
-    "buildVisibility":"hidden"
-}
