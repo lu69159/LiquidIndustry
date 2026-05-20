@@ -1,0 +1,10 @@
+    name: 液体工艺
+    displayName: Liquid Industry
+    author: Space
+    repo: lu69159/LiquidIndustry
+    description: Liquid Industry Beta v0.24 for v157.4+
+    version: 0.24
+    minGameVersion: 157.4
+
+    main: LI.LIMod
+    java: true
