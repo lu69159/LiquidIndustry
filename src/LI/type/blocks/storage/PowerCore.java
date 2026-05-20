@@ -30,7 +30,7 @@ public class PowerCore extends CoreBlock {
     public PowerCore(String name) {
         super(name);
         consumesPower = false;
-        outputsPower = true;
+        hasPower = outputsPower = conductivePower = true;
     }
 
     @Override

@@ -10,6 +10,8 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.24: (重大改动，旧版模组存档可能因此损坏)
     模组结构大更改,完全转入Java
+    地图建筑版本适配新版
+    去除了视野缩放加强
     重水核反应堆现在在重水不足时发电量会减少
     重水效果更改为麻痹
     衰变反应堆重做

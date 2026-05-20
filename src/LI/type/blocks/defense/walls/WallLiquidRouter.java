@@ -67,7 +67,7 @@ public class WallLiquidRouter extends Wall {
         public void drawLiquid(){
             var liquidRegion = Tmp.tr1;
             liquidRegion.set(renderer.fluidFrames[liquids.current().gas ? 1 : 0][liquids.current().getAnimationFrame()]);
-            var threshold = (size - 1) / 2;
+            float threshold = (size - 1) / 2f;
             for(int tx = 0; tx < size; tx++){
                 for(int ty = 0; ty < size; ty++){
                     Drawf.liquid(liquidRegion, x - threshold * tilesize + tx * tilesize, y - threshold * tilesize + ty * tilesize, liquids.currentAmount() / block.liquidCapacity, liquids.current().color.write(Tmp.c1));

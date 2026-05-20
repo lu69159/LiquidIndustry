@@ -93,6 +93,7 @@ public class LItechTree {
                     });
                 });
                 node(LCQ, Seq.with(new OnSector(map5)), () -> {});
+                node(YJLD, Seq.with(new OnSector(ZXmap3)), () -> {});
             });
 
             node(CDJD, Seq.with(new SectorComplete(map2)), () -> {
@@ -127,19 +128,22 @@ public class LItechTree {
 
             node(map1, Seq.with(new SectorComplete(planetaryTerminal)), () -> {
                 node(map2, Seq.with(new SectorComplete(map1), new Research(WXHXJZ)), () -> {
-                    node(map3, Seq.with(new SectorComplete(map2)/* 冰冷废液分离机 */), () -> {
-                        node(map4, Seq.with(new SectorComplete(map3), new Research(SDHX), new Research(DL)/* 二液? */), () -> {
-                            node(map5, Seq.with(new SectorComplete(map4), new Research(ZTQD)/* 三液转 */), () -> {
+                    node(map3, Seq.with(new SectorComplete(map2), new Research(BLFYFLJ)), () -> {
+                        node(map4, Seq.with(new SectorComplete(map3), new Research(SDHX), new Research(DL)), () -> {
+                            node(map5, Seq.with(new SectorComplete(map4), new Research(ZTQD), new Research(JHTQGC)), () -> {
                                 node(map6, Seq.with(new SectorComplete(map5)), () -> {});
                             });
 
                             node(ZXmap1, Seq.with(new SectorComplete((map4))), () -> {
                                 node(ZXmap2, Seq.with(new SectorComplete(ZXmap1)), () -> {
-                                    node(ZXmap3, Seq.with(new SectorComplete(ZXmap2)/* 废液混合器 */), () -> {});
+                                    node(ZXmap3, Seq.with(new SectorComplete(ZXmap2), new Research(FYHHQ)), () -> {});
                                 });
                             });
                         });
                     });
+                });
+                node(JCmap1, Seq.with(new SectorComplete(map1), new Research(BLFYFLJ)), () -> {
+                    node(JCmap2, Seq.with(new SectorComplete(map2), new Research(YJFYJLJ)), () -> {});
                 });
             });
 

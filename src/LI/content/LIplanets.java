@@ -59,7 +59,7 @@ public class LIplanets {
                 r.lighting = r.showSpawns = true;
                 r.solarMultiplier = 0.05f;
             };
-
+            startSector = 1;
             visible = accessible = alwaysUnlocked = allowCampaignRules = clearSectorOnLose = prebuildBase = true;
             showRtsAIRule = allowSectorInvasion = bloom = updateLighting = false;
             rotateTime = 60 * 10f;

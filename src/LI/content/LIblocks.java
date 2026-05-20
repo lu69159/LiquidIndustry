@@ -4,7 +4,11 @@ import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.scene.ui.Image;
+import arc.scene.ui.ImageButton;
+import arc.scene.ui.layout.Table;
 import arc.struct.*;
+import arc.util.Scaling;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.entities.*;
@@ -16,6 +20,7 @@ import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.ui.Styles;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.defense.turrets.*;
@@ -30,6 +35,8 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
+import multicraft.*;
+
 import LI.type.blocks.power.*;
 import LI.type.blocks.defense.walls.*;
 import LI.type.blocks.effect.*;
@@ -37,12 +44,13 @@ import LI.type.blocks.distribution.liquid.*;
 import LI.type.blocks.storage.*;
 import LI.type.blocks.defense.turrets.*;
 import LI.type.blocks.distribution.itemLiquid.*;
+import LI.type.blocks.production.*;
 
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
 public class LIblocks {
-    /** 部分方块还未搬入JAVA：力场墙，极光。液体质驱和卸载类。所有生产类。 */
+    /** 部分未用到的方块还未搬入JAVA，固液转化器使用了外部库 */
     public static Block
     //environment
     JHXQ,BS,JBQ,JB,JBBS,BDFY,BLFYC,QBLFYC,CJLDYC,SBRYC,
@@ -71,7 +79,7 @@ public class LIblocks {
     //生产
     BLFYFLJ,YJFYJLJ,EJFYJLQ,SJJHZHQ,SJJHZHY,JHTQY, //废液提取物品
     FYLXJ,ZJLGL,JHTQGC,JHNSC,ZNJHQ,SNNJY,JNZJLL,SNPSJ,FYHHQ, //废液精炼相关
-    QSZHCQ,ZYZYSJ,CDLJQ,MFSJ,JTRZQ,ZSSCQ,CLHHQ, //GYZHQ //MOD物品生产
+    QSZHCQ,ZYZYSJ,CDLJQ,MFSJ,JTRZQ,ZSSCQ,CLHHQ,GYZHQ, //MOD物品生产
     GL,DXFSJ,LDYJBJ,GL2,SGFJQ, //原版扩展
     XZBFJQ,JLHJFJQ, //分解器
 
@@ -399,7 +407,7 @@ public class LIblocks {
             fuelItem = Items.phaseFabric;
             explodeEffect = LIfx.SBFYDExplosion;
 
-            outputLiquid = new LiquidStack(LIliquids.SBRY, 6f / 60);
+            outputLiquid = new LiquidStack(LIliquids.SBRY, 4f / 60);
             explodeOnFull = true;
 
             ambientSound = Sounds.loopPulse;
@@ -439,7 +447,7 @@ public class LIblocks {
             health = 2800;
             size = 5;
             itemDuration = 30f;
-            powerProduction = 833.3f;
+            powerProduction = 1170f;
             heating = 0.06f;
             coolantPower = 1.5f;
             lightColor = Color.valueOf("FFEEEE");
@@ -491,6 +499,7 @@ public class LIblocks {
         }};
         YJLD = new Radar("预警雷达"){{
             requirements(Category.effect, BuildVisibility.fogOnly, with(Items.graphite, 24, Items.silicon, 15, Items.metaglass, 12));
+            size = 2;
             glowColor = Color.valueOf("FFFFFF60");
             fogRadius = 70;
             discoveryTime = 180f;
@@ -1335,7 +1344,7 @@ public class LIblocks {
         }};
         DLY = new PowerTurret("德鲁伊"){{
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 150, Items.graphite, 50, LIitems.ZYZ, 5));
-            canOverdrive = targetGround = targetAir = false;
+            canOverdrive = targetAir = false;
             targetHealing = true;
             health = 1000;
             size = 3;
@@ -2297,6 +2306,7 @@ public class LIblocks {
             requirements(Category.defense, with(Items.metaglass, 8, Items.phaseFabric, 6, LIitems.QSZ, 1));
             health = 840;
             armor = 5;
+            size = 2;
             liquidCapacity = 500f;
 
             chanceDeflect = 20f;
@@ -2575,6 +2585,47 @@ public class LIblocks {
                     new DrawDefault()
             );
         }};
+        ZNJHQ = new FullExplosionCrafter("终能聚合器"){{
+            requirements(Category.crafting, with(Items.copper, 600, Items.lead, 600, Items.titanium, 400, Items.thorium, 40, Items.surgeAlloy, 225, LIitems.QSZ, 200, LIitems.CDZ, 30, LIitems.NRJT, 20, LIitems.GTCJLDY, 10));
+            hasPower = true;
+            health = 1860;
+            size = 3;
+            itemCapacity = 20;
+            liquidCapacity = 60f;
+            craftTime = 3600f;
+            buildCostMultiplier = 1.5f;
+            updateEffectChance = 0.2f;
+            updateEffect = new ParticleEffect(){{
+                particles = 3;
+                offset = 0;
+                baseLength = 40f;
+                length = -40f;
+                lifetime = 60f;
+                spin = 3f;
+                interp = Interp.pow5Out;
+                sizeInterp = Interp.pow3In;
+                region = "circleSmall";
+                sizeFrom = 1f;
+                sizeTo = 0f;
+                colorFrom = Color.valueOf("DFDFDF80");
+                colorTo = Color.valueOf("FFFFFF80");
+            }};
+            consumePower(80f);
+            consumeItems(with(LIitems.ZYZ, 10, LIitems.HWKZJT, 5));
+            consumeLiquid(Liquids.cryofluid, 5);
+            consumeLiquid(LIliquids.FY4, 0.4f);
+            outputItem = new ItemStack(LIitems.SMWZ, 1);
+            outputLiquid = new LiquidStack(LIliquids.SBRY, 0.3f);
+            drawer = new DrawMulti(
+                    new DrawDefault(),
+                    new DrawCrucibleFlame(){{
+                        flameColor = Color.valueOf("FFFFFF80");
+                        midColor = Color.valueOf("00000000");
+                        particleSize = 2f;
+                        particleRad = 45f;
+                    }}
+            );
+        }};
         // 神能凝聚仪
         JNZJLL = new GenericCrafter("聚能再精炼炉"){{
             requirements(Category.crafting, with(Items.titanium, 175, Items.metaglass, 50, Items.silicon, 75, LIitems.ZYZ, 20, LIitems.QSZ, 5));
@@ -2750,6 +2801,200 @@ public class LIblocks {
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.cryofluid),
                     new DrawDefault(), new DrawLiquidRegion(LIliquids.CJLDY)
+            );
+        }};
+        GYZHQ = new MultiCrafter("固液转化器"){{
+            requirements(Category.crafting, with(Items.metaglass, 200, Items.titanium, 120, Items.silicon, 150, LIitems.QSZ, 10));
+            hasPower = hasLiquids = true;
+            health = 300;
+            size = 3;
+            itemCapacity = 5;
+            liquidCapacity = 900f;
+            craftEffect = Fx.steam;
+            switchStyle = new RecipeSwitchStyle("simple2"){
+                @Override
+                public void build(MultiCrafter multiCrafter, MultiCrafterBuild multiCrafterBuild, Table table) {
+                    Table t = new Table();
+                    t.background(Tex.whiteui);
+                    t.setColor(Pal.darkerGray);
+
+                    for(int i = 0; i < multiCrafter.resolvedRecipes.size; ++i) {
+                        int I =i;
+                        Recipe recipe = (Recipe)multiCrafter.resolvedRecipes.get(i);
+                        ImageButton button = new ImageButton(Styles.clearTogglei);
+                        Image img;
+                        if (recipe.icon != null) {
+                            img = new Image((TextureRegion)recipe.icon.get());
+                            if (recipe.iconColor != null) {
+                                img.setColor(recipe.iconColor);
+                            }
+                        } else {
+                            img = getDefaultIcon(multiCrafter, multiCrafterBuild, recipe.output);
+                        }
+
+                        button.replaceImage(img);
+                        button.getImageCell().scaling(Scaling.fit).size(40.0F);
+                        button.changed(() -> multiCrafterBuild.configure(I));
+                        button.update(() -> button.setChecked(multiCrafterBuild.curRecipeIndex == I));
+                        t.add(button).grow().margin(10.0F);
+                        if ((I+1) % 7 == 0) {
+                            t.row();
+                        }
+                    }
+
+                    table.add(t).grow();
+                }
+            };
+            resolvedRecipes = Seq.with(
+                    //liquid -> soild
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.QSZ, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.water, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTS, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.QSZ, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.oil, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTSY, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.QSZ, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.cryofluid, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTLDY, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.QSZ, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.ZS, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTZS, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.QSZ, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.CJLDY, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTCJLDY, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.NRJT, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.slag, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.HWKZJT, 1)};
+                        }};
+                        craftTime = 300f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.NRJT, 1)};
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.SBRY, 1.5f)};
+                            power = 8f;
+                        }};
+                        output = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.HWSBJT, 1)};
+                        }};
+                        craftTime = 600f;
+                    }},
+                    //soild -> liquid
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTS, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.water, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTSY, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.oil, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTLDY, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.cryofluid, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTZS, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.ZS, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.GTCJLDY, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.CJLDY, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.HWKZJT, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(Liquids.slag, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }},
+                    new Recipe(){{
+                        input = new IOEntry(){{
+                            items = new ItemStack[]{new ItemStack(LIitems.HWSBJT, 1)};
+                        }};
+                        output = new IOEntry(){{
+                            fluids = new LiquidStack[]{new LiquidStack(LIliquids.SBRY, 15f)};
+                        }};
+                        craftTime = 30f;
+                    }}
+            );
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.slag),
+                    new DrawLiquidTile(Liquids.water), new DrawLiquidTile(Liquids.cryofluid),
+                    new DrawLiquidTile(Liquids.oil), new DrawLiquidTile(LIliquids.ZS),
+                    new DrawLiquidTile(LIliquids.CJLDY), new DrawLiquidTile(LIliquids.SBRY),
+                    new DrawDefault()
             );
         }};
 

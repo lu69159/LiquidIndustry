@@ -20,6 +20,7 @@ public class LImaps {
 
     public static final Seq<SectorPreset> tutorialMaps = new Seq<>();
     public static final Seq<SectorPreset> windMaps = new Seq<>();
+    public static final Seq<SectorPreset> allMaps = new Seq<>();
 
     public static void load(){
         map1 = new SectorPreset("测试区", NT, 1){{
@@ -154,5 +155,6 @@ public class LImaps {
 
         tutorialMaps.addAll(JCmap1, JCmap2);
         windMaps.addAll(ZXmap3);
+        allMaps.addAll(map1, map2, map3, map4, map5, map6, ZXmap1, ZXmap2, ZXmap3, JCmap1, JCmap2);
     }
 }
