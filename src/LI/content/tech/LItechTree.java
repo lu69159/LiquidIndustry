@@ -203,7 +203,9 @@ public class LItechTree {
         }), waterExtractor);
         addTechNode(WXCSJ, waterExtractor);
         addTechNode(node(QSZHCQ, () -> {
-            //固液转化器接晶体熔铸器
+            node(GYZHQ, () -> {
+                node(JTRZQ);
+            });
             node(ZYZYSJ);
             node(CDLJQ);
         }), multiPress);
