@@ -8,6 +8,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.24.1:
+    更新ATD，允许在其他MOD存在禁用方块的情况下混模
+
 0.24: (重大改动，旧版模组存档可能因此损坏)
     模组结构大更改,完全转入Java
     地图建筑版本适配新版

@@ -1,13 +1,18 @@
 package LI.content.tech;
 
 import arc.func.Boolf;
+import arc.struct.Seq;
 import mindustry.Vars;
 import mindustry.ctype.UnlockableContent;
 import mindustry.type.*;
 import mindustry.content.*;
 import LI.content.LIplanets;
 
-public class ATD {
+import static mindustry.Vars.state;
+
+public class ATD{
+    public static Seq<Planet> ATDplanets = new Seq<>();
+
     public static void load(){
         AddToDatabase(LIplanets.NT, (u) -> {
             if(u instanceof Planet || u instanceof Weather) return false;
@@ -23,7 +28,29 @@ public class ATD {
                     break;
                 }
             }
-            if(shouldATD) AddToDatabase(planet, (u) -> u.shownPlanets.contains(LIplanets.NT));
+            if(shouldATD){
+                if(planet != LIplanets.NT && planet != Planets.serpulo && planet != Planets.erekir) ATDplanets.add(planet);
+                AddToDatabase(planet, (u) -> u.shownPlanets.contains(LIplanets.NT));
+            }
+        }
+    }
+
+    public static void ATDrule(){
+        if(state.isCampaign() && ATDplanets.contains(state.rules.planet)){
+            for(var b : state.rules.bannedBlocks){
+                if(b.shownPlanets.contains(LIplanets.NT)){
+                    if(state.rules.blockWhitelist){
+                        if(!state.rules.bannedBlocks.contains(b)){
+                            state.rules.bannedBlocks.add(b);
+                        }
+                    }
+                    else{
+                        if(state.rules.bannedBlocks.contains(b)){
+                            state.rules.bannedBlocks.remove(b);
+                        }
+                    }
+                }
+            }
         }
     }
 

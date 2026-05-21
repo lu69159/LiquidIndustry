@@ -3,6 +3,7 @@ package LI.game;
 import arc.Events;
 import mindustry.game.Rules;
 import LI.content.*;
+import LI.content.tech.ATD;
 
 import static mindustry.Vars.*;
 import static mindustry.game.EventType.*;
@@ -27,6 +28,7 @@ public class LIrules {
                 state.rules.staticColor = rule.staticColor;
                 state.rules.dynamicColor = rule.dynamicColor;
             }
+            ATD.ATDrule();
         }
     }
 }
