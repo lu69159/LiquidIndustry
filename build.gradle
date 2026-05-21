@@ -49,8 +49,28 @@ configurations.configureEach{
     }
 }
 
+jar{
+    archiveFileName = "${project.name}Desktop.jar"
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from{
+        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
+    }
+
+    from("assets/"){
+        include "**"
+    }
+
+    from(projectDir){
+        include "mod.hjson"
+    }
+}
+
 tasks.register('jarAndroid'){
     dependsOn "jar"
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     doLast{
         if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.")
@@ -67,24 +87,6 @@ tasks.register('jarAndroid'){
         //dex and desugar files - this requires d8 in your PATH
         "$d8 $dependencies --min-api 14 --output ${project.name}Android.jar ${project.name}Desktop.jar"
                 .execute(null, new File("build/libs")).waitForProcessOutput(System.out, System.err)
-    }
-}
-
-jar{
-    archiveFileName = "${project.name}Desktop.jar"
-
-    duplicatesStrategy = DuplicatesStrategy.WARN
-
-    from{
-        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
-    }
-
-    from("assets/"){
-        include "**"
-    }
-
-    from(projectDir){
-        include "mod.hjson"
     }
 }
 
