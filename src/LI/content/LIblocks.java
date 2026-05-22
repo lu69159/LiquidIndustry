@@ -1439,8 +1439,8 @@ public class LIblocks {
             shootSound = Sounds.explosionTitan;
 
             consumePower(546f);
-            coolant = consumeCoolant(5f);
-            coolantMultiplier = 0.1f;
+            coolant = consumeCoolant(4f);
+            coolantMultiplier = 0.125f;
 
             shoot = new ShootSpread(5, 6f);
             shootEffect = new MultiEffect(
@@ -2314,6 +2314,7 @@ public class LIblocks {
             requirements(Category.defense, with(Items.metaglass, 32, Items.phaseFabric, 24, LIitems.QSZ, 4));
             health = 840 * 4;
             armor = 5;
+            size = 2;
             liquidCapacity = 500 * 4f;
 
             chanceDeflect = 20f;

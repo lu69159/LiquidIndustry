@@ -32,7 +32,7 @@ public class LIrules {
                 }
             }
             else{
-                if(ATD.ATDplanets.contains(state.rules.planet)){
+                if(ATD.ATDplanets.contains(state.rules.planet) && state.rules.bannedBlocks.size > 0){
                     for(var b : Vars.content.blocks()){
                         if(b.shownPlanets.contains(LIplanets.NT)){
                             if(state.rules.blockWhitelist){

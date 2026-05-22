@@ -134,6 +134,29 @@ public class PayloadTurret extends Turret {
     public class PayloadTurretBuild extends TurretBuild{
 
         @Override
+        public void onProximityAdded(){
+            super.onProximityAdded();
+
+            //add first ammo payload to cheaty blocks so they can shoot properly
+            if(!hasAmmo() && cheating() && ammoTypes.size > 0){
+                UnlockableContent content = ammoTypes.keys().next();
+                if(content == null) return;
+                BulletType type = ammoTypes.get(content);
+                totalAmmo += type.ammoMultiplier;
+                for(int i = 0; i < ammo.size; i++){
+                    PayloadEntry entry = (PayloadEntry)ammo.get(i);
+                    //if found, put it to the right
+                    if(entry.content == content){
+                        entry.amount += type.ammoMultiplier;
+                        ammo.swap(i, ammo.size - 1);
+                        return;
+                    }
+                }
+                ammo.add(new PayloadEntry(content, (int)type.ammoMultiplier));
+            }
+        }
+
+        @Override
         public Object senseObject(LAccess sensor){
             return switch(sensor){
                 case currentAmmoType -> ammo.size > 0 ? ((PayloadEntry)ammo.peek()).content : null;
