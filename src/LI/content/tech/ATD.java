@@ -7,8 +7,7 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.type.*;
 import mindustry.content.*;
 import LI.content.LIplanets;
-
-import static mindustry.Vars.state;
+import mindustry.world.blocks.environment.*;
 
 public class ATD{
     public static Seq<Planet> ATDplanets = new Seq<>();
@@ -17,7 +16,8 @@ public class ATD{
         AddToDatabase(LIplanets.NT, (u) -> {
             if(u instanceof Planet || u instanceof Weather) return false;
             return u.minfo.mod == Vars.mods.locateMod("液体工艺") ||
-                    (u.shownPlanets.contains(Planets.serpulo) && !(u instanceof SectorPreset ||
+                    (u.shownPlanets.contains(Planets.serpulo) &&
+                            !(u instanceof SectorPreset || u instanceof Floor || u instanceof Prop || u instanceof TallBlock ||
                             u == Blocks.advancedLaunchPad || u == Blocks.landingPad || u == Blocks.interplanetaryAccelerator));
         });
         for(var planet : Vars.content.planets()){
@@ -31,25 +31,6 @@ public class ATD{
             if(shouldATD){
                 if(planet != LIplanets.NT && planet != Planets.serpulo && planet != Planets.erekir) ATDplanets.add(planet);
                 AddToDatabase(planet, (u) -> u.shownPlanets.contains(LIplanets.NT));
-            }
-        }
-    }
-
-    public static void ATDrule(){
-        if(state.isCampaign() && ATDplanets.contains(state.rules.planet)){
-            for(var b : state.rules.bannedBlocks){
-                if(b.shownPlanets.contains(LIplanets.NT)){
-                    if(state.rules.blockWhitelist){
-                        if(!state.rules.bannedBlocks.contains(b)){
-                            state.rules.bannedBlocks.add(b);
-                        }
-                    }
-                    else{
-                        if(state.rules.bannedBlocks.contains(b)){
-                            state.rules.bannedBlocks.remove(b);
-                        }
-                    }
-                }
             }
         }
     }

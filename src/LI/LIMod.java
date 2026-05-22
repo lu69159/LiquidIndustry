@@ -43,7 +43,7 @@ public class LIMod extends Mod{
         LIliquids.load();
         LIstatus.load();
         LIunits.load();
-        LIblocks.load(); //终能聚合器,精华提取源，神能凝聚仪未添加。钍反炮显示尚有问题 双传带液体角落显示有问题
+        LIblocks.load(); //精华提取源，神能凝聚仪未添加。钍反炮显示尚有问题 双传带液体角落显示有问题
         LItechTree.load(); //未添加的内容无法加入
     }
 }

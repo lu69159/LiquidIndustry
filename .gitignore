@@ -156,6 +156,4 @@ gradle-app.setting
 Thumbs.db
 android/libs/
 
-#Myself
-
-#dependencies-fork
+## Myself
