@@ -12,7 +12,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
     修复地图搬运的错误
     修复大型相织装甲储液罐只有一格的问题
     修复微型核心基座本体无法卸载物品的问题
-    更新混模机制，允许在其他MOD存在禁用方块的情况下混模
+    更新混模机制，能自动适配包含赛普罗物品的星球
     流体投射力场的加速贴图修改
     载荷类炮塔作弊机制更新
 
