@@ -655,7 +655,7 @@ public class LIblocks {
         WXHXJZ = new CoreBlock("微型核心基座"){{
             requirements(Category.effect, with(Items.copper, 125, Items.lead, 100));
             health = 140;
-            itemCapacity = 0;
+            itemCapacity = 1;
             unitCapModifier = 0;
 
             unitType = LIunits.JS;
