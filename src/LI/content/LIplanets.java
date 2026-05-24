@@ -38,11 +38,11 @@ public class LIplanets {
             };
             meshLoader = () -> new MultiMesh(
                 new HexMesh(NT, 5),
-                new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FF30"), 2, 0.42f, 1f, 0.43f)
+                new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FFD0"), 2, 0.42f, 1f, 0.43f)
             );
             cloudMeshLoader = () -> new MultiMesh(
                 new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FF"), 2, 0.42f, 1f, 0.43f),
-                new HexSkyMesh(NT, 3, 0.6f, 0.15f, 5, Color.valueOf("D8F3FF80"), 2, 0.42f, 1.2f, 0.45f)
+                new HexSkyMesh(NT, 3, 0.6f, 0.15f, 5, Color.valueOf("D8F3FFD0"), 2, 0.42f, 1.2f, 0.45f)
             );
             campaignRules = new CampaignRules(){
                 @Override
