@@ -2,9 +2,9 @@
     displayName: Liquid Industry
     author: Space
     repo: lu69159/LiquidIndustry
-    description: Liquid Industry Beta v0.24.1 for v157.4+
-    version: 0.24.1
-    minGameVersion: 157.4
+    description: Liquid Industry Beta v0.24.1 for v158+
+    version: 0.24.2
+    minGameVersion: 158
 
     main: LI.LIMod
     java: true

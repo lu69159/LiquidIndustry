@@ -25,11 +25,6 @@ import static mindustry.Vars.*;
 public class PayloadTurret extends Turret {
     public ObjectMap<UnlockableContent, BulletType> ammoTypes = new ObjectMap<>();
 
-    /** Whether to draw parts for each ammoType */
-    public boolean drawPartsForAmmo = false;
-    public ObjectMap<UnlockableContent, Seq<DrawPart>> ammoParts = new OrderedMap<>();
-    private ObjectMap<UnlockableContent, DrawTurret> realDrawers = new OrderedMap<>();
-
     public PayloadTurret(String name) {
         super(name);
 
@@ -41,7 +36,6 @@ public class PayloadTurret extends Turret {
     public void ammo(Object... objects){
         ammoTypes = ObjectMap.of(objects);
     }
-    public void ammoparts(Object... objects){ ammoParts = OrderedMap.of(objects); }
 
     /** Makes copies of all bullets and limits their range. */
     public void limitRange(){
@@ -114,23 +108,6 @@ public class PayloadTurret extends Turret {
         super.init();
     }
 
-    @Override
-    public void load(){
-        super.load();
-        if(drawPartsForAmmo && ammoParts.size > 0){
-            if(!(drawer instanceof DrawTurret dt)) return;
-
-            var orderedKeys = ammoParts.keys().toSeq().sort();
-            for(UnlockableContent i : orderedKeys){
-                realDrawers.put(i, new DrawTurret(dt.basePrefix){{
-                    parts.addAll(dt.parts);
-                    parts.addAll(ammoParts.get(i));
-                }});
-                realDrawers.get(i).load(this);
-            }
-        }
-    }
-
     public class PayloadTurretBuild extends TurretBuild{
 
         @Override
@@ -157,22 +134,16 @@ public class PayloadTurret extends Turret {
         }
 
         @Override
+        public UnlockableContent getAmmoContent() {
+            return ammo.size > 0 ? ((PayloadEntry)ammo.peek()).content : null;
+        }
+
+        @Override
         public Object senseObject(LAccess sensor){
             return switch(sensor){
                 case currentAmmoType -> ammo.size > 0 ? ((PayloadEntry)ammo.peek()).content : null;
                 default -> super.senseObject(sensor);
             };
-        }
-
-        @Override
-        public void draw(){
-            if(drawPartsForAmmo && realDrawers.size > 0){
-                if(ammo.size > 0){
-                    realDrawers.get(((PayloadEntry)ammo.peek()).content).draw(this);
-                    return;
-                }
-            }
-            super.draw();
         }
 
         @Override

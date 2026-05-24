@@ -1315,31 +1315,31 @@ public class LIblocks {
                             moveY = -2f;
                         }}
                 );
+                setAmmoParts(
+                        Blocks.thoriumReactor,
+                        Seq.with(new RegionPart() {{
+                            name ="液体工艺-钍反炮-钍反1";
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            outline = false;
+                            under = true;
+                            layerOffset = -0.01f;
+                            moves = Seq.with(new DrawPart.PartMove(PartProgress.warmup.inv(), 0, -6, 0));
+                        }}),
+                        ZSHFYD,
+                        Seq.with(new RegionPart() {{
+                            name ="液体工艺-钍反炮-钍反2";
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            outline = false;
+                            under = true;
+                            layerOffset = -0.01f;
+                            moves = Seq.with(new DrawPart.PartMove(PartProgress.warmup, 0, 2, 0));
+                        }})
+                );
             }};
-            ammoparts(
-                    Blocks.thoriumReactor,
-                    Seq.with(new RegionPart() {{
-                        name ="液体工艺-钍反炮-钍反1";
-                        progress = PartProgress.reload.curve(Interp.pow2In);
-                        color = Color.white;
-                        colorTo = new Color(1, 1, 1, 0);
-                        outline = false;
-                        under = true;
-                        layerOffset = -0.01f;
-                        moves = Seq.with(new DrawPart.PartMove(PartProgress.warmup.inv(), 0, -6, 0));
-                    }}),
-                    ZSHFYD,
-                    Seq.with(new RegionPart() {{
-                        name ="液体工艺-钍反炮-钍反2";
-                        progress = PartProgress.reload.curve(Interp.pow2In);
-                        color = Color.white;
-                        colorTo = new Color(1, 1, 1, 0);
-                        outline = false;
-                        under = true;
-                        layerOffset = -0.01f;
-                        moves = Seq.with(new DrawPart.PartMove(PartProgress.warmup, 0, 2, 0));
-                    }})
-            );
         }};
         DLY = new PowerTurret("德鲁伊"){{
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 150, Items.graphite, 50, LIitems.ZYZ, 5));
