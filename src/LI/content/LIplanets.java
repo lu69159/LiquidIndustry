@@ -58,6 +58,7 @@ public class LIplanets {
             ruleSetter = (r) -> {
                 r.lighting = r.showSpawns = true;
                 r.solarMultiplier = 0.05f;
+                r.worldProcessorPlayerLink = true;
             };
             startSector = 1;
             visible = accessible = alwaysUnlocked = allowCampaignRules = clearSectorOnLose = prebuildBase = true;

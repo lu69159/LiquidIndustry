@@ -12,6 +12,8 @@ import mindustry.gen.Icon;
 import mindustry.mod.Mods;
 import mindustry.ui.dialogs.BaseDialog;
 
+import static mindustry.Vars.ui;
+
 public class LIstartDialog {
     static Mods.LoadedMod mod = Vars.mods.locateMod("液体工艺");
 
@@ -29,7 +31,13 @@ public class LIstartDialog {
             table.row();
 
             dialog.cont.pane(table).grow().center().maxWidth(900);
-            dialog.buttons.button("Github", Icon.github, () -> Core.app.openURI("https://github.com/lu69159/LiquidIndustry")).size(210, 64);
+            dialog.buttons.button("Github", Icon.github, () -> {
+                String url = "https://github.com/lu69159/LiquidIndustry";
+                if (!Core.app.openURI(url)) {
+                    ui.showInfoFade("@linkfail");
+                    Core.app.setClipboardText(url);
+                }
+            }).size(210, 64);
             dialog.buttons.button("[accent]" + Core.bundle.format("updatelog"), () -> {
                 BaseDialog updatelog = new BaseDialog(Core.bundle.format("updatelog"));
 
