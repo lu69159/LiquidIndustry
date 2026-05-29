@@ -8,6 +8,10 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.24.2:
+    适配158+
+    钍反炮和埋伏的贴图适配弹药
+
 0.24.1:
     修复地图搬运的错误
     修复大型相织装甲储液罐只有一格的问题
