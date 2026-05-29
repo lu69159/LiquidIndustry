@@ -60,6 +60,7 @@ public class LIstartDialog {
             }).size(210, 64);
 
             dialog.buttons.button("@close", Icon.cancel, dialog::hide).size(210, 64);
+            dialog.addCloseListener();
             dialog.show();
     }
 }

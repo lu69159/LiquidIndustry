@@ -1915,10 +1915,6 @@ public class LIblocks {
                         width = 16f;
                         height = 16f;
                         lifetime = 50f;
-                        damage = 1f;
-                        pierceBuilding = true;
-                        collidesAir = false;
-                        collideTerrain = true;
                         fragBullets = 1;
                         fragOnHit = fragOnAbsorb = true;
                         fragBullet = new EmptyBulletType(){{
@@ -1933,10 +1929,6 @@ public class LIblocks {
                         width = 16f;
                         height = 16f;
                         lifetime = 50f;
-                        damage = 1f;
-                        pierceBuilding = true;
-                        collidesAir = false;
-                        collideTerrain = true;
                         fragBullets = 1;
                         fragOnHit = fragOnAbsorb = true;
                         fragBullet = new EmptyBulletType(){{
@@ -1952,11 +1944,6 @@ public class LIblocks {
                         ammoMultiplier = 1;
                         width = 32f;
                         height = 32f;
-                        lifetime = 80f;
-                        damage = 1f;
-                        pierceBuilding = true;
-                        collidesAir = false;
-                        collideTerrain = true;
                         fragBullets = 1;
                         fragOnHit = fragOnAbsorb = true;
                         fragBullet = new EmptyBulletType(){{
@@ -1966,6 +1953,46 @@ public class LIblocks {
                         }};
                     }}
             );
+            drawer = new DrawTurret(){{
+                parts.add(new DrawPart() {
+                    @Override
+                    public void draw(PartParams params) {}
+                });
+                setAmmoParts(
+                        Items.blastCompound,
+                        Seq.with(new RegionPart() {{
+                            name = "液体工艺-埋伏-地雷1";
+                            y = 2f;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            //under = true;
+                            layerOffset = -0.01f;
+                        }}),
+                        LIitems.GTSY,
+                        Seq.with(new RegionPart() {{
+                            name = "液体工艺-埋伏-地雷2";
+                            y = 2f;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            outline = false;
+                            under = true;
+                            layerOffset = -0.01f;
+                        }}),
+                        LIitems.SMSP,
+                        Seq.with(new RegionPart() {{
+                            name = "液体工艺-埋伏-地雷3";
+                            y = 2f;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            outline = false;
+                            under = true;
+                            layerOffset = -0.01f;
+                        }})
+                );
+            }};
         }
             @Override
             public void setStats() {

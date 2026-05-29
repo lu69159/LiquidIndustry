@@ -147,7 +147,7 @@ public class LIunits {
         MF1 = new MissileUnitType("埋伏-地雷1"){{
             constructor = TimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
-            hidden = hideDatabase = true;
+            hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
             health = 2160f;
             armor = 10f;
@@ -177,7 +177,7 @@ public class LIunits {
         MF2 = new MissileUnitType("埋伏-地雷2"){{
             constructor = TimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
-            hidden = hideDatabase = true;
+            hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
             health = 2160f;
             armor = 10f;
@@ -207,7 +207,7 @@ public class LIunits {
         MF3 = new MissileUnitType("埋伏-地雷3"){{
             constructor = TimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
-            hidden = hideDatabase = true;
+            hidden = hideDatabase = bounded = true;
             lifetime = 180 * 60f;
             health = 2160f;
             armor = 10f;
