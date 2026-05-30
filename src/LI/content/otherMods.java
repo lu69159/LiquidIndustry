@@ -295,10 +295,11 @@ public class otherMods {
                     absorbable = reflectable = collidesTiles = false;
                     splashDamagePierce = true;
                     sprite = "饱和火力-星";
-                    width = height = 24f;
+                    spin = 1f;
+                    width = height = 32f;
                     frontColor = hitColor = backColor = lightColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
                     splashDamage = 150f;
-                    splashDamageRadius = 24f;
+                    splashDamageRadius = 48f;
                     homingPower = 0.1f;
                     homingRange = 40f;
                     status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
@@ -311,15 +312,13 @@ public class otherMods {
                                 baseLength = 0f;
                                 length = 0f;
                                 region = "circle";
-                                sizeFrom = 24f;
-                                sizeTo = 24f;
+                                sizeFrom = sizeTo = 48f;
                                 colorFrom = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
                                 colorTo = colorFrom.cpy().a(0);
                             }},
                             new WaveEffect(){{
                                 lifetime = 20f;
-                                sizeFrom = 24f;
-                                sizeTo = 24f;
+                                sizeFrom = sizeTo = 48f;
                                 strokeFrom = 3f;
                                 strokeTo = 0f;
                                 colorFrom = colorTo = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
