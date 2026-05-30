@@ -256,7 +256,7 @@ public class otherMods {
             fragOnAbsorb = fragOnHit = fragOnDespawn = true;
             fragBullet = new EmpBulletType(){{
                 absorbable = reflectable = false;
-                pierce = splashDamagePierce = pierceBuilding = instantDisappear = true;
+                pierce = splashDamagePierce = instantDisappear = true;
                 timeDuration = 300f;
                 timeIncrease = 5f;
                 powerSclDecrease = 0f;
@@ -292,7 +292,7 @@ public class otherMods {
                 fragBullets = 60;
                 fragBullet = new BasicBulletType(4f, 0){{
                     lifetime = 60f;
-                    absorbable = reflectable = collidesTiles = hittable = false;
+                    absorbable = reflectable = hittable = false;
                     splashDamagePierce = true;
                     spin = 1f;
                     width = height = 32f;
