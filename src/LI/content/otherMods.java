@@ -265,13 +265,13 @@ public class otherMods {
                 splashDamage = 500f;
                 radius = 200f;
                 splashDamageRadius = 200f;
-                status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
+                status = Vars.content.getByName(ContentType.status, "饱和火力-休克");
                 statusDuration = 300f;
                 hitShake = 12f;
                 hitSound = despawnSound = Sounds.explosionQuad;
                 hitColor = LIcolor.sparkColor.cpy();
                 hitPowerEffect = LIfx.sparkEmp;
-                hitEffect = despawnEffect = new Effect(40f, e -> {
+                hitEffect = despawnEffect = new Effect(75f, e -> {
                     color(e.color, Color.white.cpy(), e.fout());
                     stroke(e.fout() * 6f);
                     circle(e.x, e.y, 200f);
@@ -292,16 +292,14 @@ public class otherMods {
                 fragBullets = 60;
                 fragBullet = new BasicBulletType(4f, 0){{
                     lifetime = 60f;
-                    absorbable = reflectable = collidesTiles = false;
+                    absorbable = reflectable = collidesTiles = hittable = false;
                     splashDamagePierce = true;
-                    sprite = "饱和火力-星";
                     spin = 1f;
                     width = height = 32f;
-                    frontColor = hitColor = backColor = lightColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                    hitColor = lightColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                    frontColor = hitColor = backColor = Color.valueOf("00000000");
                     splashDamage = 150f;
                     splashDamageRadius = 48f;
-                    homingPower = 0.1f;
-                    homingRange = 40f;
                     status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
                     statusDuration = 900f;
                     hitSound = despawnSound = Sounds.explosionQuad;
