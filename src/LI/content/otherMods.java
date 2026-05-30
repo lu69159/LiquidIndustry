@@ -258,10 +258,10 @@ public class otherMods {
                 absorbable = reflectable = false;
                 pierce = splashDamagePierce = pierceBuilding = instantDisappear = true;
                 timeDuration = 300f;
-                timeIncrease = 3f;
+                timeIncrease = 5f;
                 powerSclDecrease = 0f;
                 unitDamageScl = 1f;
-                damage = 000f;
+                damage = 500f;
                 splashDamage = 500f;
                 radius = 200f;
                 splashDamageRadius = 200f;
