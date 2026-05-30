@@ -227,9 +227,9 @@ public class otherMods {
 
         //扩散轨道炮
         var KSGDP = (ItemTurret)Vars.content.getByName(ContentType.block, "饱和火力-扩散轨道炮");
-        BasicBulletType KSGDP1 = new BasicBulletType(16f, 500f){{
+        BasicBulletType KSGDP1 = new BasicBulletType(24f, 4200f){{
             reflectable = false;
-            lifetime = 50f;
+            lifetime = 33.4f;
             ammoMultiplier = 4;
             reloadMultiplier = 0.8f;
             width = 32f;
