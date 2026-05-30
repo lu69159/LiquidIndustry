@@ -3,8 +3,6 @@ package LI.content;
 import arc.func.Cons;
 import arc.graphics.Color;
 import arc.math.Interp;
-import arc.math.Mathf;
-import arc.util.Time;
 import mindustry.ai.*;
 import mindustry.ai.types.*;
 import mindustry.content.*;
@@ -21,7 +19,7 @@ import LI.type.ai.*;
 import mindustry.gen.*;
 import mindustry.world.Block;
 import mindustry.world.blocks.units.Reconstructor;
-import mindustry.world.meta.BlockFlag;
+import mindustry.world.meta.*;
 
 import static mindustry.content.UnitTypes.*;
 import static mindustry.Vars.*;
@@ -146,6 +144,7 @@ public class LIunits {
 
         MF1 = new MissileUnitType("埋伏-地雷1"){{
             constructor = TimedKillUnit::create;
+            envEnabled = Env.terrestrial;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
@@ -176,6 +175,7 @@ public class LIunits {
         }};
         MF2 = new MissileUnitType("埋伏-地雷2"){{
             constructor = TimedKillUnit::create;
+            envEnabled = Env.terrestrial;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
@@ -206,6 +206,7 @@ public class LIunits {
         }};
         MF3 = new MissileUnitType("埋伏-地雷3"){{
             constructor = TimedKillUnit::create;
+            envEnabled = Env.terrestrial;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 180 * 60f;
@@ -365,7 +366,6 @@ public class LIunits {
                             incendChance = 0.5f;
 
                             lifetime = 80f;
-                            speed = 5f;
                             splashDamage = 1200f;
                             splashDamageRadius = 24f;
                             hitSound = despawnSound = Sounds.shootRipple;

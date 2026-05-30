@@ -146,7 +146,6 @@ public class MultiCrafter extends PayloadBlock {
         saveConfig = true;
         ambientSoundVolume = 0.03f;
         config(Integer.class, MultiCrafterBuild::setCurRecipeIndexFromRemote);
-        Log.info("MultiCrafter[" + this.name + "] loaded.");
     }
 
     @Override

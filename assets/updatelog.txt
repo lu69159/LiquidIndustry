@@ -10,6 +10,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.24.2:
     适配158+
+    流体分配/投射力场投射液体速率增加
+    饱和火力内容适配移入JAVA版
+    衰变熔岩相关弹药伤害增加(矿渣x6)
     钍反炮和埋伏的贴图适配弹药
 
 0.24.1:

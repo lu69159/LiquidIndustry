@@ -21,6 +21,11 @@ import static mindustry.content.Blocks.*;
 import static mindustry.content.StatusEffects.*;
 
 public class LIoverride {
+    public static void load(){
+        loadOverride();
+        otherMods.loadOverride();
+    }
+
     public static void loadOverride(){
         //region 地形
         ((Floor)hotrock).attributes.set(LIattr.cryofluid, -0.75f);
@@ -154,7 +159,7 @@ public class LIoverride {
                     knockback = 1.3f;
                     puddleSize = 8f;
                     orbSize = 4f;
-                    damage = 23.75f;
+                    damage = 28.5f;
                     drag = 0.001f;
                     ammoMultiplier = 0.4f;
                     status = StatusEffects.burning;
@@ -175,7 +180,7 @@ public class LIoverride {
                     status = LIstatus.BF;
                 }},
                 LIliquids.SBRY, new LiquidBulletType(LIliquids.SBRY){{
-                    damage = 20f;
+                    damage = 24f;
                     drag = 0.01f;
                     status = StatusEffects.burning;
 

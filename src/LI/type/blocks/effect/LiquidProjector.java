@@ -26,7 +26,7 @@ public class LiquidProjector extends Block {
     public TextureRegion bottomRegion;
     public TextureRegion topRegion;
 
-    public float reload = 10f;
+    public float reload = 8f;
     public float range = 80f;
     public float transferAmount;
     public float useTime = 900f;

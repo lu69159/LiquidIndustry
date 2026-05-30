@@ -29,8 +29,8 @@ public class LIliquids {
             viscosity = 0.5f;
             boilPoint = 0.6f;
         }};
-        SBRY = new Liquid("衰变熔岩", Color.valueOf("FF0000")){{
-            lightColor = Color.valueOf("FF2020");
+        SBRY = new Liquid("衰变熔岩", Color.red.cpy()){{
+            lightColor = LIcolor.SBRYlightColor;
             effect = StatusEffects.burning;
             flammability = 6f;
             explosiveness = 6f;

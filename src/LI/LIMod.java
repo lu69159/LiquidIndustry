@@ -18,9 +18,9 @@ public class LIMod extends Mod{
     public LIrules rules;
 
     public LIMod(){
-        Log.info("Loading: Liquid Industry Java Version");
+        Log.info("Liquid Industry Java Version begins to load.");
         Events.on(ContentInitEvent.class, e -> {
-            LIoverride.loadOverride();
+            LIoverride.load();
             ATD.load();
         });
     }

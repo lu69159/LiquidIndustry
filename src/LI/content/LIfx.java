@@ -3,7 +3,9 @@ package LI.content;
 import arc.graphics.Color;
 import arc.graphics.g2d.*;
 import arc.math.*;
+import arc.math.geom.Position;
 import arc.util.Nullable;
+import arc.util.Tmp;
 import mindustry.gen.Unit;
 import mindustry.entities.Effect;
 import mindustry.entities.effect.*;
@@ -85,6 +87,15 @@ public class LIfx {
             });
         });
     }),
+    sparkEmp = new Effect(40, e -> {
+        color(sparkColor);
+        stroke(e.fout() * 1.6f);
+
+        randLenVectors(e.id, 18, e.finpow() * 27f, e.rotation, 360f, (x, y) -> {
+            float ang = Mathf.angle(x, y);
+            lineAngle(e.x + x, e.y + y, ang, e.fout() * 6 + 1f);
+        });
+    }),
     whiteRailShoot = new Effect(24f, e -> {
         e.scaled(10f, b -> {
             color(Color.white, Color.lightGray, b.fin());
@@ -108,6 +119,31 @@ public class LIfx {
         for(int i : Mathf.signs){
             Drawf.tri(e.x, e.y, 10f * e.fout(), 60f, e.rotation + 140f * i);
         }
+    }),
+    redShoot = new Effect(24, e -> {
+        e.scaled(10, b -> {
+            Draw.color(Color.white, SBRYlightColor, b.fin());
+            Lines.stroke(b.fout() * 3f + 0.2f);
+            Lines.circle(b.x, b.y, b.fin() * 50);
+        });
+
+        Draw.color(SBRYlightColor);
+
+        for(int i : Mathf.signs){
+            Drawf.tri(e.x, e.y, 13 * e.fout(), 85, e.rotation + 90 * i);
+            Drawf.tri(e.x, e.y, 13 * e.fout(), 50, e.rotation + 20 * i);
+        }
+
+        Drawf.light(e.x, e.y, 180f, SBRYlightColor, 0.9f * e.fout());
+    }),
+    redRailTrail = new Effect(16, e -> {
+        Draw.color(SBRYlightColor);
+
+        for(int i : Mathf.signs){
+            Drawf.tri(e.x, e.y, 10 * e.fout(), 24, e.rotation + 90 + 90 * i);
+        }
+
+        Drawf.light(e.x, e.y, 60 * e.fout(), SBRYlightColor, 0.5f);
     }),
     surgeAlloyShoot = new Effect(12, e -> {
         Draw.color(Color.white, Pal.surge, e.fin());

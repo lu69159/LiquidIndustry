@@ -10,6 +10,7 @@ public class LIcolor {
         oilColor = Color.valueOf("313131"),
         cryofluidColor = Color.valueOf("87CEEB"),
         CJLDYcolor = Color.valueOf("C0ECFF"),
-        slagColor = Color.valueOf("FFE99A");
+        slagColor = Color.valueOf("FFE99A"),
+        SBRYlightColor = Color.valueOf("FF2020")
     ;
 }

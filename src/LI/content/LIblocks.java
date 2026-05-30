@@ -533,7 +533,7 @@ public class LIblocks {
             range = 120f;
             boostRange = 120f;
             useTime = 720f;
-            reload = 5f;
+            reload = 3f;
             consumePower(5.5f);
             consumeItem(LIitems.QSZ).boost();
         }};
@@ -1179,7 +1179,7 @@ public class LIblocks {
                         rangeChange = 120f;
                         reloadMultiplier = 0.5f;
                         backColor = frontColor = Color.valueOf("00000000");
-                        hitColor = Color.cyan;
+                        hitColor = LIcolor.sparkColor;
                         splashDamage = 540;
                         splashDamageRadius = 40f;
                         buildingDamageMultiplier = 0.05f;
@@ -1190,7 +1190,7 @@ public class LIblocks {
 
                         intervalBullet = new LightningBulletType(){{
                             pierceArmor = true;
-                            lightningColor = Color.cyan;
+                            lightningColor = LIcolor.sparkColor;
                             damage = 20f;
                             buildingDamageMultiplier = 0.05f;
                             lightningLength = 5;
@@ -1203,7 +1203,7 @@ public class LIblocks {
 
                         fragBullet = new LightningBulletType(){{
                             pierceArmor = true;
-                            lightningColor = Color.cyan;
+                            lightningColor = LIcolor.sparkColor;
                             damage = 300f;
                             buildingDamageMultiplier = 0.05f;
                             lightningLength = 40;
@@ -1454,8 +1454,8 @@ public class LIblocks {
                         interp = Interp.pow5Out;
                         length = 160f;
                         lifetime = 60f;
-                        colorFrom = Color.cyan;
-                        colorTo = Color.cyan.cpy().a(40f/255);
+                        colorFrom = LIcolor.sparkColor;
+                        colorTo = LIcolor.sparkColor.cpy().a(40f/255);
                         cone = 60f;
                     }},
                     new ParticleEffect(){{
@@ -1468,8 +1468,8 @@ public class LIblocks {
                         interp = Interp.pow3Out;
                         length = 90f;
                         lifetime = 35f;
-                        colorFrom = Color.cyan;
-                        colorTo = Color.cyan.cpy().a(40f/255);
+                        colorFrom = LIcolor.sparkColor;
+                        colorTo = LIcolor.sparkColor.cpy().a(40f/255);
                         cone = 120f;
                     }},
                     new ParticleEffect(){{
@@ -1479,8 +1479,8 @@ public class LIblocks {
                         interp = Interp.circleOut;
                         length = 40f;
                         lifetime = 20f;
-                        colorFrom = Color.cyan;
-                        colorTo = Color.cyan.cpy().a(40f/255);
+                        colorFrom = LIcolor.sparkColor;
+                        colorTo = LIcolor.sparkColor.cpy().a(40f/255);
                         cone = 180f;
                     }}
             );
@@ -1496,15 +1496,15 @@ public class LIblocks {
                 trailLength = 12;
                 trailWidth = 5f;
                 lightRadius = 80f;
-                hitColor = backColor = trailColor = lightColor = lightningColor = Color.cyan;
+                hitColor = backColor = trailColor = lightColor = lightningColor = LIcolor.sparkColor;
                 hitEffect = new WaveEffect(){{
                     lifetime = 20f;
                     sizeFrom = 0f;
                     sizeTo = 40f;
                     strokeFrom = 3f;
                     strokeTo = 0f;
-                    colorFrom = Color.cyan;
-                    colorTo = Color.cyan.cpy().a(66f/255);
+                    colorFrom = LIcolor.sparkColor;
+                    colorTo = LIcolor.sparkColor.cpy().a(66f/255);
                 }};
                 despawnEffect = Fx.none;
                 hitSound = Sounds.shootArc;
@@ -1531,15 +1531,15 @@ public class LIblocks {
                     trailWidth = 5f;
                     trailRotation = true;
                     lightRadius = 80f;
-                    hitColor = backColor = trailColor = lightColor = Color.cyan;
+                    hitColor = backColor = trailColor = lightColor = LIcolor.sparkColor;
                     hitEffect = new WaveEffect(){{
                         lifetime = 20f;
                         sizeFrom = 0f;
                         sizeTo = 112f;
                         strokeFrom = 3f;
                         strokeTo = 0f;
-                        colorFrom = Color.cyan;
-                        colorTo = Color.cyan.cpy().a(66f/255);
+                        colorFrom = LIcolor.sparkColor;
+                        colorTo = LIcolor.sparkColor.cpy().a(66f/255);
                     }};
                     despawnEffect = new WaveEffect(){{
                         lifetime = 20f;
@@ -1547,8 +1547,8 @@ public class LIblocks {
                         sizeTo = 112f;
                         strokeFrom = 3f;
                         strokeTo = 0f;
-                        colorFrom = Color.cyan;
-                        colorTo = Color.cyan.cpy().a(66f/255);
+                        colorFrom = LIcolor.sparkColor;
+                        colorTo = LIcolor.sparkColor.cpy().a(66f/255);
                     }};
                     hitSound = Sounds.explosionTitan;
                     despawnSound = Sounds.explosionTitan;
@@ -1559,7 +1559,7 @@ public class LIblocks {
                     lightningLength = 15;
                     lightningLengthRand = 15;
                     lightningDamage = 50f;
-                    lightningColor = Color.cyan;
+                    lightningColor = LIcolor.sparkColor;
                 }};
                 delayFrags = fragOnHit = true;
                 fragBullets = 5;
@@ -1569,23 +1569,23 @@ public class LIblocks {
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-head"){{
-                            heatColor = Color.cyan.cpy().a(80f/255);
+                            heatColor = LIcolor.sparkColor.cpy().a(80f/255);
                             heatProgress = PartProgress.warmup;
                             moveY = 0f;
                         }},
                         new RegionPart("-main"){{
-                            heatColor = Color.cyan.cpy().a(80f/255);
+                            heatColor = LIcolor.sparkColor.cpy().a(80f/255);
                             heatProgress = PartProgress.warmup;
                             moveY = -2f;
                         }},
                         new RegionPart("-end"){{
-                            heatColor = Color.cyan.cpy().a(80f/255);
+                            heatColor = LIcolor.sparkColor.cpy().a(80f/255);
                             heatProgress = PartProgress.warmup;
                             moveY = 0f;
                         }},
                         new RegionPart("-wing"){{
                             mirror = true;
-                            heatColor = Color.cyan.cpy().a(80f/255);
+                            heatColor = LIcolor.sparkColor.cpy().a(80f/255);
                             heatProgress = PartProgress.warmup;
                             moveRot = 25f;
                             moveX = 3f;
@@ -1593,7 +1593,7 @@ public class LIblocks {
                         }},
                         new RegionPart("-front"){{
                             mirror = true;
-                            heatColor = Color.cyan.cpy().a(80f/255);
+                            heatColor = LIcolor.sparkColor.cpy().a(80f/255);
                             heatProgress = PartProgress.warmup;
                             moveX = -1f;
                             moveY = -6f;
@@ -1601,7 +1601,7 @@ public class LIblocks {
                         new ShapePart(){{
                             progress = PartProgress.warmup;
                             y = -15f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             radius = 0f;
                             radiusTo = 10f;
                             stroke = 0f;
@@ -1613,7 +1613,7 @@ public class LIblocks {
                         new ShapePart(){{
                             progress = PartProgress.warmup;
                             y = -15f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             rotateSpeed = 3f;
                             radius = 0f;
                             radiusTo = 9f;
@@ -1627,7 +1627,7 @@ public class LIblocks {
                         new ShapePart(){{
                             progress = PartProgress.warmup;
                             y = -15f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             rotateSpeed = -3f;
                             radius = 0f;
                             radiusTo = 9f;
@@ -1641,7 +1641,7 @@ public class LIblocks {
                         new HaloPart(){{
                             progress = PartProgress.warmup;
                             y = -15f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotateSpeed = 2f;
                             haloRadius = 0f;
                             haloRadiusTo = 15f;
@@ -1655,7 +1655,7 @@ public class LIblocks {
                         new HaloPart(){{
                             progress = PartProgress.warmup;
                             y = -15f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotateSpeed = -2f;
                             haloRadius = 0f;
                             haloRadiusTo = 15f;
@@ -1670,7 +1670,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = -20f;
                             y = -20f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 135f;
                             stroke = 0f;
                             strokeTo = 2f;
@@ -1688,7 +1688,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = 24f;
                             y = -24f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 225f;
                             stroke = 0f;
                             strokeTo = 2f;
@@ -1706,7 +1706,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = -26.6f;
                             y = -13.3f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 117f;
                             stroke = 0f;
                             strokeTo = 2f;
@@ -1724,7 +1724,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = 26.6f;
                             y = -13.3f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 243f;
                             stroke = 0f;
                             strokeTo = 2f;
@@ -1742,7 +1742,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = -13.3f;
                             y = -26.6f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 153f;
                             stroke = 0f;
                             strokeTo = 2f;
@@ -1760,7 +1760,7 @@ public class LIblocks {
                             progress = PartProgress.warmup;
                             x = 13.3f;
                             y = -26.6f;
-                            color = Color.cyan;
+                            color = LIcolor.sparkColor;
                             haloRotation = 207f;
                             stroke = 0f;
                             strokeTo = 2f;
