@@ -17,9 +17,6 @@ import mindustry.type.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.units.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
 
@@ -49,10 +46,23 @@ public class otherMods {
         //电磁风暴
         LIblocks.DCFB.requirements = ItemStack.with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 750, Items.graphite,750, Items.surgeAlloy, 500, LIitems.QSZ, 125, LIitems.GTS, 10, Vars.content.getByName(ContentType.item, "饱和火力-二级协议"), 3);
         ((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.CDZ).status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
-        BasicBulletType DCFB1 = (BasicBulletType)((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.GTS);
+        BasicBulletType DCFB1 = (BasicBulletType)((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.GTS).copy();
         DCFB1.status = Vars.content.getByName(ContentType.status, "饱和火力-崩溃");
         DCFB1.hitColor = Color.valueOf("EEC591");
         DCFB1.damage = 1500f;
+        DCFB1.puddleAmount = 0f;
+        DCFB1.hitSound = DCFB1.despawnSound = Sounds.explosionQuad;
+        DCFB1.hitEffect = DCFB1.despawnEffect = new ParticleEffect(){{
+            lifetime = 20f;
+            particles = 1;
+            baseLength = 0f;
+            length = 0f;
+            region = "circle";
+            sizeFrom = 5f;
+            sizeTo = 0f;
+            colorFrom = colorTo = Color.valueOf("EEC591");
+        }};
+
         DCFB1.intervalBullet = new LightningBulletType(){{
             pierceArmor = true;
             lightningColor = Color.valueOf("EEC591");
@@ -61,18 +71,52 @@ public class otherMods {
             lightningLength = 5;
         }};
         DCFB1.fragBullet = new PointBulletType(){{
-            trailEffect = Fx.none;
-            hitEffect = Fx.instHit;
+            despawnHit = true;
             status = Vars.content.getByName(ContentType.status, "饱和火力-崩溃");
-            statusDuration = 150f;
+            statusDuration = 450f;
+            buildingDamageMultiplier = 0.05f;
             damage = 100f;
             splashDamage = 200f;
-            splashDamageRadius = 80f;
-            lightning = 3;
-            lightningDamage = 50f;
-            lightningLength = 15;
-            lightningLengthRand = 5;
-            lightningColor = Color.valueOf("EEC591");
+            splashDamageRadius = 40f;
+            trailEffect = new ParticleEffect() {{
+                sizeInterp = Interp.pow5Out;
+                particles = 1;
+                length = 0;
+                baseLength = 0.05f;
+                lifetime = 30;
+                line = true;
+                randLength = false;
+                lenFrom = 13;
+                lenTo = 13;
+                strokeFrom = 5;
+                strokeTo = 0;
+                colorFrom = Color.valueOf("EEC591");
+                colorTo = Color.valueOf("EEC591").a(16/255f);
+                cone = 0;
+            }};
+            hitEffect = despawnEffect = new MultiEffect(
+                    new ParticleEffect(){{
+                        lifetime = 30f;
+                        particles = 1;
+                        baseLength = 0f;
+                        length = 0f;
+                        region = "circle";
+                        sizeFrom = 40f;
+                        sizeTo = 0f;
+                        colorFrom = colorTo = Color.valueOf("EEC591").a(16/255f);
+                    }},
+                    new ParticleEffect(){{
+                        lifetime = 20f;
+                        particles = 1;
+                        baseLength = 0f;
+                        length = 0f;
+                        region = "circle";
+                        sizeFrom = 8f;
+                        sizeTo = 0f;
+                        colorFrom = colorTo = Color.valueOf("EEC591");
+                    }}
+            );
+            hitSound = despawnSound = Sounds.explosion;
         }};
         ((ItemTurret)LIblocks.DCFB).ammoTypes.put(Vars.content.getByName(ContentType.item, "饱和火力-裂位能"), DCFB1);
 
@@ -192,13 +236,26 @@ public class otherMods {
         BasicBulletType ZL1 = (BasicBulletType)ZL.ammoTypes.get(Items.surgeAlloy).copy();
         ZL1.ammoMultiplier = 20;
         ZL1.damage = 205f;
-        ZL1.fragBullet = new LightningBulletType(){{
-            lightningColor = LIcolor.sparkColor;
-            lightningLength = 16;
-            lightningDamage = 25f;
-            hitEffect = Fx.none;
+        ZL1.fragBullet = new BasicBulletType(0f, 5f){{
+            absorbable = reflectable = hittable = false;
+            instantDisappear = true;
+            frontColor = backColor = Color.valueOf("00000000");
+            splashDamage = 50f;
+            splashDamageRadius = 24f;
+            status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
+            statusDuration = 120f;
+            hitEffect = despawnEffect = new WaveEffect(){{
+                interp = Interp.circleOut;
+                lifetime = 10f;
+                sizeFrom = 4f;
+                sizeTo = 24f;
+                strokeFrom = 2f;
+                strokeTo = 0f;
+                colorFrom = LIcolor.sparkColor.cpy();
+                colorTo = Color.white.cpy();
+            }};
         }};
-        ZL1.fragBullets = 2;
+        ZL1.fragBullets = 1;
         ZL1.fragOnDespawn = false;
         ZL1.shootEffect = new ParticleEffect(){{
             particles = 8;
@@ -227,14 +284,16 @@ public class otherMods {
 
         //扩散轨道炮
         var KSGDP = (ItemTurret)Vars.content.getByName(ContentType.block, "饱和火力-扩散轨道炮");
-        BasicBulletType KSGDP1 = new BasicBulletType(24f, 4200f){{
+        BasicBulletType KSGDP1 = new BasicBulletType(24f, 8400f){{
             reflectable = false;
             lifetime = 33.4f;
             ammoMultiplier = 4;
             reloadMultiplier = 0.8f;
             width = 32f;
-            height = 64f;
+            height = 96f;
             sprite = "饱和火力-菱形";
+            status = StatusEffects.electrified;
+            statusDuration = 600f;
             shootSound = Sounds.shootSmite;
             shootEffect = KSGDP.ammoTypes.get(Vars.content.getByName(ContentType.item, "饱和火力-泰勒合金")).shootEffect;
             trailLength = 12;
@@ -256,17 +315,16 @@ public class otherMods {
             fragOnAbsorb = fragOnHit = fragOnDespawn = true;
             fragBullet = new EmpBulletType(){{
                 absorbable = reflectable = false;
-                pierce = splashDamagePierce = instantDisappear = true;
+                splashDamagePierce = instantDisappear = despawnHit = true;
+                damage = splashDamage = 500f;
+                radius = splashDamageRadius = 200f;
+                lightRadius = 180f;
+                status = Vars.content.getByName(ContentType.status, "饱和火力-休克");
+                statusDuration = 300f;
                 timeDuration = 300f;
                 timeIncrease = 5f;
                 powerSclDecrease = 0f;
                 unitDamageScl = 1f;
-                damage = 500f;
-                splashDamage = 500f;
-                radius = 200f;
-                splashDamageRadius = 200f;
-                status = Vars.content.getByName(ContentType.status, "饱和火力-休克");
-                statusDuration = 300f;
                 hitShake = 12f;
                 hitSound = despawnSound = Sounds.explosionQuad;
                 hitColor = LIcolor.sparkColor.cpy();
@@ -292,36 +350,45 @@ public class otherMods {
                 fragBullets = 60;
                 fragBullet = new BasicBulletType(4f, 0){{
                     lifetime = 60f;
-                    absorbable = reflectable = hittable = false;
-                    splashDamagePierce = true;
-                    spin = 1f;
-                    width = height = 32f;
-                    hitColor = lightColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                    absorbable = reflectable = hittable = collides = false;
                     frontColor = hitColor = backColor = Color.valueOf("00000000");
-                    splashDamage = 150f;
-                    splashDamageRadius = 48f;
-                    status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
-                    statusDuration = 900f;
-                    hitSound = despawnSound = Sounds.explosionQuad;
-                    hitEffect = despawnEffect = new MultiEffect(
-                            new ParticleEffect(){{
-                                lifetime = 20f;
-                                particles = 1;
-                                baseLength = 0f;
-                                length = 0f;
-                                region = "circle";
-                                sizeFrom = sizeTo = 48f;
-                                colorFrom = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
-                                colorTo = colorFrom.cpy().a(0);
-                            }},
-                            new WaveEffect(){{
-                                lifetime = 20f;
-                                sizeFrom = sizeTo = 48f;
-                                strokeFrom = 3f;
-                                strokeTo = 0f;
-                                colorFrom = colorTo = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
-                            }}
-                    );
+                    hitEffect = despawnEffect = Fx.none;
+                    hitSound = despawnSound = Sounds.none;
+                    fragBullets = 1;
+                    fragBullet = new BasicBulletType(0f, 0){{
+                        absorbable = reflectable = hittable = false;
+                        instantDisappear = splashDamagePierce = despawnHit = true;
+                        frontColor = backColor = Color.valueOf("00000000");
+                        hitColor = lightColor = lightningColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                        splashDamage = 300f;
+                        splashDamageRadius = 48f;
+                        status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
+                        statusDuration = 900f;
+                        lightning = 3;
+                        lightningDamage = 25f;
+                        lightningLength = 15;
+                        lightningLengthRand = 5;
+                        hitSound = despawnSound = Sounds.explosionQuad;
+                        hitEffect = despawnEffect = new MultiEffect(
+                                new ParticleEffect(){{
+                                    lifetime = 20f;
+                                    particles = 1;
+                                    baseLength = 0f;
+                                    length = 0f;
+                                    region = "circle";
+                                    sizeFrom = sizeTo = 48f;
+                                    colorFrom = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                                    colorTo = colorFrom.cpy().a(0);
+                                }},
+                                new WaveEffect(){{
+                                    lifetime = 20f;
+                                    sizeFrom = sizeTo = 48f;
+                                    strokeFrom = 3f;
+                                    strokeTo = 0f;
+                                    colorFrom = colorTo = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+                                }}
+                        );
+                    }};
                 }};
             }};
         }};

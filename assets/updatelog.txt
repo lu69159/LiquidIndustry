@@ -8,6 +8,12 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.24.3:
+    修改了bundle文件中的错误描述
+    修复了部分范围伤害子弹在未击中时不触发的BUG
+    SF1适配的完善
+    SF2适配移入JAVA版
+
 0.24.2:
     适配158+
     流体分配/投射力场投射液体速率增加

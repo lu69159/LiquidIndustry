@@ -224,7 +224,7 @@ public class LIunits {
                 shootOnDeath = true;
 
                 bullet = new EmpBulletType(){{
-                    pierceBuilding = makeFire = splashDamagePierce = instantDisappear = true;
+                    pierceBuilding = makeFire = splashDamagePierce = instantDisappear = despawnHit = true;
                     killShooter = hittable = absorbable = reflectable = false;
                     rangeChange = 400f;
                     reloadMultiplier = 0.5f;
@@ -351,7 +351,7 @@ public class LIunits {
                         intervalAngle = 0f;
                         intervalBullet = new BasicBulletType(5f, 233f){{
                             absorbable = reflectable = false;
-                            makeFire = splashDamagePierce = true;
+                            makeFire = splashDamagePierce = despawnHit = true;
                             frontColor = Color.valueOf("EFEFEF");
                             backColor = lightColor = Color.valueOf("FFFFFF");
                             width = 6f;

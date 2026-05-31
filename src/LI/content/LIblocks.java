@@ -852,7 +852,7 @@ public class LIblocks {
                         hitColor = LIcolor.oilColor;
                         splashDamage = 540;
                         splashDamageRadius = 160f;
-                        splashDamagePierce = true;
+                        splashDamagePierce = despawnHit = true;
                         incendAmount = 1;
                         incendChance = 1f;
                         puddles = 1;
@@ -911,7 +911,7 @@ public class LIblocks {
                         hitColor = LIcolor.cryofluidColor;
                         splashDamage = 108;
                         splashDamageRadius = 160f;
-                        splashDamagePierce = true;
+                        splashDamagePierce = despawnHit = true;
                         puddles = 1;
                         puddleAmount = 450f;
                         puddleLiquid = Liquids.cryofluid;
@@ -940,7 +940,7 @@ public class LIblocks {
                             absorbable = reflectable = hittable = collides = false;
                             hitEffect = despawnEffect = Fx.none;
                             intervalBullet = new BasicBulletType(){{
-                                instantDisappear = splashDamagePierce = true;
+                                instantDisappear = splashDamagePierce = despawnHit = true;
                                 absorbable = reflectable = false;
                                 damage = 0f;
                                 splashDamage = 108f;
@@ -999,7 +999,7 @@ public class LIblocks {
                         hitColor = LIcolor.CJLDYcolor;
                         splashDamage = 108;
                         splashDamageRadius = 160f;
-                        splashDamagePierce = true;
+                        splashDamagePierce = despawnHit = true;
                         puddles = 1;
                         puddleAmount = 450f;
                         puddleLiquid = LIliquids.CJLDY;
@@ -1057,7 +1057,7 @@ public class LIblocks {
                         hitColor = LIcolor.slagColor;
                         splashDamage = 1080;
                         splashDamageRadius = 160f;
-                        splashDamagePierce = true;
+                        splashDamagePierce = despawnHit = true;
                         incendAmount = 3;
                         incendChance = 1f;
                         puddles = 1;
@@ -1117,7 +1117,7 @@ public class LIblocks {
                         hitColor = Color.red;
                         splashDamage = 3080;
                         splashDamageRadius = 160f;
-                        splashDamagePierce = true;
+                        splashDamagePierce = despawnHit = true;
                         incendAmount = 5;
                         incendChance = 1f;
                         puddles = 1;
