@@ -657,7 +657,7 @@ public class otherMods {
             reflectable = false;
             lifetime = 33.4f;
             ammoMultiplier = 4;
-            reloadMultiplier = 0.8f;
+            reloadMultiplier = 0.75f;
             width = 32f;
             height = 96f;
             sprite = "sfire-mod-loz";
@@ -684,7 +684,7 @@ public class otherMods {
             fragBullet = new EmpBulletType(){{
                 absorbable = reflectable = false;
                 splashDamagePierce = instantDisappear = despawnHit = true;
-                damage = splashDamage = 300f;
+                damage = splashDamage = 150f;
                 radius = splashDamageRadius = 200f;
                 lightRadius = 180f;
                 status = Vars.content.getByName(ContentType.status, "sfire-mod-magnetic-strif");
