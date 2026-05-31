@@ -276,11 +276,11 @@ public class LItechTree {
     }
 
 
-    private static void addTechNode(UnlockableContent content, UnlockableContent parent){
+    public static void addTechNode(UnlockableContent content, UnlockableContent parent){
         var newNode = new TechNode(null, content, content.researchRequirements());
         addTechNode(newNode, serpulo, content, parent);
     }
-    private static void addTechNode(TechNode newNode, UnlockableContent parent){
+    public static void addTechNode(TechNode newNode, UnlockableContent parent){
         addTechNode(newNode, serpulo, newNode.content, parent);
     }
     private static void addTechNode(TechNode newNode, Planet planet, UnlockableContent content, UnlockableContent parent){

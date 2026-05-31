@@ -1043,7 +1043,7 @@ public class LIunits {
                             damage = 20f;
                             shieldDamageMultiplier = 1.5f;
                             lightningLength = 10;
-                            lightColor = Color.white;
+                            lightColor = lightningColor = Color.white;
                         }};
                     }};
                 }},

@@ -11,7 +11,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 0.24.3:
     修改了bundle文件中的错误描述
     修复了部分范围伤害子弹在未击中时不触发的BUG
-    SF1适配的完善
+    SF1适配的完善,修复相关问题
     SF2适配移入JAVA版
 
 0.24.2:
