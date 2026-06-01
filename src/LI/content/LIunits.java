@@ -16,6 +16,7 @@ import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.type.*;
 import LI.type.ai.*;
+import LI.type.units.*;
 import mindustry.gen.*;
 import mindustry.world.Block;
 import mindustry.world.blocks.units.Reconstructor;
@@ -142,9 +143,8 @@ public class LIunits {
             );
         }};
 
-        MF1 = new MissileUnitType("埋伏-地雷1"){{
-            constructor = TimedKillUnit::create;
-            envEnabled = Env.terrestrial;
+        MF1 = new UnitType("埋伏-地雷1"){{
+            constructor = SolidTimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
@@ -173,9 +173,8 @@ public class LIunits {
                 }};
             }});
         }};
-        MF2 = new MissileUnitType("埋伏-地雷2"){{
-            constructor = TimedKillUnit::create;
-            envEnabled = Env.terrestrial;
+        MF2 = new UnitType("埋伏-地雷2"){{
+            constructor = SolidTimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 120 * 60f;
@@ -204,9 +203,8 @@ public class LIunits {
                 }};
             }});
         }};
-        MF3 = new MissileUnitType("埋伏-地雷3"){{
-            constructor = TimedKillUnit::create;
-            envEnabled = Env.terrestrial;
+        MF3 = new UnitType("埋伏-地雷3"){{
+            constructor = SolidTimedKillUnit::create;
             flying = targetUnderBlocks = drawCell = createWreck = createScorch = logicControllable = playerControllable = isEnemy = hittable = targetable = useUnitCap = drawMinimap = targetAir = false;
             hidden = hideDatabase = bounded = true;
             lifetime = 180 * 60f;
@@ -224,8 +222,8 @@ public class LIunits {
                 shootOnDeath = true;
 
                 bullet = new EmpBulletType(){{
-                    pierceBuilding = makeFire = splashDamagePierce = instantDisappear = despawnHit = true;
-                    killShooter = hittable = absorbable = reflectable = false;
+                    pierceBuilding = makeFire = splashDamagePierce = instantDisappear = despawnHit = killShooter = true;
+                    hittable = absorbable = reflectable = false;
                     rangeChange = 400f;
                     reloadMultiplier = 0.5f;
                     ammoMultiplier = 1;

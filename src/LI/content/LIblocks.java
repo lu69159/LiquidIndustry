@@ -1343,7 +1343,7 @@ public class LIblocks {
         }};
         DLY = new PowerTurret("德鲁伊"){{
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 150, Items.graphite, 50, LIitems.ZYZ, 5));
-            canOverdrive = targetAir = false;
+            targetAir = targetGround = false;
             targetHealing = true;
             health = 1000;
             size = 3;
@@ -1358,7 +1358,7 @@ public class LIblocks {
             consumePower(3.6f);
             shootType = new BasicBulletType(15f, 10f){{
                 collidesAir = false;
-                pierceArmor = true;
+                pierceArmor = collidesTeam = true;
                 healPercent = 3f;
                 trailLength = 3;
                 trailWidth = 1.6f;
@@ -2258,6 +2258,7 @@ public class LIblocks {
             shoot = new ShootPattern();
             shootSound = LIaudio.FFF;
             shootType = new BasicBulletType(25f, 114514){{
+                absorbable = reflectable = hittable = false;
                 buildingDamageMultiplier = 10;
                 width = 36f;
                 height = 72f;
@@ -2683,7 +2684,7 @@ public class LIblocks {
             consumeLiquid(Liquids.cryofluid, 2.5f);
             outputItem = new ItemStack(LIitems.SMSP, 20);
             drawer = new DrawMulti(
-                    new DrawRegion("bottom"), new DrawLiquidTile(Liquids.cryofluid),
+                    new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.cryofluid),
                     new DrawDefault(),
                     new DrawFlame(Color.valueOf("CFCFCF")){{
                         flameRadius = 1.9f;

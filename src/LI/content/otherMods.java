@@ -309,7 +309,8 @@ public class otherMods {
                 strokeTo = 0f;
                 colorFrom = colorTo = LIcolor.sparkColor.cpy();
             }};
-            hitColor = trailColor = frontColor = LIcolor.sparkColor.cpy();
+            frontColor = trailColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+            hitColor = LIcolor.sparkColor.cpy();
             backColor = LIcolor.sparkColorBack.cpy();
             fragBullets = 1;
             fragOnAbsorb = fragOnHit = fragOnDespawn = true;
@@ -677,7 +678,8 @@ public class otherMods {
                 strokeTo = 0f;
                 colorFrom = colorTo = LIcolor.sparkColor.cpy();
             }};
-            hitColor = trailColor = frontColor = LIcolor.sparkColor.cpy();
+            frontColor = trailColor = Color.white.cpy().lerp(LIcolor.sparkColor.cpy(), 0.5f);
+            hitColor = LIcolor.sparkColor.cpy();
             backColor = LIcolor.sparkColorBack.cpy();
             fragBullets = 1;
             fragOnAbsorb = fragOnHit = fragOnDespawn = true;
