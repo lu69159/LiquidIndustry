@@ -94,6 +94,8 @@ public class LiquidProjector extends Block {
             stats.remove(Stat.booster);
             stats.add(Stat.booster, StatValues.itemBoosters("{0}", stats.timePeriod, 0, boostRange, items.items));
         }
+
+        stats.add(Stat.speed, (transferAmount / reload * 60f), StatUnit.liquidSecond);
     }
 
     @Override

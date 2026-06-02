@@ -1,20 +1,23 @@
 package LI.ui;
 
-
-import arc.Core;
-//import arc.Events;
+import arc.*;
 import arc.func.*;
+import arc.struct.ObjectSet;
 import arc.util.*;
 
 import static mindustry.Vars.*;
-//import static mindustry.game.EventType.*;
+import static mindustry.game.EventType.*;
 import static mindustry.ui.fragments.HintsFragment.*;
 
 //TODO
 public class LIhints{
+    ObjectSet<String> events = new ObjectSet<>();
+
     public LIhints(){
-        Core.app.post(() -> {
-            ui.hints.hints.add(LIHint.values());
+        Events.run(ClientLoadEvent.class, () -> {
+            Core.app.post(() -> {
+                ui.hints.hints.add(LIHint.values());
+            });
         });
     }
 

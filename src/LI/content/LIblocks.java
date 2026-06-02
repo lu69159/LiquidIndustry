@@ -2848,11 +2848,11 @@ public class LIblocks {
 
                     for(int i = 0; i < multiCrafter.resolvedRecipes.size; ++i) {
                         int I =i;
-                        Recipe recipe = (Recipe)multiCrafter.resolvedRecipes.get(i);
+                        Recipe recipe = multiCrafter.resolvedRecipes.get(i);
                         ImageButton button = new ImageButton(Styles.clearTogglei);
                         Image img;
                         if (recipe.icon != null) {
-                            img = new Image((TextureRegion)recipe.icon.get());
+                            img = new Image(recipe.icon.get());
                             if (recipe.iconColor != null) {
                                 img.setColor(recipe.iconColor);
                             }

@@ -65,8 +65,10 @@ public class LiquidMassDriver extends Block{
         super.setStats();
 
         stats.add(Stat.shootRange, range / tilesize, StatUnit.blocks);
-        stats.add(Stat.reload, table -> table.add(Strings.autoFixed(60f / reload, 2) + StatUnit.perSecond.localized()));
-        //stats.add(Stat.receiveRate, 60f, StatUnit.itemsSecond);
+        stats.add(Stat.reload, table -> {
+            table.add(Strings.autoFixed(60f / reload, 2) + StatUnit.perSecond.localized() + " ~ " +
+                    Strings.autoFixed(liquidCapacity * (60f / reload), 2) + " " + StatUnit.liquidSecond.localized());
+        });
     }
 
     @Override

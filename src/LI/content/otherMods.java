@@ -417,7 +417,7 @@ public class otherMods {
         //region 本体修改
         //电磁风暴
         LIblocks.DCFB.requirements = ItemStack.with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 750, Items.graphite,750, Items.surgeAlloy, 500, LIitems.QSZ, 125, LIitems.GTS, 10, Vars.content.getByName(ContentType.item, "sfire-mod-crystal-gallium"), 120);
-        ((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.CDZ).status = Vars.content.getByName(ContentType.status, "饱和火力-干扰");
+        ((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.CDZ).status = Vars.content.getByName(ContentType.status, "sfire-mod-scrambled");
         BasicBulletType DCFB1 = (BasicBulletType)((ItemTurret)LIblocks.DCFB).ammoTypes.get(LIitems.GTS).copy();
         DCFB1.status = Vars.content.getByName(ContentType.status, "sfire-mod-breakdown");
         DCFB1.hitColor = Color.valueOf("EEC591");
