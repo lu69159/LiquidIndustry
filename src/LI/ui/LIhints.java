@@ -4,10 +4,12 @@ import arc.*;
 import arc.func.*;
 import arc.struct.ObjectSet;
 import arc.util.*;
+import LI.content.*;
 
 import static mindustry.Vars.*;
 import static mindustry.game.EventType.*;
 import static mindustry.ui.fragments.HintsFragment.*;
+import static LI.LIMod.*;
 
 //TODO
 public class LIhints{
@@ -22,6 +24,7 @@ public class LIhints{
     }
 
     public enum LIHint implements Hint {
+        getTitanium(() -> state.isCampaign() && state.getSector().preset == LImaps.map2, () -> false)
         ; //TODO: enum hint
 
         @Nullable
@@ -33,6 +36,11 @@ public class LIhints{
 
         LIHint(Boolp complete){
             this.complete = complete;
+        }
+
+        LIHint(Boolp shown, Boolp complete){
+            this(complete);
+            this.shown = shown;
         }
 
         @Override

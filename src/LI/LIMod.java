@@ -5,6 +5,7 @@ import arc.util.*;
 import mindustry.mod.*;
 import LI.content.tech.LItechTree;
 import LI.game.LIrules;
+import LI.ui.*;
 import LI.ui.dialogs.*;
 import LI.type.ai.LIcommands;
 import LI.content.*;
@@ -14,8 +15,9 @@ import static mindustry.game.EventType.*;
 import static mindustry.Vars.*;
 
 public class LIMod extends Mod{
-    public LIstartDialog start;
-    public LIrules rules;
+    public static LIstartDialog start;
+    public static LIrules rules;
+    public static LIhints hints;
 
     public LIMod(){
         Log.info("Liquid Industry Java Version begins to load.");
@@ -30,6 +32,7 @@ public class LIMod extends Mod{
         rules = new LIrules();
         start = new LIstartDialog();
         ui.research = new LIresearchDialog();
+        hints = new LIhints();
     }
 
     @Override
