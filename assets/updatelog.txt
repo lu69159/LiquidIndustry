@@ -8,6 +8,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.24.6:
+    修复了尼普顿的区块发射条件异常
+
 0.24.5：
     修复了SF2适配的电磁风暴查看详情时崩溃的问题
     为液体质驱类和流体力场类添加了传输速度描述

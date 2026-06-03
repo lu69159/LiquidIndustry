@@ -20,6 +20,11 @@ public class LIplanets {
                 final Color c1 = Color.valueOf("D8F3FF"), c2 = Color.valueOf("5ECCF7");
 
                 @Override
+                public boolean allowLanding(Sector sector) {
+                    return super.allowLanding(sector) && !sector.near().contains(Sector::isAttacked) && sector.near().contains(s -> s.hasBase() && (s.isBeingPlayed() || s.info.bestCoreType.size >= 4));
+                }
+
+                @Override
                 public void addWeather(Sector sector, Rules rules) {
                     if(sector.preset == LImaps.ZXmap2){}
                     else if(sector.preset == LImaps.ZXmap3){
@@ -38,11 +43,11 @@ public class LIplanets {
             };
             meshLoader = () -> new MultiMesh(
                 new HexMesh(NT, 5),
-                new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FFD0"), 2, 0.42f, 1f, 0.43f)
+                new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FF"), 2, 0.42f, 1f, 0.43f)
             );
             cloudMeshLoader = () -> new MultiMesh(
                 new HexSkyMesh(NT, 2, 0.15f, 0.05f, 5, Color.valueOf("D8F3FF"), 2, 0.42f, 1f, 0.43f),
-                new HexSkyMesh(NT, 3, 0.6f, 0.15f, 5, Color.valueOf("D8F3FFD0"), 2, 0.42f, 1.2f, 0.45f)
+                new HexSkyMesh(NT, 3, 0.6f, 0.15f, 5, Color.valueOf("D8F3FF"), 2, 0.42f, 1.2f, 0.45f)
             );
             campaignRules = new CampaignRules(){
                 @Override
