@@ -51,7 +51,7 @@ public class RainbowContinuousTurret extends ContinuousTurret {
     public void setStats() {
         super.setStats();
         stats.add(new Stat("maxdamage", StatCat.function), damageMax * 60 / ((RainbowPointLaserBulletType)shootType).damageInterval , StatUnit.perSecond);
-        stats.add(new Stat("maxdamagetime", StatCat.function), (beforeWarmUpTime + warmUpTime) / 60 , StatUnit.perSecond);
+        stats.add(new Stat("maxdamagetime", StatCat.function), (beforeWarmUpTime + warmUpTime) / 60 , StatUnit.seconds);
     }
 
     @Override
