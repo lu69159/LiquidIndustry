@@ -2055,8 +2055,8 @@ public class LIblocks {
                         intervalBullets = 1;
                         bulletInterval = 2f;
                         intervalBullet = new BasicBulletType(0f, 0f) {{
+                            absorbable = reflectable = hittable = collidesAir = false;
                             buildingDamageMultiplier = 0.03f;
-                            collidesAir = false;
                             instantDisappear = true;
                             damage = 0f;
                             splashDamage = 80f;
@@ -2068,7 +2068,7 @@ public class LIblocks {
                         }};
                     }},
                     LIitems.GTSY, new BasicBulletType(8f, 0f) {{
-                        ammoMultiplier = 4;
+                        ammoMultiplier = 8;
                         absorbable = reflectable = hittable = collides = false;
                         pierce = true;
                         height = 1f;
@@ -2081,8 +2081,8 @@ public class LIblocks {
                         intervalBullets = 1;
                         bulletInterval = 2f;
                         intervalBullet = new BasicBulletType(0f, 0f) {{
+                            absorbable = reflectable = hittable = collidesAir = false;
                             buildingDamageMultiplier = 0.03f;
-                            collidesAir = false;
                             instantDisappear = true;
                             damage = 0f;
                             splashDamage = 160f;
