@@ -860,7 +860,7 @@ public class LIunits {
                 width = 12f;
                 whenShooting = false;
                 pushUnits = true;
-                chanceDeflect = 0.5f;
+                chanceDeflect = 0.75f;
             }});
             abilities.add(new SuppressionFieldAbility(){{
                 range = 240f;
