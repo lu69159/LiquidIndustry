@@ -10,6 +10,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.24.6:
     修复了尼普顿的区块发射条件异常
+    完善英文语言文件
 
 0.24.5：
     修复了SF2适配的电磁风暴查看详情时崩溃的问题
