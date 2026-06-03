@@ -2237,7 +2237,7 @@ public class LIblocks {
             buildCostMultiplier = 0.5f;
             health = 2800;
             size = 4;
-            range = 520f;
+            range = 540f;
             recoil = 0f;
             rotate = false;
             rotateSpeed = 0f;
