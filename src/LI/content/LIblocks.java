@@ -1,5 +1,6 @@
 package LI.content;
 
+import LI.type.bullets.PointLightningBulletType;
 import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -51,6 +52,8 @@ import static mindustry.type.ItemStack.*;
 public class LIblocks {
     /** 部分未用到的方块还未搬入JAVA，固液转化器使用了外部库 */
     public static Block
+    //TEST
+    TEST1,
     //environment
     JHXQ,BS,JBQ,JB,JBBS,BDFY,BLFYC,QBLFYC,CJLDYC,SBRYC,
     //props
@@ -94,6 +97,20 @@ public class LIblocks {
     ;
 
     public static void load(){
+        //region TEST
+
+        TEST1 = new PowerTurret("测试"){{
+            requirements(Category.turret, BuildVisibility.sandboxOnly, with());
+            predictTarget = false;
+            size = 3;
+            reload = 180f;
+            range = 200f;
+            shootType = new PointLightningBulletType(1600f){{
+                lifetime = 80f;
+                speed = 2.5f;
+            }};
+        }};
+
         //region environment
         JHXQ = new Floor("禁核心区"){{
             variants = 0;

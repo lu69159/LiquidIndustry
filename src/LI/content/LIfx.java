@@ -3,9 +3,8 @@ package LI.content;
 import arc.graphics.Color;
 import arc.graphics.g2d.*;
 import arc.math.*;
-import arc.math.geom.Position;
-import arc.util.Nullable;
-import arc.util.Tmp;
+import arc.math.geom.*;
+import arc.struct.*;
 import mindustry.gen.Unit;
 import mindustry.entities.Effect;
 import mindustry.entities.effect.*;
@@ -181,6 +180,34 @@ public class LIfx {
         alpha(e.fout() * 1);
         rect(region, unit.x, unit.y, region.width * 0.8f, region.height * 0.8f, unit.rotation - 90);
     }),
+    pointLightning = new Effect(10f, 400f, e -> {
+        float dst = 800f, range = 10f;
+        float sx = e.x, sy = e.y + dst;
+        int links = Mathf.ceil(dst / range);
+        float spacing = dst / links;
+
+        stroke(20f * e.fout());
+        color(e.color, Color.white, e.fin());
+
+        Lines.beginLine();
+        Lines.linePoint(sx, sy);
+
+        for(int i = 0; i < links; i++){
+            float nx, ny;
+            if(i == links - 1){
+                nx = e.x;
+                ny = e.y;
+            }else{
+                float len = (i + 1) * spacing;
+                float ox = Mathf.randomSeed(e.id + i, -range/2f, range/2f);
+                nx = e.x + ox;
+                ny = sy - len;
+            }
+            Lines.linePoint(nx, ny);
+        }
+
+        Lines.endLine();
+    }).followParent(false),
     shootBigSmokeColor = new Effect(18f, e -> {
         color(e.color);
 

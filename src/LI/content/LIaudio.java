@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 
 public class LIaudio {
     public static Sound
-        wind,laser,FFF,villager1,villager2,villager3;
+        wind,laser,FFF,lightning,villager1,villager2,villager3;
     public static Music
         NTlaunch;
 
