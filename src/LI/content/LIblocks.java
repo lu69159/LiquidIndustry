@@ -481,6 +481,8 @@ public class LIblocks {
             explodeSound = Sounds.explosionReactorNeoplasm;
             explodeEffect = LIfx.deflagExplosion;
 
+            fullnessEffect = false;
+
             consumeItem(fuelItem);
             consumeLiquid(LIliquids.CJLDY, heating / coolantPower).update(false);
         }};

@@ -20,6 +20,7 @@ import mindustry.world.blocks.power.NuclearReactor;
 import static mindustry.Vars.*;
 
 public class OutputsItemNuclearReactor extends NuclearReactor {
+    public boolean fullnessEffect = true;
     public int outputAmount = 8;
     public Item outputItem = Items.scrap;
     Color CEcolor = Color.valueOf("FF6060");
@@ -51,7 +52,7 @@ public class OutputsItemNuclearReactor extends NuclearReactor {
         public void updateTile(){
             int fuel = items.get(fuelItem);
             float fullness = (float)fuel / itemCapacity;
-            productionEfficiency = fullness;
+            productionEfficiency = fullnessEffect ? fullness : fullness > 0 ? 1 : 0;
 
             if(fuel > 0 && enabled){
                 heat += fullness * heating * Math.min(delta(), 4f);

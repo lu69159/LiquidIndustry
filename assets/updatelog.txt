@@ -10,6 +10,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.24.6:
     修复了尼普顿的区块发射条件异常
+    修复了海军工厂的水黾配方无法接收亲水质的bug
+    修复添加饱和火力1时巨蟹血量反而降低的bug
+    现在爆燃反应炉效率不受燃料数量影响
     添加了极光的充能时间描述，略微增加范围
     完善英文语言文件
 

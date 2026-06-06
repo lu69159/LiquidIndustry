@@ -145,7 +145,7 @@ public class otherMods {
         T15.addUpgrade(Vars.content.getByName(ContentType.unit, "饱和火力-海1"), Vars.content.getByName(ContentType.unit, "饱和火力-海5"));
 
         //单位
-        LIunits.JX.health = 21000;
+        LIunits.JX.health = 55000;
         LIunits.YA.health = 180000;
         LIunits.YA.immunities.addAll(StatusEffects.unmoving, StatusEffects.disarmed, StatusEffects.electrified, Vars.content.getByName(ContentType.status, "饱和火力-干扰"), Vars.content.getByName(ContentType.status, "饱和火力-崩溃"), Vars.content.getByName(ContentType.status, "饱和火力-休克"));
         LIunits.YA.weapons.get(2).bullet.buildingDamageMultiplier = 0.3f;

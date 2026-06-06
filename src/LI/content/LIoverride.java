@@ -49,6 +49,7 @@ public class LIoverride {
 
         //region 单位制造
         ((UnitFactory)navalFactory).plans.add(new UnitFactory.UnitPlan(LIunits.SM, 60 * 30f, ItemStack.with(Items.silicon, 10, LIitems.QSZ, 12)));
+        navalFactory.afterPatch();
         ((Reconstructor)additiveReconstructor).upgrades.add(new UnitType[]{LIunits.SM, LIunits.FZ});
         ((Reconstructor)multiplicativeReconstructor).upgrades.add(new UnitType[]{LIunits.FZ, LIunits.HL});
         ((Reconstructor)exponentialReconstructor).upgrades.add(new UnitType[]{LIunits.HL, LIunits.DY});
