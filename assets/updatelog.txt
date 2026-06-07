@@ -8,6 +8,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.24.7:
+    修复了流体力场类的错误描述
+
 0.24.6:
     修复了尼普顿的区块发射条件异常
     修复了海军工厂的水黾配方无法接收亲水质的bug
