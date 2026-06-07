@@ -13,6 +13,8 @@ import mindustry.logic.Ranged;
 import mindustry.type.Liquid;
 import mindustry.gen.*;
 import mindustry.world.*;
+import mindustry.world.blocks.distribution.Router;
+import mindustry.world.blocks.distribution.Sorter;
 import mindustry.world.blocks.liquid.LiquidBlock;
 import mindustry.world.blocks.Autotiler;
 import mindustry.world.blocks.defense.Wall;
@@ -123,7 +125,7 @@ public class LiquidProjector extends Block {
         public boolean canTransferLiquid(Building to) {
             if(!to.block.hasLiquids) return false;
             return !(to instanceof LiquidProjectorBuild) &&
-                    !(to.block instanceof LiquidBlock || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall) &&
+                    !(to.block instanceof LiquidBlock || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter) &&
                     to.acceptLiquid(this, liquids.current());
         }
 
