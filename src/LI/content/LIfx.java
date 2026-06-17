@@ -336,6 +336,15 @@ public class LIfx {
         colorTo = Color.valueOf("E286548F");
     }};
 
+    public static Effect pointLightningCharge(float rad){
+        return new Effect(40f, e -> {
+            color(e.color);
+            alpha(e.fin() * 0.4f + 0.1f);
+            Lines.stroke(2f * e.finpow());
+            Lines.circle(e.x, e.y, rad);
+            Fill.circle(e.x, e.y, rad * e.fin());
+        });
+    }
     public static Effect DCFBshoot(Color hitcolor){
         return new MultiEffect(
                 new ParticleEffect(){{

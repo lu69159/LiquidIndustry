@@ -99,16 +99,8 @@ public class LIblocks {
     public static void load(){
         //region TEST
 
-        TEST1 = new PowerTurret("测试"){{
+        TEST1 = new PointLightningTurret("测试"){{
             requirements(Category.turret, BuildVisibility.sandboxOnly, with());
-            predictTarget = false;
-            size = 3;
-            reload = 180f;
-            range = 200f;
-            shootType = new PointLightningBulletType(1600f){{
-                lifetime = 80f;
-                speed = 2.5f;
-            }};
         }};
 
         //region environment

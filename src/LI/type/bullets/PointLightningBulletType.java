@@ -24,6 +24,8 @@ public class PointLightningBulletType extends BulletType{
         hitEffect = Fx.hitLancer;
         hitSound = LIaudio.lightning;
 
+        chargeEffect = LIfx.pointLightningCharge(Prange);
+
         status = StatusEffects.shocked;
         lightningColor = Pal.lancerLaser;
         hitColor = Color.white;
