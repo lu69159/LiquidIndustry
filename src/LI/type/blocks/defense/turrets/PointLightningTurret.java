@@ -13,10 +13,7 @@ public class PointLightningTurret extends PowerTurret{
         predictTarget = moveWhileCharging = false;
         shoot.firstShotDelay = 40f;
 
-        size = 4;
-        reload = 240f;
-        range = 320f;
-        shootType = new PointLightningBulletType(1600f){{
+        shootType = new PointLightningBulletType(5650f){{
             lifetime = 80f;
             speed = 2.5f;
         }};

@@ -17,12 +17,14 @@ public class PointLightningBulletType extends BulletType{
     };
     public PointLightningBulletType(float Pdamage, float Prange){
         hittable = reflectable = keepVelocity = false;
-        despawnHit = scaleLife = true;
+        despawnHit = scaleLife = splashDamagePierce = true;
         this.damage = splashDamage = Pdamage;
         splashDamageRadius = Prange;
         despawnEffect = shootEffect = smokeEffect = Fx.none;
         hitEffect = Fx.hitLancer;
         hitSound = LIaudio.lightning;
+        hitSoundVolume = 2f;
+        hitShake = 8f;
 
         chargeEffect = LIfx.pointLightningCharge(Prange);
 

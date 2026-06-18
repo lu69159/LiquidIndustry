@@ -334,7 +334,12 @@ public class LIfx {
         lifetime = 180f;
         colorFrom = Color.valueOf("FFCD668F");
         colorTo = Color.valueOf("E286548F");
-    }};
+    }},
+    whiteSpawn = new Effect(30, e -> {
+        stroke(2f * e.fout());
+        color(new Color(1, 1, 1));
+        Lines.poly(e.x, e.y, 4, 5f + e.fin() * 12f);
+    });
 
     public static Effect pointLightningCharge(float rad){
         return new Effect(40f, e -> {

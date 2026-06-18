@@ -53,7 +53,7 @@ public class LIblocks {
     /** 部分未用到的方块还未搬入JAVA，固液转化器使用了外部库 */
     public static Block
     //TEST
-    TEST1,
+
     //environment
     JHXQ,BS,JBQ,JB,JBBS,BDFY,BLFYC,QBLFYC,CJLDYC,SBRYC,
     //props
@@ -73,7 +73,7 @@ public class LIblocks {
     WXHXJZ,SDHX,LTHX,
 
     //炮塔
-    DCFB,TFP,DLY,DL,JK,PF,MF,BP,JG,ZBPT,
+    DCFB,TFP,DLY,DL,JK,PF,MF,BP,JG,LT,ZBPT,
 
     //墙
     JDQT,ZJCYG,DXZJCYG,SGZJCYG,DXSGZJCYG,HJZJCYG,DXHJZJCYG,XZZJCYG,DXXZZJCYG,CNQ,DXCNQ,JXCNQ,LCQ,
@@ -98,10 +98,6 @@ public class LIblocks {
 
     public static void load(){
         //region TEST
-
-        TEST1 = new PointLightningTurret("测试"){{
-            requirements(Category.turret, BuildVisibility.sandboxOnly, with());
-        }};
 
         //region environment
         JHXQ = new Floor("禁核心区"){{
@@ -2258,6 +2254,78 @@ public class LIblocks {
             shake = 0f;
             consumePower(16f);
             shootSound = Sounds.none;
+        }};
+        LT = new PointLightningTurret("雷霆"){{
+            requirements(Category.turret, with(Items.copper, 300, Items.lead, 425, Items.silicon, 325, LIitems.CDZ, 15));
+            canOverdrive = false;
+            health = 2400;
+            size = 4;
+            reload = 600f;
+            range = 176f;
+            recoil = 0.3f;
+            rotateSpeed = 2f;
+            shootWarmupSpeed = 0.1f;
+            warmupMaintainTime = 120f;
+            minWarmup = 0.9f;
+            consumePower(28f);
+            drawer = new DrawTurret(){{
+                parts.addAll(
+                        new ShapePart(){{
+                            y = 11f;
+                            color = Pal.lancerLaser.cpy();
+                            radius = 0f;
+                            radiusTo = 4f;
+                            stroke = 0f;
+                            strokeTo = 1.2f;
+                            circle = hollow = true;
+                        }},
+                        new ShapePart(){{
+                            y = 11f;
+                            color = Pal.lancerLaser.cpy();
+                            radius = 0f;
+                            radiusTo = 3f;
+                            stroke = 0f;
+                            strokeTo = 0.8f;
+                            hollow = true;
+                            rotateSpeed = 1.5f;
+                        }},
+                        new HaloPart(){{
+                            y = -20f;
+                            sides = 3;
+                            shapes = 2;
+                            color = colorTo = Pal.lancerLaser.cpy();
+                            tri = hollow = true;
+                            radius = 0f;
+                            radiusTo = 6f;
+                            triLength = 0f;
+                            triLengthTo = 6f;
+                            haloRadius = 0f;
+                            shapeRotation = haloRotation = 180f;
+                            layer = 110;
+                        }},
+                        new HaloPart(){{
+                            y = -20f;
+                            sides = 3;
+                            shapes = 2;
+                            color = colorTo = Pal.lancerLaser.cpy();
+                            tri = hollow = true;
+                            radius = 0f;
+                            radiusTo = 6f;
+                            triLength = 0f;
+                            triLengthTo = 6f;
+                            haloRadius = 0f;
+                            shapeRotation = haloRotation = 0f;
+                            layer = 110;
+                        }},
+                        new HoverPart(){{
+                            color = Pal.lancerLaser.cpy().lerp(Color.white.cpy(), 0.75f);
+                            phase = 90f;
+                            stroke = 1f;
+                            circles = 3;
+                            y = -2f;
+                        }}
+                );
+            }};
         }};
         ZBPT = new PowerTurret("作弊炮塔"){{
             requirements(Category.turret, BuildVisibility.sandboxOnly, with());

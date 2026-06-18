@@ -241,6 +241,7 @@ public class LItechTree {
 
         addTechNode(node(DCFB, Seq.with(new SectorComplete(desolateRift)), () -> {}), foreshadow);
         addTechNode(node(TFP, Seq.with(new Research(thoriumReactor), new Research(GZQ)), () -> {}), foreshadow);
+        addTechNode(node(LT, Seq.with(new Research(DCFB), new SectorComplete(testingGrounds)), () -> {}), lancer);
 
         addTechNode(node(SM, () -> {
             node(FZ, () -> {
