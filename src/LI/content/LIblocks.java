@@ -1794,8 +1794,7 @@ public class LIblocks {
             recoilTime = 10f;
             cooldownTime = 80f;
             consumePower(4);
-            coolant = consumeCoolant(0.8f);
-            coolantMultiplier = 0.5f;
+            coolant = consumeCoolant(0.4f);
             reload = 30;
             rotateSpeed = 6;
             range = 240f;
@@ -2261,7 +2260,7 @@ public class LIblocks {
             unitSort = UnitSorts.strongest;
             health = 2400;
             size = 4;
-            reload = 600f;
+            reload = 480f;
             range = 176f;
             recoil = 0.3f;
             rotateSpeed = 2f;
@@ -2269,6 +2268,8 @@ public class LIblocks {
             warmupMaintainTime = 120f;
             minWarmup = 0.9f;
             consumePower(28f);
+            coolant = consumeCoolant(1f);
+            coolantMultiplier = 0.2f;
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new ShapePart(){{

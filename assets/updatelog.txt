@@ -12,6 +12,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
     修复了流体力场类的错误描述
     修复了流体力场作用于双传路由器的问题
     添加了一个新炮塔
+    破防的冷却液消耗减半
 
 0.24.6:
     修复了尼普顿的区块发射条件异常
