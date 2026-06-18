@@ -2258,6 +2258,7 @@ public class LIblocks {
         LT = new PointLightningTurret("雷霆"){{
             requirements(Category.turret, with(Items.copper, 300, Items.lead, 425, Items.silicon, 325, LIitems.CDZ, 15));
             canOverdrive = false;
+            unitSort = UnitSorts.strongest;
             health = 2400;
             size = 4;
             reload = 600f;
