@@ -186,8 +186,10 @@ public class LIfx {
         int links = Mathf.ceil(dst / range);
         float spacing = dst / links;
 
+        z(Layer.flyingUnit + 0.1f);
+
         stroke(20f * e.fout());
-        color(e.color, Color.white, e.fin());
+        color(new Color(1, 1, 1));
 
         Lines.beginLine();
         Lines.linePoint(sx, sy);
