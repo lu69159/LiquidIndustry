@@ -16,7 +16,7 @@ public class PointLightningBulletType extends BulletType{
         this(damage, 80f);
     };
     public PointLightningBulletType(float Pdamage, float Prange){
-        hittable = reflectable = keepVelocity = false;
+        hittable = reflectable = absorbable = keepVelocity = false;
         despawnHit = scaleLife = splashDamagePierce = true;
         this.damage = splashDamage = Pdamage;
         splashDamageRadius = Prange;
@@ -40,6 +40,7 @@ public class PointLightningBulletType extends BulletType{
         }};
 
         fragBullet = new LightningBulletType(){{
+            shieldDamageMultiplier = 1.5f;
             damage = Pdamage / 32f;
             lightningColor = Color.white;
             lightningLength = Mathf.ceil((Prange / 8f) * 5/4f);

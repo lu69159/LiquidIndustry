@@ -727,7 +727,7 @@ public class LIblocks {
 
         //region 炮塔
         DCFB = new ItemTurret("电磁风暴"){{
-            requirements(Category.turret, with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 750, Items.graphite,750, Items.surgeAlloy, 500, LIitems.QSZ, 125, LIitems.GTS, 10));
+            requirements(Category.turret, with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 650, Items.graphite,650, Items.surgeAlloy, 425, LIitems.QSZ, 125, LIitems.GTS, 10));
             health = 3200;
             size = 4;
             range = 768f;
@@ -747,7 +747,7 @@ public class LIblocks {
                 firstShotDelay = 30f;
                 shotDelay = 0f;
             }};
-            consumePower(24f);
+            consumePower(20f);
             coolant = consumeCoolant(1.5f);
             coolantMultiplier = 0.35f;
             destroyBullet = new LightningBulletType(){{
@@ -1268,7 +1268,7 @@ public class LIblocks {
             }
         };
         TFP = new ThoriumReactorLauncher("钍反炮"){{ //显示尚有问题
-            requirements(Category.turret, with(Items.thorium, 175, Items.graphite, 75, Items.silicon, 75, Items.plastanium, 25, Items.surgeAlloy, 25, LIitems.GTLDY, 1));
+            requirements(Category.turret, with(Items.lead, 125, Items.graphite, 75, Items.silicon, 50, Items.phaseFabric, 15, Items.surgeAlloy, 15, LIitems.GTLDY, 1));
             predictTarget = false;
             health = 4800;
             size = 5;
@@ -1362,10 +1362,11 @@ public class LIblocks {
             rotateSpeed = 6f;
             shootY = 12f;
             shoot = new ShootPattern();
-            consumePower(3.6f);
-            shootType = new BasicBulletType(15f, 10f){{
+            consumePower(3.2f);
+            shootType = new BasicBulletType(15f, 0f){{
+                ammoMultiplier = 1f;
                 collidesAir = false;
-                pierceArmor = collidesTeam = true;
+                collidesTeam = true;
                 healPercent = 3f;
                 trailLength = 3;
                 trailWidth = 1.6f;
@@ -2260,16 +2261,16 @@ public class LIblocks {
             unitSort = UnitSorts.strongest;
             health = 2400;
             size = 4;
-            reload = 480f;
+            reload = 600f;
             range = 176f;
             recoil = 0.3f;
             rotateSpeed = 2f;
             shootWarmupSpeed = 0.1f;
             warmupMaintainTime = 120f;
             minWarmup = 0.9f;
-            consumePower(28f);
+            consumePower(36f);
             coolant = consumeCoolant(1f);
-            coolantMultiplier = 0.2f;
+            coolantMultiplier = 0.25f;
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new ShapePart(){{
@@ -3219,6 +3220,7 @@ public class LIblocks {
         }};
         SCQ = new ILbridge("双传桥"){{
             requirements(Category.distribution, with(Items.metaglass, 5, Items.plastanium, 5, Items.surgeAlloy, 8, Items.phaseFabric, 12, LIitems.QSZ, 1));
+            consumePower(0.3f);
         }};
         SCLYQ = new ILrouter("双传路由器"){{
             requirements(Category.distribution, with(Items.metaglass, 3, Items.plastanium, 1, Items.surgeAlloy, 1, LIitems.QSZ, 0));
