@@ -74,7 +74,7 @@ public class LIunits {
 
                 bullet = new BasicBulletType(0f, 0f){{
                     absorbable = reflectable = false;
-                    killShooter = instantDisappear = true;
+                    killShooter = instantDisappear = despawnHit = true;
                     ammoMultiplier = 1;
                     splashDamage = 5000;
                     splashDamageRadius = 160f;
@@ -123,7 +123,7 @@ public class LIunits {
 
                 bullet = new BasicBulletType(0f, 0f){{
                     absorbable = reflectable = false;
-                    killShooter = instantDisappear = true;
+                    killShooter = instantDisappear = despawnHit = true;
                     ammoMultiplier = 1;
                     reloadMultiplier = 0.8f;
                     splashDamage = 10000;
@@ -162,7 +162,7 @@ public class LIunits {
                 shootOnDeath = true;
 
                 bullet = new BasicBulletType(0f, 0f){{
-                    instantDisappear = killShooter = true;
+                    instantDisappear = killShooter = despawnHit = true;
                     hittable = collidesAir = false;
                     ammoMultiplier = 4;
                     collidesTiles = false;
@@ -170,6 +170,7 @@ public class LIunits {
                     hitEffect = Fx.explosion;
                     splashDamageRadius = 48f;
                     splashDamage = 150f;
+                    status = StatusEffects.blasted;
                 }};
             }});
         }};
@@ -192,7 +193,7 @@ public class LIunits {
                 shootOnDeath = true;
 
                 bullet = new BasicBulletType(0f, 0f){{
-                    instantDisappear = killShooter = true;
+                    instantDisappear = killShooter = despawnHit = true;
                     hittable = collidesAir = false;
                     ammoMultiplier = 4;
                     collidesTiles = false;
@@ -200,6 +201,8 @@ public class LIunits {
                     hitEffect = Fx.explosion;
                     splashDamageRadius = 96f;
                     splashDamage = 300f;
+                    status = StatusEffects.melting;
+                    statusDuration = 180f;
                 }};
             }});
         }};

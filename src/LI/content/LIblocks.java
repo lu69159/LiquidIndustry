@@ -1831,7 +1831,6 @@ public class LIblocks {
                 fragBullets = 4;
                 fragBullet = new PointBulletType() {{
                     buildingDamageMultiplier = 0.2f;
-                    pierceArmor = true;
                     trailEffect = new ParticleEffect() {{
                         sizeInterp = Interp.pow5Out;
                         particles = 1;
@@ -1859,7 +1858,6 @@ public class LIblocks {
                     fragBullets = 3;
                     fragBullet = new BasicBulletType(0, 0) {{
                         buildingDamageMultiplier = 0.2f;
-                        pierceArmor = true;
                         trailEffect = Fx.none;
                         hitEffect = despawnEffect = Fx.flakExplosion;
                         splashDamageRadius = 16;
