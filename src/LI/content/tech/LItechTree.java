@@ -93,7 +93,6 @@ public class LItechTree {
                     });
                 });
                 node(LCQ, Seq.with(new OnSector(map5)), () -> {});
-                node(YJLD, Seq.with(new OnSector(ZXmap3)), () -> {});
             });
 
             node(CDJD, Seq.with(new SectorComplete(map2)), () -> {

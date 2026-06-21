@@ -10,6 +10,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.24.9:
     修复了埋伏地雷的范围伤害有时不触发的问题
+    移除尼普顿科技树的重复节点
     移除破防子弹的穿甲效果
     固态石油和爆混地雷增加对应buff
     雷霆的闪电效果现在不会被空军遮挡
