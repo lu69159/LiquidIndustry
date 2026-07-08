@@ -4,26 +4,51 @@ version = '1.0'
 
 sourceSets.main.java.srcDirs = ["src"]
 
+ext.useLocalDeps = project.hasProperty('useLocalDeps') ? property('useLocalDeps').toBoolean() : true
+
 repositories{
     mavenCentral()
-    maven{ url = "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
+    if(!useLocalDeps){
+        ivy{
+            url = 'https://github.com/'
+            patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/dependencies.jar'}
+            metadataSources{ artifact() }
+        }
+
+        //If the version is set to 'latest', downloads the latest Mindustry *release* as a dependency
+        ivy{
+            url = 'https://github.com/'
+            patternLayout{artifact '/[organisation]/[module]/releases/[revision]/download/dependencies.jar'}
+            metadataSources{ artifact() }
+        }
+
+        //For depending on the absolute newest commit for Mindustry
+        ivy{
+            url = 'https://github.com/'
+            patternLayout{artifact '/[organisation]/[module]/releases/download/master/[revision].jar'}
+            metadataSources{ artifact() }
+        }
+    }
+    //maven{ url = "https://maven.xpdustry.com/mindustry" }
+    //maven{ url = "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
     maven{ url = 'https://www.jitpack.io' }
 }
 
 java{
-    targetCompatibility = 8
+    targetCompatibility = JavaVersion.VERSION_17
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v158'
+    mindustryVersion = 'v159'
     jabelVersion = "93fde537c7"
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
 
-//java 8 backwards compatibility flag
+/*
+//java 8 backwards compatibility flag, 159+不需要
 allprojects{
     tasks.withType(JavaCompile).tap{
         configureEach{
@@ -31,19 +56,27 @@ allprojects{
         }
     }
 }
+*/
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    if(useLocalDeps){
+        compileOnly files('D:/Game/Mindustry/zizhiMOD/FORK/Arc/arc-core/build/libs/arc-core-1.0.jar')
+        compileOnly files('D:/Game/Mindustry/zizhiMOD/FORK/Mindustry/core/build/libs/core-release.jar')
+    }else{
+        compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+        compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    }
 
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
 
 //force arc version
-configurations.configureEach{
-    resolutionStrategy.eachDependency { details ->
-        if(details.requested.group == 'com.github.Anuken.Arc'){
-            details.useVersion "$mindustryVersion"
+if(!useLocalDeps){
+    configurations.configureEach{
+        resolutionStrategy.eachDependency { details ->
+            if(details.requested.group == 'com.github.Anuken.Arc'){
+                details.useVersion "$mindustryVersion"
+            }
         }
     }
 }

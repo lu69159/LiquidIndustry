@@ -52,7 +52,7 @@ public class LIplanets {
             campaignRules = new CampaignRules(){
                 @Override
                 public void apply(Planet planet, Rules rules) {
-                    if(!rules.showSpawns) rules.showSpawns = true;
+                    if(rules.hideSpawns) rules.hideSpawns = false;
                     rules.objectiveTimerMultiplier = difficulty.waveTimeMultiplier;
                     rules.teams.get(rules.waveTeam).blockHealthMultiplier = difficulty.enemyHealthMultiplier;
                     rules.teams.get(rules.waveTeam).unitHealthMultiplier = difficulty.enemyHealthMultiplier;
@@ -61,7 +61,8 @@ public class LIplanets {
                 }
             };
             ruleSetter = (r) -> {
-                r.lighting = r.showSpawns = true;
+                r.lighting = true;
+                r.hideSpawns = false;
                 r.solarMultiplier = 0.05f;
                 r.worldProcessorPlayerLink = true;
             };

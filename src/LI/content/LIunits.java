@@ -536,7 +536,7 @@ public class LIunits {
             mineTier = 1;
             mineSpeed = 3.5f;
         }};
-        GMS = new UnitType("伽马-S"){{
+        GMS = new UnitType("伽马-S"){{ //最新版MDT会崩 TODO
             constructor = gamma.constructor;
             controller = u -> u.team.isAI() ? new BuilderAI(true, 400f) : new CommandAI();
             flying = true;
