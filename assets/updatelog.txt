@@ -8,6 +8,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.25:
+    适配159
+
 0.24.9:
     修复了埋伏地雷的范围伤害有时不触发的问题
     移除尼普顿科技树的重复节点
