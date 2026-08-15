@@ -3274,7 +3274,7 @@ public class LIblocks {
             group = BlockGroup.transportation;
         }};
         GYFSQ = new MassDriver("高压发射器"){{
-            requirements(Category.distribution, with(Items.copper, 40, Items.metaglass, 20, Items.silicon, 5));
+            requirements(Category.distribution, with(Items.copper, 40, Items.metaglass, 20));
             health = 240;
             size = 3;
             hasPower = false;

@@ -50,6 +50,7 @@ public class LiquidMassDriver extends Block{
         update = true;
         solid = true;
         configurable = true;
+        outputsLiquid = true;
         hasLiquids = true;
         hasPower = true;
         sync = true;

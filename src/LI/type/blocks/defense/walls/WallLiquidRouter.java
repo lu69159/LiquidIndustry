@@ -20,6 +20,8 @@ public class WallLiquidRouter extends Wall {
         super(name);
         update = true;
         hasLiquids = true;
+        outputsLiquid = true;
+        flashHit = true;
         buildCostMultiplier = 2.5f; //为了平衡建造时间
     }
 
@@ -65,12 +67,12 @@ public class WallLiquidRouter extends Wall {
         }
 
         public void drawLiquid(){
-            var liquidRegion = Tmp.tr1;
+            TextureRegion liquidRegion = Tmp.tr1;
             liquidRegion.set(renderer.fluidFrames[liquids.current().gas ? 1 : 0][liquids.current().getAnimationFrame()]);
             float threshold = (size - 1) / 2f;
             for(int tx = 0; tx < size; tx++){
                 for(int ty = 0; ty < size; ty++){
-                    Drawf.liquid(liquidRegion, x - threshold * tilesize + tx * tilesize, y - threshold * tilesize + ty * tilesize, liquids.currentAmount() / block.liquidCapacity, liquids.current().color.write(Tmp.c1));
+                    Drawf.liquid(liquidRegion, x - (threshold - tx) * tilesize, y - (threshold - ty) * tilesize, liquids.currentAmount() / block.liquidCapacity, liquids.current().color.write(Tmp.c1));
                 }
             }
         }

@@ -1,5 +1,6 @@
 package LI.type.blocks.effect;
 
+import LI.type.blocks.distribution.liquid.LiquidMassDriver;
 import arc.Core;
 import arc.math.Mathf;
 import arc.graphics.Color;
@@ -125,7 +126,7 @@ public class LiquidProjector extends Block {
         public boolean canTransferLiquid(Building to) {
             if(!to.block.hasLiquids) return false;
             return !(to instanceof LiquidProjectorBuild) &&
-                    !(to.block instanceof LiquidBlock || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter) &&
+                    !(to.block instanceof LiquidBlock || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter || to.block instanceof LiquidMassDriver) &&
                     to.acceptLiquid(this, liquids.current());
         }
 
