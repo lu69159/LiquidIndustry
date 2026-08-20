@@ -9,7 +9,8 @@ Also, you can make a PR.(But most content is currently named using the initial l
 最近忙起来了，更新会变慢很多
 
 0.25.2:
-    重新添加五级废液相关建筑
+    神秘物质简介修改
+    重新添加五级废液相关建筑(配方有修改)
 
 0.25.1:
     删除高压发射器需求中的硅

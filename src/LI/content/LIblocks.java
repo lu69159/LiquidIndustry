@@ -50,7 +50,6 @@ import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
 public class LIblocks {
-    /** 固液转化器使用了外部库，精华提取源还未添加完成 */
     public static Block
     //TEST
 
@@ -2593,6 +2592,7 @@ public class LIblocks {
             requirements(Category.crafting, with(LIitems.SMSP, 15, LIitems.SMWZ, 1));
             consumeLiquid(LIliquids.FY5, 3/60f);
             itemsPerSecond = 30;
+            buildCostMultiplier = 5;
         }};
 
         //废液精炼
