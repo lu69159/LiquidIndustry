@@ -1,5 +1,6 @@
 package LI.content.tech;
 
+import LI.content.LIitems;
 import arc.struct.Seq;
 import mindustry.content.TechTree;
 import mindustry.content.TechTree.TechNode;
@@ -57,8 +58,11 @@ public class LItechTree {
                                 node(SJJHZHQ);
                                 node(JHNSC, Seq.with(new SectorComplete(map6)), () -> {
                                     node(SJJHZHY);
-                                    node(SNNJY, Seq.with(new Research(SJJHZHY)), () -> {
-                                        node(JHTQY);
+                                    node(ZNJHQ, Seq.with(new Research(SJJHZHY)), () -> {
+                                        node(SNPSJ);
+                                        node(SNNJY, () -> {
+                                            node(JHTQY);
+                                        });
                                     });
                                 });
                             });

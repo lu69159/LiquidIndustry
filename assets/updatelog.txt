@@ -11,6 +11,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 0.25.2:
     神秘物质简介修改
     添加五级废液相关建筑(配方有修改)
+    添加五级废液相关科技树
 
 0.25.1:
     删除高压发射器需求中的硅
