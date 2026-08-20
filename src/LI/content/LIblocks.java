@@ -1,6 +1,5 @@
 package LI.content;
 
-import LI.type.bullets.PointLightningBulletType;
 import arc.Core;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -45,12 +44,13 @@ import LI.type.blocks.storage.*;
 import LI.type.blocks.defense.turrets.*;
 import LI.type.blocks.distribution.itemLiquid.*;
 import LI.type.blocks.production.*;
+import LI.type.bullets.*;
 
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
 public class LIblocks {
-    /** 部分未用到的方块还未搬入JAVA，固液转化器使用了外部库 */
+    /** 固液转化器使用了外部库，精华提取源还未添加完成 */
     public static Block
     //TEST
 
@@ -2589,7 +2589,11 @@ public class LIblocks {
                     new DrawDefault(), new DrawFade(){{ suffix = "-glow"; }}
             );
         }};
-        // 精华提取源
+        JHTQY = new SpecialItemSource("精华提取源"){{
+            requirements(Category.crafting, with(LIitems.SMSP, 15, LIitems.SMWZ, 1));
+            consumeLiquid(LIliquids.FY5, 3/60f);
+            itemsPerSecond = 30;
+        }};
 
         //废液精炼
         FYLXJ = new GenericCrafter("废液离心机"){{
@@ -2734,7 +2738,222 @@ public class LIblocks {
                     }}
             );
         }};
-        // 神能凝聚仪
+        SNNJY = new CustomDrawCrafter("神能凝聚仪"){{
+            requirements(Category.crafting, with(Items.metaglass, 220, Items.graphite, 1200, LIitems.CDZ, 120, LIitems.SMWZ, 3));
+            hasPower = hasLiquids = outputsLiquid = true;
+            canOverdrive = false;
+            health = 3200;
+            armor = 10;
+            size = 4;
+            itemCapacity = 5;
+            liquidCapacity = 20f;
+            buildCostMultiplier = 5f;
+            craftTime = 1800f;
+            consumePower(600f);
+            consumeItem(LIitems.SMSP, 1);
+            consumeLiquid(LIliquids.FY4, 0.5f);
+            outputLiquid = new LiquidStack(LIliquids.FY5, 0.25f);
+            lightLiquid = LIliquids.FY5;
+
+            destroyBullet = new EmpBulletType(){{
+                pierceBuilding = makeFire = splashDamagePierce = instantDisappear = despawnHit = killShooter = true;
+                hittable = absorbable = reflectable = false;
+                reloadMultiplier = 0.5f;
+                ammoMultiplier = 1;
+                powerSclDecrease = 0f;
+                timeDuration = 900f;
+                sprite = "circle";
+                radius = 600f;
+                damage = 666f;
+                splashDamage = 300f;
+                splashDamageRadius = 600f;
+                speed = 0f;
+                lightRadius = 600f;
+                lightColor = hitColor = frontColor = Color.valueOf("EFEFEF");
+                backColor = Color.white;
+
+                hitEffect = new MultiEffect(
+                        new WaveEffect(){{
+                            lifetime = 720f; // 120 + 600
+                            sizeFrom = 600f;
+                            sizeTo = 550f;
+                            strokeFrom = 6f;
+                            strokeTo = 0f;
+                            colorFrom = Color.valueOf("FFFFFFFF");
+                            colorTo = Color.valueOf("EFEFEFFF");
+                        }},
+                        new ParticleEffect(){{
+                            lifetime = 120f;
+                            particles = 1;
+                            baseLength = 0f;
+                            length = 0f;
+                            region = "circle";
+                            sizeFrom = 600f;
+                            sizeTo = 600f;
+                            lightColor = Color.valueOf("EFEFEFFF");
+                            colorFrom = Color.valueOf("EFEFEFA0");
+                            colorTo = Color.valueOf("00000000");
+                        }},
+                        new ParticleEffect(){{
+                            lifetime = 90f;
+                            particles = 54;
+                            line = true;
+                            interp = Interp.pow3Out;
+                            sizeInterp = Interp.pow2In;
+                            strokeFrom = 2f;
+                            strokeTo = 0f;
+                            lenFrom = 140f;
+                            lenTo = 15f;
+                            length = 200f;
+                            baseLength = 500f;
+                            colorFrom = colorTo = Color.white;
+                        }}
+                );
+                hitPowerEffect = new ParticleEffect(){{
+                    particles = 8;
+                    line = true;
+                    interp = Interp.pow3Out;
+                    sizeInterp = Interp.pow2In;
+                    strokeFrom = 2f;
+                    strokeTo = 0f;
+                    lenFrom = 15f;
+                    lenTo = 0f;
+                    length = 24f;
+                    baseLength = 10f;
+                    lifetime = 50f;
+                    colorFrom = Color.valueOf("FFFFFFFF");
+                    colorTo = Color.valueOf("FFFFFF70");
+                }};
+
+                lightning = 16;
+                lightningCone = 360f;
+                lightningLength = 200;
+                lightningLengthRand = 300;
+                lightningDamage = 233f;
+                lightningColor = Color.white;
+
+                fragBullets = 1;
+                fragOnHit = fragOnAbsorb = true;
+                fragBullet = new EmptyBulletType(){{
+                    absorbable = reflectable = hittable = collides = false;
+                    damage = speed = 0f;
+                    lifetime = 600f;
+
+                    parts.add(
+                            new HaloPart(){{
+                                progress = PartProgress.life;
+                                shapeRotation = 45f;
+                                sides = 3;
+                                shapes = 2;
+                                color = Color.valueOf("EFEFEF");
+                                colorTo = Color.valueOf("FFFFFF80");
+                                tri = hollow = true;
+                                radius = 16f;
+                                radiusTo = 8f;
+                                triLength = 480f;
+                                haloRadius = 0f;
+                                haloRotation = 0f;
+                                haloRotateSpeed = 6f;
+                                layer = 110;
+                            }},
+                            new HaloPart(){{
+                                progress = PartProgress.life;
+                                shapeRotation = -45f;
+                                sides = 3;
+                                shapes = 2;
+                                color = Color.valueOf("EFEFEF");
+                                colorTo = Color.valueOf("FFFFFF80");
+                                tri = hollow = true;
+                                radius = 16f;
+                                radiusTo = 8f;
+                                triLength = 240f;
+                                haloRadius = 0f;
+                                haloRotation = 0f;
+                                haloRotateSpeed = -6f;
+                                layer = 110;
+                            }}
+                    );
+
+                    bulletInterval = 15f;
+                    intervalBullets = 6;
+                    intervalRandomSpread = 180f;
+                    intervalSpread = 60f;
+                    intervalAngle = 0f;
+                    intervalBullet = new BasicBulletType(12f, 233f){{
+                        absorbable = reflectable = false;
+                        makeFire = splashDamagePierce = despawnHit = true;
+                        frontColor = Color.valueOf("EFEFEF");
+                        backColor = lightColor = Color.valueOf("FFFFFF");
+                        width = 12f;
+                        height = 30f;
+                        weaveMag = 4f;
+                        weaveScale = 4f;
+                        trailColor = Color.valueOf("EFEFEF");
+                        trailWidth = 3.6f;
+                        trailLength = 36;
+
+                        incendAmount = 3;
+                        incendChance = 0.8f;
+
+                        lifetime = 100f;
+                        splashDamage = 1200f;
+                        splashDamageRadius = 64f;
+                        hitSound = despawnSound = Sounds.shootRipple;
+
+                        hitEffect = despawnEffect = new MultiEffect(
+                                new ParticleEffect(){{
+                                    lifetime = 20f;
+                                    particles = 1;
+                                    baseLength = 0f;
+                                    length = 0f;
+                                    region = "circle";
+                                    sizeFrom = 64f;
+                                    sizeTo = 64f;
+                                    colorFrom = Color.valueOf("EFEFEFFF");
+                                    colorTo = Color.valueOf("00000000");
+                                }},
+                                new WaveEffect(){{
+                                    lifetime = 20f;
+                                    sizeFrom = 64f;
+                                    sizeTo = 64f;
+                                    strokeFrom = 3f;
+                                    strokeTo = 0f;
+                                    colorFrom = Color.valueOf("EFEFEFFF");
+                                    colorTo = Color.valueOf("FFFFFF80");
+                                }}
+                        );
+                    }};
+                }};
+            }};
+        }
+            TextureAtlas.AtlasRegion ringRegion,starRegion;
+
+            @Override
+            public void load() {
+                super.load();
+                ringRegion = Core.atlas.find("液体工艺-神佑光环");
+                starRegion = Core.atlas.find("液体工艺-sTar");
+            }
+            @Override
+            public void setStats() {
+                super.setStats();
+                if(destroyBullet != null) stats.add(new Stat("damageondestroy", StatCat.function), StatValues.ammo(ObjectMap.of(this, destroyBullet), true, false));
+            }
+            @Override
+            public void customDraw(CustomDrawCrafterBuild c) {
+                Draw.z(Layer.effect);
+                Draw.color(Color.valueOf("FFFFFFCF"));
+                if(c.power.status > 0){
+                    Draw.rect(ringRegion, c.x, c.y, size * tilesize, size * tilesize, Time.time);
+                    Draw.rect(ringRegion, c.x, c.y, size * tilesize * 2, size * tilesize * 2, Time.time);
+                }
+                if(c.warmup > 0.01f){
+                    float sin = (float) ((2.5f * Math.sin(Time.time * 0.05f) + 20f) * c.warmup);
+                    Draw.alpha(c.warmup * 0.55f);
+                    Draw.rect(starRegion, c.x, c.y, size * sin, size * sin, Time.time * (-0.8f));
+                }
+            }
+        };
         JNZJLL = new GenericCrafter("聚能再精炼炉"){{
             requirements(Category.crafting, with(Items.titanium, 175, Items.metaglass, 50, Items.silicon, 75, LIitems.ZYZ, 20, LIitems.QSZ, 5));
             hasPower = hasLiquids = outputsLiquid = true;

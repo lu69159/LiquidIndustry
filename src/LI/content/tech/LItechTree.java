@@ -57,7 +57,9 @@ public class LItechTree {
                                 node(SJJHZHQ);
                                 node(JHNSC, Seq.with(new SectorComplete(map6)), () -> {
                                     node(SJJHZHY);
-                                    //神能凝聚仪等还未制作到对应地图
+                                    node(SNNJY, Seq.with(new Research(SJJHZHY)), () -> {
+                                        node(JHTQY);
+                                    });
                                 });
                             });
                             node(JNZJLL, Seq.with(new SectorComplete(ZXmap3)), () -> {});
