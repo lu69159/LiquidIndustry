@@ -18,6 +18,7 @@ import mindustry.type.*;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.units.*;
 import LI.content.tech.*;
+import LI.type.blocks.power.*;
 
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
@@ -409,6 +410,10 @@ public class otherMods {
 
         //T6厂
         ((Reconstructor)Vars.content.getByName(ContentType.block, "饱和火力-T6单位重构厂")).addUpgrade(LIunits.JX, LIunits.YA);
+
+        //发电机
+        ((ModerateNuclearReactor)LIblocks.SBFYD).powerProduction = 750f;
+        ((OutputsItemNuclearReactor)LIblocks.BRFYL).powerProduction = 20625/6f;
     }
 
     private static void SF2change(){
