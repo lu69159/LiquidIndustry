@@ -60,7 +60,7 @@ public class LItechTree {
                                     node(SJJHZHY);
                                     node(ZNJHQ, Seq.with(new Research(SJJHZHY)), () -> {
                                         node(SNPSJ);
-                                        node(SNNJY, () -> {
+                                        node(SNNJY, Seq.with(new Research(BRFYL)), () -> {
                                             node(JHTQY);
                                         });
                                     });
