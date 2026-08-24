@@ -226,6 +226,8 @@ public class LItechTree {
             node(LTTSLC);
         }), overdriveProjector);
         addTechNode(DLY, mendProjector);
+        addTechNode(MNTFYD, thoriumReactor);
+        addTechNode(rtgGenerator, MNTFYD);
         addTechNode(node(ZSHFYD, () -> {
             node(SBFYD, Seq.with(new OnSector(planetaryTerminal)), () -> {});
         }), thoriumReactor);

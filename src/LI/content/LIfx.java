@@ -95,6 +95,36 @@ public class LIfx {
             lineAngle(e.x + x, e.y + y, ang, e.fout() * 6 + 1f);
         });
     }),
+    smallReactorExplosion = new Effect(25.0F, 500.0F, (b) -> {
+        float intensity = 3F;
+        float baseLifetime = 25.0F + intensity * 11.0F;
+        b.lifetime = 30.0F + intensity * 50.0F;
+        Draw.color(Pal.reactorPurple2);
+        Draw.alpha(0.7F);
+
+        Angles.randLenVectors((long)b.id, b.fin(Interp.pow10Out), (int)(5F * intensity), 22.0F * intensity, (x, y, in, out) -> {
+            float sizeMul = 0.5f + Math.abs((int)(x * 7.13f + y * 3.17f) % 100) / 200f;
+            float rad = b.fout(Interp.pow5Out) * (2.0F + intensity) * 2.35F * sizeMul;
+            Fill.circle(b.x + x, b.y + y, rad);
+            Drawf.light(b.x + x, b.y + y, rad * 2.5F, Pal.reactorPurple, 0.5F);
+        });
+
+        b.scaled(baseLifetime, (e) -> {
+            Draw.color();
+            e.scaled(5.0F + intensity * 2.0F, (i) -> {
+                Lines.stroke((3.1F + intensity / 5.0F) * i.fout());
+                Lines.circle(e.x, e.y, (3.0F + i.fin() * 14.0F) * intensity);
+                Drawf.light(e.x, e.y, i.fin() * 14.0F * 2.0F * intensity, Color.white, 0.9F * e.fout());
+            });
+            Draw.color(Pal.lighterOrange, Pal.reactorPurple, e.fin());
+            Lines.stroke(2.0F * e.fout());
+            Draw.z(110.001F);
+            Angles.randLenVectors((long)(e.id + 1), e.finpow() + 0.001F, (int)(8.0F * intensity), 28.0F * intensity, (x, y, in, out) -> {
+                Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 1.0F + out * 4.0F * (4.0F + intensity));
+                Drawf.light(e.x + x, e.y + y, out * 4.0F * (3.0F + intensity) * 3.5F, Draw.getColor(), 0.8F);
+            });
+        });
+    }),
     whiteRailShoot = new Effect(24f, e -> {
         e.scaled(10f, b -> {
             color(Color.white, Color.lightGray, b.fin());

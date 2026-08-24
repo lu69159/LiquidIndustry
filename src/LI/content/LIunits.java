@@ -28,7 +28,7 @@ import static mindustry.Vars.*;
 public class LIunits {
     public static UnitType
     //导弹
-    TF1,TF2,MF1,MF2,MF3,
+    TF1,TF2,TF3,MF1,MF2,MF3,
 
     //纯辅助
     JZQ,XFQ,ZLQ,ZTQ,
@@ -70,7 +70,7 @@ public class LIunits {
                 mirror = false;
                 shootOnDeath = true;
                 shootCone = 360f;
-                shake = 12f;
+                shake = 6f;
 
                 bullet = new BasicBulletType(0f, 0f){{
                     absorbable = reflectable = false;
@@ -119,7 +119,7 @@ public class LIunits {
                 mirror = false;
                 shootOnDeath = true;
                 shootCone = 360f;
-                shake = 12f;
+                shake = 9f;
 
                 bullet = new BasicBulletType(0f, 0f){{
                     absorbable = reflectable = false;
@@ -128,6 +128,56 @@ public class LIunits {
                     reloadMultiplier = 0.8f;
                     splashDamage = 10000;
                     splashDamageRadius = 240f;
+                    splashDamagePierce = true;
+                    hitEffect = despawnEffect = Fx.none;
+                    hitSound = despawnSound = Sounds.none;
+                }};
+            }});
+
+            parts.add(
+                    new RegionPart("-top"){{
+                        progress = PartProgress.life;
+                        color = Color.valueOf("FC000000");
+                        colorTo = Color.valueOf("FC000080");
+                    }}
+            );
+        }};
+        TF3 = new MissileUnitType("钍反炮-钍反3"){{
+            constructor = TimedKillUnit::create;
+            targetUnderBlocks = false;
+            health = 350f;
+            armor = 500f;
+            speed = 10f;
+            maxRange = 24f;
+            lifetime = 80f;
+            hitSize = 8f;
+            engineColor = Color.valueOf("A97BFF");
+            engineLayer = 110;
+            engineSize = 4f;
+            engineOffset = 10f;
+            rotateSpeed = 0.2f;
+            trailLength = 18;
+            missileAccelTime = 15f;
+            lowAltitude = true;
+            loopSound = Sounds.loopMissileTrail;
+            loopSoundVolume = 0.5f;
+            deathSound = Sounds.explosionReactor;
+            deathExplosionEffect = LIfx.smallReactorExplosion;
+            trailColor = Color.valueOf("BF92F9");
+
+            weapons.add(new Weapon(){{
+                mirror = false;
+                shootOnDeath = true;
+                shootCone = 360f;
+                shake = 3f;
+
+                bullet = new BasicBulletType(0f, 0f){{
+                    absorbable = reflectable = false;
+                    killShooter = instantDisappear = despawnHit = true;
+                    ammoMultiplier = 1;
+                    reloadMultiplier = 1.5f;
+                    splashDamage = 2000;
+                    splashDamageRadius = 72f;
                     splashDamagePierce = true;
                     hitEffect = despawnEffect = Fx.none;
                     hitSound = despawnSound = Sounds.none;
@@ -536,7 +586,7 @@ public class LIunits {
             mineTier = 1;
             mineSpeed = 3.5f;
         }};
-        GMS = new UnitType("伽马-S"){{ //最新版MDT会崩 TODO
+        GMS = new UnitType("伽马-S"){{
             constructor = gamma.constructor;
             controller = u -> u.team.isAI() ? new BuilderAI(true, 400f) : new CommandAI();
             flying = true;

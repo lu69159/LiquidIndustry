@@ -169,6 +169,7 @@ public class otherMods {
         LiquidBulletType WL1 = (LiquidBulletType)WL.ammoTypes.get(Liquids.slag).copy(), WL2 = (LiquidBulletType)WL.ammoTypes.get(Liquids.cryofluid).copy();
         WL1.liquid = LIliquids.SBRY;
         WL1.damage *= 6;
+        WL1.incendAmount = 1;
         WL1.status = StatusEffects.burning;
         WL2.liquid = LIliquids.CJLDY;
         WL2.status = LIstatus.BF;
@@ -558,6 +559,7 @@ public class otherMods {
         LiquidBulletType WL1 = (LiquidBulletType)WL.ammoTypes.get(Liquids.slag).copy(), WL2 = (LiquidBulletType)WL.ammoTypes.get(Liquids.cryofluid).copy();
         WL1.liquid = LIliquids.SBRY;
         WL1.damage *= 6;
+        WL1.incendAmount = 1;
         WL1.status = StatusEffects.burning;
         WL2.liquid = LIliquids.CJLDY;
         WL2.status = LIstatus.BF;

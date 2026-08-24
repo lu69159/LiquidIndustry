@@ -54,7 +54,7 @@ public class PayloadTurret extends Turret {
         super.setStats();
 
         stats.remove(Stat.itemCapacity);
-        stats.add(Stat.ammo, StatValues.ammo(ammoTypes, true));
+        stats.add(Stat.ammo, StatValues.ammo(ammoTypes, true, name));
         stats.add(Stat.ammoCapacity, maxAmmo / ammoPerShot, StatUnit.shots);
     }
 

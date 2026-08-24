@@ -62,7 +62,7 @@ public class LIblocks {
     BCJDWZGGC,DMJDWZGGC,WLJDWZGGC,FZGC,GZQ,DXZHCSD,
 
     //电力
-    CDJD,DXCDJD,CDDLT,CDDC,DXCDDC,TFDJ,HWKZRFDJ,HWSBRFDJ,ZSHFYD,SBFYD,BRFYL,
+    CDJD,DXCDJD,CDDLT,CDDC,DXCDDC,TFDJ,HWKZRFDJ,HWSBRFDJ,MNTFYD,ZSHFYD,SBFYD,BRFYL,
 
     //辅助
     ZXZMQ,DXZMQ,RZTY,YJLD,CSTQ,LTFPLC,LTTSLC,CPTY,BHTY,JDTY,ZTQD,SYTQ,RHTY,MBTY,HSTY,RHQD,
@@ -379,6 +379,27 @@ public class LIblocks {
             explosionPuddles = 12;
             explosionPuddleLiquid = LIliquids.SBRY;
             explosionPuddleAmount = 150;
+        }};
+        MNTFYD = new NuclearReactor("迷你钍反应堆"){{
+            requirements(Category.power, with(Items.silicon, 50, Items.thorium, 25, Items.metaglass, 25));
+            health = 350;
+            size = 2;
+            itemCapacity = 10;
+            liquidCapacity = 20f;
+
+            itemDuration = 600f;
+            powerProduction = 9f;
+            coolantPower = 0.2f;
+            ambientSound = Sounds.loopThoriumReactor;
+            ambientSoundVolume = 0.04f;
+
+            explosionShake = 3f;
+            explosionRadius = 9;
+            explosionDamage = 2000;
+            explodeEffect = LIfx.smallReactorExplosion;
+
+            consumeItem(Items.thorium);
+            consumeLiquid(LIliquids.ZS, heating / coolantPower).update(false);
         }};
         ZSHFYD = new ModerateNuclearReactor("重水核反应堆"){{
             requirements(Category.power, with(Items.lead, 400, Items.metaglass, 80, Items.graphite, 200, Items.thorium, 150, Items.silicon, 300, LIitems.GTZS, 1));
@@ -1289,6 +1310,14 @@ public class LIblocks {
             consumePower(15f);
 
             ammo(
+                    MNTFYD, new BulletType(0f, 0f){{
+                        shootEffect = Fx.shootBig;
+                        smokeEffect = Fx.shootSmokeMissileColor;
+                        hitColor = Color.valueOf("BF92F9");
+                        ammoMultiplier = 1;
+                        reloadMultiplier = 1.5f;
+                        spawnUnit = LIunits.TF3;
+                    }},
                     Blocks.thoriumReactor, new BulletType(0f, 0f){{
                         shootEffect = Fx.shootBig;
                         smokeEffect = Fx.shootSmokeMissileColor;
@@ -1296,7 +1325,7 @@ public class LIblocks {
                         ammoMultiplier = 1;
                         spawnUnit = LIunits.TF1;
                     }},
-                    LIblocks.ZSHFYD, new BulletType(0f, 0f){{
+                    ZSHFYD, new BulletType(0f, 0f){{
                         shootEffect = Fx.shootBig;
                         smokeEffect = Fx.shootSmokeMissileColor;
                         hitColor = Color.valueOf("BF92F9");
@@ -1322,6 +1351,17 @@ public class LIblocks {
                         }}
                 );
                 setAmmoParts(
+                        MNTFYD,
+                        Seq.with(new RegionPart() {{
+                            name ="液体工艺-钍反炮-钍反3";
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            color = Color.white;
+                            colorTo = new Color(1, 1, 1, 0);
+                            outline = false;
+                            under = true;
+                            layerOffset = -0.01f;
+                            moves = Seq.with(new DrawPart.PartMove(PartProgress.warmup.inv(), 0, -8, 0));
+                        }}),
                         Blocks.thoriumReactor,
                         Seq.with(new RegionPart() {{
                             name ="液体工艺-钍反炮-钍反1";
@@ -2703,7 +2743,7 @@ public class LIblocks {
             health = 1860;
             size = 3;
             itemCapacity = 20;
-            liquidCapacity = 60f;
+            liquidCapacity = 100f;
             craftTime = 3600f;
             buildCostMultiplier = 1.5f;
             updateEffectChance = 0.2f;
@@ -2716,7 +2756,7 @@ public class LIblocks {
                 spin = 3f;
                 interp = Interp.pow5Out;
                 sizeInterp = Interp.pow3In;
-                region = "circleSmall";
+                region = "circle";
                 sizeFrom = 1f;
                 sizeTo = 0f;
                 colorFrom = Color.valueOf("DFDFDF80");
@@ -3524,7 +3564,7 @@ public class LIblocks {
             requirements(Category.liquid, with(Items.titanium, 6, Items.metaglass, 12, LIitems.QSZ, 0));
             health = 60;
             floating = true;
-            fadeIn = moveArrows = false;
+            fadeIn = moveArrows = connectedPower = false;
             liquidCapacity = 50f;
             range = 12;
             explosivenessScale = flammabilityScale = 20f/100f;
