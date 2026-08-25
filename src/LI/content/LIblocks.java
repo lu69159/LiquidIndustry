@@ -109,6 +109,7 @@ public class LIblocks {
             attributes.set(Attribute.oil, 0.55f);
             attributes.set(Attribute.water, 0.2f);
             attributes.set(LIattr.cryofluid, 0.1f);
+            attributes.set(LIattr.scrapfluid, 0.05f);
         }};
         JBQ = new StaticWall("极冰墙"){{
             variants = 2;
@@ -121,6 +122,7 @@ public class LIblocks {
             albedo = 0.7f;
             attributes.set(Attribute.water, 0.8f);
             attributes.set(LIattr.cryofluid, 1f);
+            attributes.set(LIattr.scrapfluid, 0.25f);
             wall = JBQ;
         }};
         JBBS = new Floor("极冰冰沙"){{
@@ -130,6 +132,7 @@ public class LIblocks {
             attributes.set(Attribute.oil, 0.4f);
             attributes.set(Attribute.water, 0.4f);
             attributes.set(LIattr.cryofluid, 0.4f);
+            attributes.set(LIattr.scrapfluid, 0.1f);
         }};
         BDFY = new Floor("冰冻废液"){{
             variants = 3;
@@ -137,7 +140,7 @@ public class LIblocks {
             albedo = 0.7f;
             attributes.set(Attribute.water, 0.2f);
             attributes.set(LIattr.cryofluid, 0.05f);
-            attributes.set(LIattr.scrapfluid, 0.75f);
+            attributes.set(LIattr.scrapfluid, 1f);
         }};
         BLFYC = new Floor("冰冷废液池"){{
             isLiquid = supportsOverlay = true;
@@ -3652,7 +3655,7 @@ public class LIblocks {
             size = 3;
             result = LIliquids.FY0;
             pumpAmount = 2f;
-            baseEfficiency = 0.25f;
+            baseEfficiency = 0f;
             liquidCapacity = 30f;
             rotateSpeed = 1.5f;
             attribute = LIattr.scrapfluid;
@@ -3674,14 +3677,14 @@ public class LIblocks {
         }
             @Override
             public boolean canPlaceOn(Tile tile, Team team, int rotation) {
-                var rules = Vars.state.rules;
-                return rules.planet == LIplanets.NT || rules.editor;
+                var rules = state.rules;
+                return (rules.planet == Planets.sun || rules.planet == LIplanets.NT || rules.editor) && super.canPlaceOn(tile, team, rotation);
             }
 
             @Override
             public void drawPlace(int x, int y, int rotation, boolean valid) {
-                var rules = Vars.state.rules;
-                if(rules.planet != LIplanets.NT && !rules.editor){
+                var rules = state.rules;
+                if(rules.planet != LIplanets.NT && rules.planet != Planets.sun && !rules.editor){
                     this.drawPlaceText(Core.bundle.get("canonlyplaceon") + LIplanets.NT.localizedName, x, y, false);
                     return;
                 }

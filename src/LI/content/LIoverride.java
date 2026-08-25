@@ -32,7 +32,9 @@ public class LIoverride {
         ((Floor)magmarock).attributes.set(LIattr.cryofluid, -1f);
         ((Floor)snow).attributes.set(LIattr.cryofluid, 0.15f);
         ((Floor)iceSnow).attributes.set(LIattr.cryofluid, 0.3f);
+
         ((Floor)ice).attributes.set(LIattr.cryofluid, 0.5f);
+        ((Floor)ice).attributes.set(LIattr.scrapfluid, 0.2f);
 
         //region 液体相关
         liquidContainer.liquidCapacity = 1000f;

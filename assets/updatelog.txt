@@ -10,6 +10,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 
 0.25.4：
     部分建筑材料修改
+    废液抽取机的地形需求修改
     修改了解冻投影描述中错误的持续时间
     将硅炉放回N星科技树(之前单纯忘了awa)
 
