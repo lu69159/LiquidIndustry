@@ -82,6 +82,7 @@ public class LItechTree {
                 node(TFDJ, () -> {
                     node(BRFYL, Seq.with(new OnSector(map6)), () -> {});
                 });
+                node(GL2);
             });
 
             node(PF, Seq.with(new Research(WXHXJZ)), () -> {

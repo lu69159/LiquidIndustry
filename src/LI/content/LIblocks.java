@@ -583,6 +583,7 @@ public class LIblocks {
             health = 260;
             size = 2;
             range = 80f;
+            hideDuration = true;
             setStatus(LIstatus.JD);
             consumePower(1.5f);
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
@@ -747,7 +748,7 @@ public class LIblocks {
 
         //region 炮塔
         DCFB = new ItemTurret("电磁风暴"){{
-            requirements(Category.turret, with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 650, Items.graphite,650, Items.surgeAlloy, 425, LIitems.QSZ, 125, LIitems.GTS, 10));
+            requirements(Category.turret, with(Items.lead, 1500, Items.metaglass, 1000, Items.silicon, 500, Items.graphite,500, Items.surgeAlloy, 225, LIitems.QSZ, 100, LIitems.GTS, 5));
             health = 3200;
             size = 4;
             range = 768f;

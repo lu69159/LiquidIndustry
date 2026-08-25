@@ -20,6 +20,7 @@ public class StatusProjector extends OverdriveProjector {
     public float effectTime = 60f;
     public Effect applyEffect;
     public Color applyColor;
+    public boolean hideDuration;
 
     public boolean applyOnEnemies = false;
 
@@ -30,8 +31,10 @@ public class StatusProjector extends OverdriveProjector {
         reload = 240f;
         hasBoost = false;
         hasItems = false;
+        hideDuration =  false;
         canOverdrive = false;
         lightRadius = range * 1.1f;
+
     }
 
     @Override
@@ -59,7 +62,7 @@ public class StatusProjector extends OverdriveProjector {
         }
         stats.add(new Stat("status", StatCat.function), statusStr);
         stats.add(new Stat("statustime", StatCat.function), reload / 60, StatUnit.seconds);
-        stats.add(new Stat("statusduration", StatCat.function), useTime / 60, StatUnit.seconds);
+        if(!hideDuration) stats.add(new Stat("statusduration", StatCat.function), useTime / 60, StatUnit.seconds);
     }
 
     @Override

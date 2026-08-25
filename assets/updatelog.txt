@@ -8,6 +8,11 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.25.4：
+    部分建筑材料修改
+    修改了解冻投影描述中错误的持续时间
+    将硅炉放回N星科技树(之前单纯忘了awa)
+
 0.25.3：
     添加迷你钍反应堆(包括钍反炮的载荷弹药版本)
     为部分炮塔弹药添加描述
