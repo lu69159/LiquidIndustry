@@ -54,6 +54,7 @@ public class LiquidMassDriver extends Block{
         hasLiquids = true;
         hasPower = true;
         sync = true;
+        hasItems = false;
         liquidCapacity = 4800f;
 
         //point2 is relative
@@ -310,7 +311,7 @@ public class LiquidMassDriver extends Block{
         @Override
         public boolean acceptLiquid(Building source, Liquid liquid) {
             return liquidLinkValid() && state == LiquidDriverState.shooting && !liquid.gas &&
-                    liquids == null || (liquids.current() == liquid && liquids.currentAmount() < liquidCapacity) || liquids.currentAmount() < 0.2f;
+                    (liquids == null || (liquids.current() == liquid && liquids.currentAmount() < liquidCapacity) || liquids.currentAmount() < 0.2f);
         }
 
         protected void fireLiquid(LiquidMassDriverBuild target){

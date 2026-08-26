@@ -2,11 +2,13 @@
     displayName: Liquid Industry
     author: Space
     repo: lu69159/LiquidIndustry
-    description: "Liquid Industry Beta v0.25.4 for v159+
-    
+    description: "
 - Added a new cold planet which is scarce in minerals but rich in liquids, and expanded other buildings.
 - New planet's techtree can be researched using Serpulo resources.
-    "
+"
+    subtitle: Liquid Industry Beta v0.25.4 for v159+
+    
+
     version: 0.25.4
     minGameVersion: 159
 

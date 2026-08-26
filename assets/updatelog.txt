@@ -9,9 +9,10 @@ Also, you can make a PR.(But most content is currently named using the initial l
 最近忙起来了，更新会变慢很多
 
 0.25.4：
+    修复了液体质驱在空闲状态下接受液体导致卡死的BUG
+    修改了解冻投影描述中错误的持续时间
     部分建筑材料修改
     废液抽取机的地形需求修改
-    修改了解冻投影描述中错误的持续时间
     将硅炉放回N星科技树(之前单纯忘了awa)
 
 0.25.3：
