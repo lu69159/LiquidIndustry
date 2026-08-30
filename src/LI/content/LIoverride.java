@@ -83,7 +83,7 @@ public class LIoverride {
             pointEffect = LIfx.sparkTrail;
             despawnEffect = LIfx.sparkBomb;
             pointEffectSpace = 20;
-            damage = 1350;
+            damage = 1500;
             buildingDamageMultiplier = 0.2f;
             pierceDamageFactor = 0;
             length = 500 + rangeChange;
