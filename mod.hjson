@@ -6,11 +6,11 @@
 - Added a new cold planet which is scarce in minerals but rich in liquids, and expanded other buildings.
 - New planet's techtree can be researched using Serpulo resources.
 "
-    subtitle: Liquid Industry Beta v0.25.4 for v159+
+    subtitle: Liquid Industry Beta v0.25.5 for v159.7+
     
 
-    version: 0.25.4
-    minGameVersion: 159
+    version: 0.25.5
+    minGameVersion: 159.7
 
     main: LI.LIMod
     java: true

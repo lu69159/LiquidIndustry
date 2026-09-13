@@ -392,7 +392,8 @@ public class LIblocks {
 
             itemDuration = 600f;
             powerProduction = 9f;
-            coolantPower = 0.2f;
+            heating = 0.004f;
+            coolantPower = 0.08f;
             ambientSound = Sounds.loopThoriumReactor;
             ambientSoundVolume = 0.04f;
 
@@ -410,7 +411,8 @@ public class LIblocks {
             size = 4;
             itemDuration = 480f;
             powerProduction = 52.5f;
-            heating = 0.05f;
+            heating = 0.005f;
+            coolantPower = 0.05f;
             heatOutput = 20f;
 
             ambientSound = Sounds.loopThoriumReactor;
@@ -429,7 +431,8 @@ public class LIblocks {
             size = 5;
             itemDuration = 90f;
             powerProduction = 360f;
-            heating = 0.125f;
+            heating = 0.01f;
+            coolantPower = 0.04f;
             heatOutput = 30f;
             fuelItem = Items.phaseFabric;
             explodeEffect = LIfx.SBFYDExplosion;
@@ -475,8 +478,9 @@ public class LIblocks {
             size = 5;
             itemDuration = 30f;
             powerProduction = 1170f;
-            heating = 0.06f;
-            coolantPower = 1.5f;
+            heating = 0.03f;
+            coolantPower = 0.75f;
+            heatOutput = 50f;
             lightColor = Color.valueOf("FFEEEE");
             fuelItem = LIitems.GTSY;
 
@@ -1545,7 +1549,7 @@ public class LIblocks {
                 width = 12f;
                 height = 40f;
                 trailLength = 12;
-                trailWidth = 5f;
+                trailWidth = 3f;
                 lightRadius = 80f;
                 hitColor = backColor = trailColor = lightColor = lightningColor = LIcolor.sparkColor;
                 hitEffect = new WaveEffect(){{
@@ -1579,7 +1583,7 @@ public class LIblocks {
                     width = 12f;
                     height = 40f;
                     trailLength = 12;
-                    trailWidth = 5f;
+                    trailWidth = 3f;
                     trailRotation = true;
                     lightRadius = 80f;
                     hitColor = backColor = trailColor = lightColor = LIcolor.sparkColor;

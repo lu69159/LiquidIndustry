@@ -31,7 +31,7 @@ public class HealAI extends DefenderAI {
     @Override
     public void updateTargeting() {
         if(retarget()){
-            if(hasHealRange) damagedTarget = Units.closest(unit.team, unit.x, unit.y, healRange, u -> !u.dead && u.type != unit.type && u.health < u.maxHealth, (u, tx, ty) ->  -u.maxHealth - (u.maxHealth - u.health) + Mathf.dst2(u.x, u.y, tx, ty) / 6400);
+            if(hasHealRange) damagedTarget = Units.closest(unit.team, unit.x, unit.y, healRange, u -> !u.dead && u.type != unit.type && u.health < u.maxHealth, (u, tx, ty) ->  -(u.maxHealth - u.health) + Mathf.dst2(u.x, u.y, tx, ty) / 8100);
             else damagedTarget = Units.closest(unit.team, unit.x, unit.y, u -> !u.dead && u.type != unit.type && u.health < u.maxHealth);
 
             if(damagedTarget == null || damagedTarget.dead) target = findTarget(unit.x, unit.y, unit.range(), true, true);
