@@ -42,9 +42,9 @@ public class LIMod extends Mod{
         LIweathers.load();
         LIplanets.load(); //未添加卫星
         LImaps.load();
+        LIstatus.load();
         LIitems.load();
         LIliquids.load();
-        LIstatus.load();
         LIunits.load();
         LIblocks.load(); //精华提取源，神能凝聚仪未添加。钍反炮显示尚有问题 双传带液体角落显示有问题
         LItechTree.load(); //未添加的内容无法加入

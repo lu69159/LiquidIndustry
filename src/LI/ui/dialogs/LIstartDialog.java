@@ -4,6 +4,7 @@ import arc.Core;
 import arc.Events;
 import arc.graphics.Texture;
 import arc.graphics.g2d.TextureRegion;
+import arc.scene.ui.ImageButton;
 import arc.scene.ui.layout.Table;
 import arc.util.Align;
 import mindustry.Vars;
