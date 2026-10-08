@@ -142,7 +142,7 @@ public class LiquidProjector extends Block {
 
             if(charge >= reload){
                 if(liquids.current() != null && liquids.currentAmount() > 0.1f){
-                    indexer.eachBlock(this, realRange(), this::canTransferLiquid, other -> {
+                    indexer.eachBlock(this, realRange(), b -> canTransferLiquid(b) && (b.liquids == null || b.liquids.current() == liquids.current() || b.liquids.currentAmount() < 0.5f), other -> {
                         float maxAmount = Math.min(Math.min(transferAmount, liquids.currentAmount()), other.block.liquidCapacity - other.liquids.get(liquids.current()));
                         if(maxAmount > 0.1f){
                             other.liquids.add(liquids.current(), maxAmount);
