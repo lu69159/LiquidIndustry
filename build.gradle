@@ -47,17 +47,6 @@ ext{
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
 
-/*
-//java 8 backwards compatibility flag, 159+不需要
-allprojects{
-    tasks.withType(JavaCompile).tap{
-        configureEach{
-            options.compilerArgs.addAll(['--release', '8'])
-        }
-    }
-}
-*/
-
 dependencies{
     if(useLocalDeps){
         compileOnly files('D:/Game/Mindustry/zizhiMOD/FORK/Arc/arc-core/build/libs/arc-core-1.0.jar')
