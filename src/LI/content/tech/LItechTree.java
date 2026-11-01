@@ -223,8 +223,11 @@ public class LItechTree {
         addTechNode(DXFSJ, pulverizer);
         addTechNode(MFSJ, pulverizer);
         addTechNode(CSTQ, overdriveDome);
-        addTechNode(node(LTFPLC, () -> {
+        addTechNode(node(LTFPLC, Seq.with(new Research(YTZXQ)), () -> {
             node(LTTSLC);
+        }), overdriveProjector);
+        addTechNode(node(WPFPLC, Seq.with(new Research(unloader)), () -> {
+            node(WPTSLC);
         }), overdriveProjector);
         addTechNode(DLY, mendProjector);
         addTechNode(MNTFYD, thoriumReactor);

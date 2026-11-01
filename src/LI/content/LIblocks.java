@@ -65,7 +65,7 @@ public class LIblocks {
     CDJD,DXCDJD,CDDLT,CDDC,DXCDDC,TFDJ,HWKZRFDJ,HWSBRFDJ,MNTFYD,ZSHFYD,SBFYD,BRFYL,
 
     //辅助
-    ZXZMQ,DXZMQ,RZTY,YJLD,CSTQ,LTFPLC,LTTSLC,CPTY,BHTY,JDTY,ZTQD,SYTQ,RHTY,MBTY,HSTY,RHQD,
+    ZXZMQ,DXZMQ,RZTY,YJLD,CSTQ,LTFPLC,LTTSLC,WPFPLC,WPTSLC,CPTY,BHTY,JDTY,ZTQD,SYTQ,RHTY,MBTY,HSTY,RHQD,
     MBQD,HSQD,
 
     //核心
@@ -570,6 +570,25 @@ public class LIblocks {
             reload = 3f;
             consumePower(5.5f);
             consumeItem(LIitems.QSZ).boost();
+        }};
+        WPFPLC = new ItemProjector("物品分配力场"){{
+            requirements(Category.distribution, with(Items.silicon, 125, Items.plastanium, 40, LIitems.NRJT, 3));
+            health = 300;
+            size = 2;
+            consumePower(2f);
+            consumeLiquid(Liquids.cryofluid, 5/60f).boost();
+        }};
+        WPTSLC = new ItemProjector("物品投射力场"){{
+            requirements(Category.distribution, with(Items.silicon, 175, Items.plastanium, 50, LIitems.NRJT, 5));
+            health = 500;
+            size = 3;
+            itemCapacity = 50;
+            range = 120f;
+            boostRange = 120f;
+            boostSpeed = 1f;
+            reload = 4f;
+            consumePower(5.5f);
+            consumeLiquid(Liquids.cryofluid, 12/60f).boost();
         }};
         CPTY = new StatusProjector("超频投影"){{
             requirements(Category.effect, with(Items.lead, 100, Items.graphite, 75, Items.silicon, 40, Items.thorium, 15));
