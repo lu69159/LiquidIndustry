@@ -2480,7 +2480,6 @@ public class LIblocks {
             requirements(Category.defense, with(Items.metaglass, 8, Items.phaseFabric, 6, LIitems.QSZ, 1));
             health = 840;
             armor = 5;
-            size = 2;
             liquidCapacity = 500f;
 
             chanceDeflect = 20f;
