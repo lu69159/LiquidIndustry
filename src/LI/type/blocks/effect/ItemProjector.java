@@ -19,6 +19,7 @@ import mindustry.world.*;
 import mindustry.world.blocks.Autotiler;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.distribution.MassDriver;
+import mindustry.world.blocks.distribution.OverflowGate;
 import mindustry.world.blocks.distribution.Router;
 import mindustry.world.blocks.sandbox.ItemSource;
 import mindustry.world.blocks.storage.CoreBlock;
@@ -127,7 +128,7 @@ public class ItemProjector extends Block{
         public boolean canTransferItem(Building to){
             var b = to.block;
             if(to.items == null) return false;
-            if(to instanceof CoreBlock.CoreBuild || b instanceof ItemSource || b instanceof Autotiler || b instanceof ItemBridge || b instanceof Router || b instanceof MassDriver || b instanceof Unloader || b instanceof StorageBlock || b instanceof UnitCargoLoader || b instanceof UnitCargoUnloadPoint) return false;
+            if(to instanceof CoreBlock.CoreBuild || b instanceof ItemSource || b instanceof Autotiler || b instanceof ItemBridge || b instanceof Router || b instanceof OverflowGate || b instanceof MassDriver || b instanceof Unloader || b instanceof StorageBlock || b instanceof UnitCargoLoader || b instanceof UnitCargoUnloadPoint) return false;
             return b.acceptsItems;
         }
 
