@@ -11,15 +11,11 @@ import arc.util.io.*;
 import mindustry.entities.units.BuildPlan;
 import mindustry.graphics.Drawf;
 import mindustry.logic.Ranged;
-import mindustry.type.Liquid;
+import mindustry.type.*;
 import mindustry.gen.*;
 import mindustry.world.*;
-import mindustry.world.blocks.distribution.Router;
-import mindustry.world.blocks.distribution.Sorter;
-import mindustry.world.blocks.liquid.LiquidBlock;
-import mindustry.world.blocks.Autotiler;
-import mindustry.world.blocks.defense.Wall;
-import mindustry.world.blocks.distribution.ItemBridge;
+import mindustry.world.blocks.distribution.*;
+import mindustry.world.blocks.defense.*;
 import mindustry.world.meta.*;
 import mindustry.world.consumers.*;
 
@@ -125,8 +121,7 @@ public class LiquidProjector extends Block {
 
         public boolean canTransferLiquid(Building to) {
             if(!to.block.hasLiquids) return false;
-            return !(to instanceof LiquidProjectorBuild) &&
-                    !(to.block instanceof LiquidBlock || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter || to.block instanceof LiquidMassDriver) &&
+            return !(to.block.category == Category.liquid || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter) &&
                     to.acceptLiquid(this, liquids.current());
         }
 

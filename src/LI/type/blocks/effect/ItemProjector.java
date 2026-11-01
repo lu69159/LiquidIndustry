@@ -16,17 +16,7 @@ import mindustry.graphics.*;
 import mindustry.logic.*;
 import mindustry.type.*;
 import mindustry.world.*;
-import mindustry.world.blocks.Autotiler;
-import mindustry.world.blocks.distribution.ItemBridge;
-import mindustry.world.blocks.distribution.MassDriver;
-import mindustry.world.blocks.distribution.OverflowGate;
-import mindustry.world.blocks.distribution.Router;
-import mindustry.world.blocks.sandbox.ItemSource;
-import mindustry.world.blocks.storage.CoreBlock;
-import mindustry.world.blocks.storage.StorageBlock;
-import mindustry.world.blocks.storage.Unloader;
-import mindustry.world.blocks.units.UnitCargoLoader;
-import mindustry.world.blocks.units.UnitCargoUnloadPoint;
+import mindustry.world.blocks.storage.*;
 import mindustry.world.consumers.*;
 import mindustry.world.meta.*;
 
@@ -126,10 +116,8 @@ public class ItemProjector extends Block{
         }
 
         public boolean canTransferItem(Building to){
-            var b = to.block;
-            if(to.items == null) return false;
-            if(to instanceof CoreBlock.CoreBuild || b instanceof ItemSource || b instanceof Autotiler || b instanceof ItemBridge || b instanceof Router || b instanceof OverflowGate || b instanceof MassDriver || b instanceof Unloader || b instanceof StorageBlock || b instanceof UnitCargoLoader || b instanceof UnitCargoUnloadPoint) return false;
-            return b.acceptsItems;
+            if(to.items == null || to instanceof CoreBlock.CoreBuild || to.block instanceof StorageBlock || to.block.category == Category.distribution) return false;
+            return to.block.acceptsItems;
         }
 
         @Override
