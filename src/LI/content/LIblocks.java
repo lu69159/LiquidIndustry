@@ -52,6 +52,7 @@ import static mindustry.type.ItemStack.*;
 public class LIblocks {
     public static Block
     //TEST
+    //TESTU,
 
     //environment
     JHXQ,BS,JBQ,JB,JBBS,BDFY,BLFYC,QBLFYC,CJLDYC,SBRYC,

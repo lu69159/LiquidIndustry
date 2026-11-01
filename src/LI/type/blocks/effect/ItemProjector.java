@@ -19,6 +19,7 @@ import mindustry.world.*;
 import mindustry.world.blocks.Autotiler;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.distribution.MassDriver;
+import mindustry.world.blocks.distribution.Router;
 import mindustry.world.blocks.sandbox.ItemSource;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.StorageBlock;
@@ -126,7 +127,7 @@ public class ItemProjector extends Block{
         public boolean canTransferItem(Building to){
             var b = to.block;
             if(to.items == null) return false;
-            if(to instanceof CoreBlock.CoreBuild || b instanceof ItemSource || b instanceof Autotiler || b instanceof ItemBridge || b instanceof MassDriver || b instanceof Unloader || b instanceof StorageBlock || b instanceof UnitCargoLoader || b instanceof UnitCargoUnloadPoint) return false;
+            if(to instanceof CoreBlock.CoreBuild || b instanceof ItemSource || b instanceof Autotiler || b instanceof ItemBridge || b instanceof Router || b instanceof MassDriver || b instanceof Unloader || b instanceof StorageBlock || b instanceof UnitCargoLoader || b instanceof UnitCargoUnloadPoint) return false;
             return b.acceptsItems;
         }
 
@@ -148,7 +149,7 @@ public class ItemProjector extends Block{
                 indexer.eachBlock(this, realRange(), b -> canTransferItem(b) && its.contains(i -> b.acceptItem(this, i)), other -> {
                     for(var i : its){
                         if(items.get(i) > 0 && other.acceptItem(this, i)){
-                            other.items.add(i, 1);
+                            other.handleItem(this, i);
                             this.items.remove(i, 1);
                         }
                     }
