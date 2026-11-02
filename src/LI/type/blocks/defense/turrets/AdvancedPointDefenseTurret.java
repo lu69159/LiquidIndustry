@@ -18,7 +18,7 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
         super(name);
         bulletDamage = 0f;
         retargetTime = 0.1f;
-        rotateSpeed = 15f;
+        rotateSpeed = 30f;
         color = Color.valueOf("F25555");
         reload = 5*60f;
     }
