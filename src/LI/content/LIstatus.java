@@ -24,7 +24,7 @@ public class LIstatus {
 
     public static void load(){
         BLDP = new StatusEffect("玻璃大炮"){{ //TODO
-            color = Color.valueOf("EBEEF5");
+            color = Color.valueOf("D0D0E0");
             healthMultiplier = 0.05f;
             speedMultiplier = 0.5f;
             damageMultiplier = 15f;
@@ -34,7 +34,7 @@ public class LIstatus {
             @Override
             public void draw(Unit unit) {
                 Draw.z(unit.type.flying ? unit.type.flyingLayer : unit.type.groundLayer);
-                Draw.mixcol(Color.red, 1f);
+                Draw.mixcol(Color.valueOf("D0D0E0"), 1f);
                 Draw.scl(1.1f);
                 Draw.rect(unit.type.fullIcon, unit.x, unit.y, unit.rotation - 90f);
             }
