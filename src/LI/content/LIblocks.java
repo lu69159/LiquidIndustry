@@ -2399,8 +2399,8 @@ public class LIblocks {
             health = 1800;
             size = 3;
             range = 240f;
-            shootLength = 8f;
-            consumePower( 10f);
+            shootLength = 4f;
+            consumePower( 12.5f);
         }};
         ZBPT = new PowerTurret("作弊炮塔"){{
             requirements(Category.turret, BuildVisibility.sandboxOnly, with());
