@@ -25,8 +25,8 @@ public class LIstatus {
     public static void load(){
         BLDP = new StatusEffect("玻璃大炮"){{ //TODO
             color = Color.valueOf("EBEEF5");
-            healthMultiplier = 0.025f;
-            speedMultiplier = 0.8f;
+            healthMultiplier = 0.05f;
+            speedMultiplier = 0.5f;
             damageMultiplier = 15f;
             reloadMultiplier = 2f;
             permanent = true;
@@ -35,8 +35,8 @@ public class LIstatus {
             public void draw(Unit unit) {
                 Draw.z(unit.type.flying ? unit.type.flyingLayer : unit.type.groundLayer);
                 Draw.mixcol(Color.red, 1f);
-                float offset = (unit.hitSize / 30 + 0.35f) * Mathf.absin(7f, 1f);
-                Draw.rect(unit.type.fullIcon, unit.x - offset, unit.y - offset, unit.rotation - 90f);
+                Draw.scl(1.1f);
+                Draw.rect(unit.type.fullIcon, unit.x, unit.y, unit.rotation - 90f);
             }
         };
         GZ = new StatusEffect("管制"){{
