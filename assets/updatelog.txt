@@ -8,6 +8,9 @@ Also, you can make a PR.(But most content is currently named using the initial l
 尼普顿星球战役目前还未完成
 最近忙起来了，更新会变慢很多
 
+0.26:
+    添加消去炮塔
+
 0.25.9:
     修复相织装甲储液罐有两格的问题...
     再次修复物品/流体力场的BUG(改为检测方块类别以更好地兼容其他模组)

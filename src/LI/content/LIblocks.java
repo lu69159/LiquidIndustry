@@ -52,7 +52,6 @@ import static mindustry.type.ItemStack.*;
 public class LIblocks {
     public static Block
     //TEST
-    //TESTU,
 
     //environment
     JHXQ,BS,JBQ,JB,JBBS,BDFY,BLFYC,QBLFYC,CJLDYC,SBRYC,
@@ -73,7 +72,7 @@ public class LIblocks {
     WXHXJZ,SDHX,LTHX,
 
     //炮塔
-    DCFB,TFP,DLY,DL,JK,PF,MF,BP,JG,LT,ZBPT,
+    DCFB,TFP,DLY,DL,JK,PF,MF,BP,JG,LT,XQ,ZBPT,
 
     //墙
     JDQT,ZJCYG,DXZJCYG,SGZJCYG,DXSGZJCYG,HJZJCYG,DXHJZJCYG,XZZJCYG,DXXZZJCYG,CNQ,DXCNQ,JXCNQ,LCQ,
@@ -2394,6 +2393,14 @@ public class LIblocks {
                         }}
                 );
             }};
+        }};
+        XQ = new AdvancedPointDefenseTurret("消去"){{
+            requirements(Category.turret, with(Items.surgeAlloy, 80, Items.phaseFabric, 120, Items.silicon, 180, LIitems.NRJT, 2));
+            health = 1800;
+            size = 3;
+            range = 240f;
+            shootLength = 8f;
+            consumePower( 10f);
         }};
         ZBPT = new PowerTurret("作弊炮塔"){{
             requirements(Category.turret, BuildVisibility.sandboxOnly, with());

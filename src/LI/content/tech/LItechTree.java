@@ -250,6 +250,7 @@ public class LItechTree {
             node(DXZJCYG);
         }), titaniumWall);
 
+        addTechNode(node(XQ, Seq.with(new SectorComplete(impact0078)), () -> {}), segment);
         addTechNode(node(DCFB, Seq.with(new SectorComplete(desolateRift)), () -> {}), foreshadow);
         addTechNode(node(TFP, Seq.with(new Research(thoriumReactor), new Research(GZQ)), () -> {}), foreshadow);
         addTechNode(node(LT, Seq.with(new Research(DCFB), new SectorComplete(testingGrounds)), () -> {}), lancer);
