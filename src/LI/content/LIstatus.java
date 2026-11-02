@@ -20,9 +20,25 @@ import LI.type.status.ImmuneStatusEffect;
 import static mindustry.content.StatusEffects.*;
 
 public class LIstatus {
-    public static StatusEffect SY,GZ,XM,BF,JD;
+    public static StatusEffect BLDP,GZ,XM,BF,JD,SY;
 
     public static void load(){
+        BLDP = new StatusEffect("玻璃大炮"){{ //TODO
+            color = Color.valueOf("EBEEF5");
+            healthMultiplier = 0.025f;
+            speedMultiplier = 0.8f;
+            damageMultiplier = 15f;
+            reloadMultiplier = 2f;
+            permanent = true;
+        }
+            @Override
+            public void draw(Unit unit) {
+                Draw.z(unit.type.flying ? unit.type.flyingLayer : unit.type.groundLayer);
+                Draw.mixcol(Color.red, 1f);
+                float offset = (unit.hitSize / 30 + 0.35f) * Mathf.absin(7f, 1f);
+                Draw.rect(unit.type.fullIcon, unit.x - offset, unit.y - offset, unit.rotation - 90f);
+            }
+        };
         GZ = new StatusEffect("管制"){{
             color = Color.valueOf("FF5050");
             healthMultiplier = 0.6f;
@@ -56,6 +72,7 @@ public class LIstatus {
         }};
         BF = new StatusEffect("冰封"){{
             color = Color.valueOf("C0ECFF");
+            healthMultiplier = 0.75f;
             reloadMultiplier = 0.25f;
             speedMultiplier = 0f;
             transitionDamage = 40f;
