@@ -572,14 +572,14 @@ public class LIblocks {
             consumeItem(LIitems.QSZ).boost();
         }};
         WPFPLC = new ItemProjector("物品分配力场"){{
-            requirements(Category.distribution, with(Items.silicon, 125, Items.plastanium, 40, LIitems.NRJT, 3));
+            requirements(Category.distribution, with(Items.silicon, 125, Items.plastanium, 40, LIitems.CDZ, 3));
             health = 300;
             size = 2;
             consumePower(2f);
             consumeLiquid(Liquids.cryofluid, 5/60f).boost();
         }};
         WPTSLC = new ItemProjector("物品投射力场"){{
-            requirements(Category.distribution, with(Items.silicon, 175, Items.plastanium, 50, LIitems.NRJT, 5));
+            requirements(Category.distribution, with(Items.silicon, 175, Items.plastanium, 50, LIitems.CDZ, 5, LIitems.NRJT, 5));
             health = 500;
             size = 3;
             itemCapacity = 50;

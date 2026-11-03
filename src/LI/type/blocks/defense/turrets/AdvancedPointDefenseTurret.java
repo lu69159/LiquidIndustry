@@ -1,10 +1,11 @@
 package LI.type.blocks.defense.turrets;
 
 import arc.Core;
-import arc.graphics.Color;
+import arc.graphics.*;
 import arc.math.*;
-import arc.math.geom.Vec2;
-import arc.util.Tmp;
+import arc.math.geom.*;
+import arc.struct.*;
+import arc.util.*;
 import arc.util.io.*;
 import mindustry.gen.*;
 import mindustry.ui.*;
@@ -17,8 +18,8 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
     public AdvancedPointDefenseTurret(String name){
         super(name);
         bulletDamage = 0f;
-        retargetTime = 0.1f;
-        rotateSpeed = 30f;
+        retargetTime = 0.05f;
+        shootCone = 60f;
         color = Color.valueOf("F25555");
         reload = 5*60f;
     }
@@ -44,44 +45,50 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
 
     public class AdvancedPointDefenseTurretBuild extends PointDefenseBuild{
         boolean resuming = false;
+        Seq<Bullet> targets = new Seq<>();
         public int energy = defaultEnergy;
 
         @Override
         public void updateTile() {
             //retarget
             if(timer(timerTarget, retargetTime)){
-                target = Groups.bullet.intersect(x - range, y - range, range*2, range*2).min(b -> b.team != team && b.type().hittable, b -> b.dst2(this));
-            }
-            //pooled bullets
-            if(target != null && !target.isAdded()){
-                target = null;
+                targets = Groups.bullet.intersect(x - range, y - range, range*2, range*2).sort(b -> b.dst2(this));
+                target = targets.min(b -> b.team != team && b.type().hittable && b.isAdded(), b -> b.dst2(this));
             }
 
-            if(energy <= 0){
-                if(reloadCounter <= 0){
+            if(energy <= 0 || resuming){
+                if(reloadCounter >= reload){
                     if(resuming){
                         energy = defaultEnergy;
                         resuming = false;
                     }else{
-                        reloadCounter = reload;
+                        reloadCounter = 0;
                         resuming = true;
                     }
                 }
-                else reloadCounter -= edelta();
+                else reloadCounter += edelta();
             }
 
-            if(target != null && target.within(this, range) && target.team != team && target.type() != null && target.type().hittable && energy > 0){
+            if(target != null && !resuming){
                 float dest = angleTo(target);
                 rotation = Angles.moveToward(rotation, dest, rotateSpeed * edelta());
+                if(efficiency <= 0) return;
 
-                if(Angles.within(rotation, dest, shootCone)){
-                    target.remove();
-                    Tmp.v1.trns(rotation, shootLength);
-                    beamEffect.at(x + Tmp.v1.x, y + Tmp.v1.y, rotation, color, new Vec2().set(target));
-                    shootEffect.at(x + Tmp.v1.x, y + Tmp.v1.y, rotation, color);
-                    hitEffect.at(target.x, target.y, color);
-                    shootSound.at(x + Tmp.v1.x, y + Tmp.v1.y, Mathf.random(0.9f, 1.1f));
-                    energy--;
+                for(var t : targets){
+                    if(energy <= 0) break;
+                    if(t != null && t.isAdded() && t.team != team && t.type() != null && t.type().hittable && energy > 0){
+                        if(Angles.within(rotation, dest, shootCone) && t.within(this, range)){
+                            t.remove();
+                            Tmp.v1.trns(rotation, shootLength);
+                            beamEffect.at(x + Tmp.v1.x, y + Tmp.v1.y, rotation, color, new Vec2().set(t));
+                            shootEffect.at(x + Tmp.v1.x, y + Tmp.v1.y, rotation, color);
+                            hitEffect.at(t.x, t.y, color);
+                            shootSound.at(x + Tmp.v1.x, y + Tmp.v1.y, Mathf.random(0.9f, 1.1f));
+                            energy--;
+                        }
+                    }else{
+                        targets.remove(t);
+                    }
                 }
             }
         }
@@ -98,7 +105,7 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
 
         public float getEnergyPercent(){
             if(energy > 0) return (float)energy / defaultEnergy;
-            else return 1f - (reloadCounter / reload);
+            else return reloadCounter / reload;
         }
 
         @Override
