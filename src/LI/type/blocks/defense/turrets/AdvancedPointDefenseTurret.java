@@ -7,10 +7,8 @@ import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
 import arc.util.io.*;
-import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.ui.*;
-import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.meta.*;
 
@@ -21,7 +19,7 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
         super(name);
         bulletDamage = 0f;
         retargetTime = 0.05f;
-        shootCone = 60f;
+        shootCone = 45f;
         color = Color.valueOf("F25555");
         reload = 5*60f;
     }
@@ -55,8 +53,8 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
             //retarget
             if(timer(timerTarget, retargetTime)){
                 targets = Groups.bullet.intersect(x - range, y - range, range*2, range*2).sort(b -> b.dst2(this));
-                target = targets.min(b -> b.team != team && b.type().hittable && b.isAdded(), b -> b.dst2(this));
             }
+            if(target == null || !target.isAdded()) target = targets.min(b -> b.team != team && b.type().hittable && b.isAdded(), b -> b.dst2(this));
 
             if(energy <= 0){
                 if(resuming){
