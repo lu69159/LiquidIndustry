@@ -7,8 +7,10 @@ import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
 import arc.util.io.*;
+import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.ui.*;
+import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.meta.*;
 
@@ -56,17 +58,17 @@ public class AdvancedPointDefenseTurret extends PointDefenseTurret{
                 target = targets.min(b -> b.team != team && b.type().hittable && b.isAdded(), b -> b.dst2(this));
             }
 
-            if(energy <= 0 || resuming){
-                if(reloadCounter >= reload){
-                    if(resuming){
+            if(energy <= 0){
+                if(resuming){
+                    reloadCounter += edelta();
+                    if(reloadCounter >= reload){
                         energy = defaultEnergy;
                         resuming = false;
-                    }else{
                         reloadCounter = 0;
-                        resuming = true;
                     }
+                }else{
+                    resuming = true;
                 }
-                else reloadCounter += edelta();
             }
 
             if(target != null && !resuming){
