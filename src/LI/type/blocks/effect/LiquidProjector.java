@@ -122,7 +122,7 @@ public class LiquidProjector extends Block {
 
         public boolean canTransferLiquid(Building to) {
             if(!to.block.hasLiquids || to.block.category == Category.liquid || to.block instanceof Autotiler || to.block instanceof ItemBridge || to.block instanceof Wall || to.block instanceof Router || to.block instanceof Sorter) return false;
-            return to.acceptLiquid(this, liquids.current());
+            return to.liquids != null && to.acceptLiquid(this, liquids.current());
         }
 
         @Override
@@ -137,7 +137,7 @@ public class LiquidProjector extends Block {
 
             if(charge >= reload){
                 if(liquids.current() != null && liquids.currentAmount() > 0.1f){
-                    indexer.eachBlock(this, realRange(), b -> canTransferLiquid(b) && (b.liquids == null || b.liquids.current() == liquids.current() || b.liquids.currentAmount() < 0.5f), other -> {
+                    indexer.eachBlock(this, realRange(), this::canTransferLiquid, other -> {
                         float maxAmount = Math.min(Math.min(transferAmount, liquids.currentAmount()), other.block.liquidCapacity - other.liquids.get(liquids.current()));
                         if(maxAmount > 0.1f){
                             other.handleLiquid(this, liquids.current(), maxAmount);

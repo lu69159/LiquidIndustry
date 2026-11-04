@@ -9,6 +9,7 @@ Also, you can make a PR.(But most content is currently named using the initial l
 最近忙起来了，更新会变慢很多
 
 0.26:
+    修复流体力场作用于含有多种液体的建筑时的BUG
     添加消去炮塔
     调整物品力场造价
 

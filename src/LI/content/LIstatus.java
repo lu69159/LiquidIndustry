@@ -27,7 +27,7 @@ public class LIstatus {
             color = Color.valueOf("D0D0E0");
             healthMultiplier = 0.05f;
             speedMultiplier = 0.5f;
-            damageMultiplier = 15f;
+            damageMultiplier = 10f;
             reloadMultiplier = 2f;
             permanent = true;
         }

@@ -6,6 +6,7 @@ import arc.graphics.g2d.*;
 import arc.math.Mathf;
 import arc.util.*;
 import mindustry.content.*;
+import mindustry.gen.Building;
 import mindustry.type.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
