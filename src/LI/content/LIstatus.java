@@ -10,6 +10,7 @@ import arc.util.Time;
 import mindustry.Vars;
 import mindustry.ctype.ContentType;
 import mindustry.entities.effect.ParticleEffect;
+import mindustry.entities.units.StatusEntry;
 import mindustry.gen.Unit;
 import mindustry.graphics.Layer;
 import mindustry.type.StatusEffect;
@@ -37,6 +38,16 @@ public class LIstatus {
                 Draw.mixcol(Color.valueOf("D0D0E0"), 1f);
                 Draw.scl(1.1f);
                 Draw.rect(unit.type.fullIcon, unit.x, unit.y, unit.rotation - 90f);
+            }
+            @Override
+            public void update(Unit unit, StatusEntry entry) {
+                super.update(unit, entry);
+                if(unit.armorOverride != 0f) unit.armorOverride(0f);
+            }
+
+            @Override
+            public void onRemoved(Unit unit) {
+                unit.armorOverride(-1f);
             }
         };
         GZ = new StatusEffect("管制"){{
